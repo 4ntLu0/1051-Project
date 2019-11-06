@@ -29,5 +29,6 @@ def test_blue(file):
             pass
         else:
             print('fails')
+
 if __name__ == '__main__':
     test_red(r_img)

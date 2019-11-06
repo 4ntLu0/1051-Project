@@ -25,6 +25,6 @@ for x, y, (r, g, b) in new_img:
     set_color(new_img, x, y, colour)
     counter += 1
 
-save_as(new_img, 'new_image.jpg')
-show(load_image('new_image.jpg'))
+save_as(new_img, 'combined_image.jpg')
+show(load_image('combined_image.jpg'))
 

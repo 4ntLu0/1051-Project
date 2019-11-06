@@ -14,7 +14,7 @@ def test_red(file):
         if g == 0 and b == 0:
             pass
         else:
-            print('fails')
+            print('fails at:', x, y, 'with', r, g, b)
 def test_green(file):
     print('testing green')
     for x, y, (r, g, b) in file:
@@ -31,5 +31,3 @@ def test_blue(file):
             print('fails')
 if __name__ == '__main__':
     test_red(r_img)
-    test_green(g_img)
-    test_blue(b_img)

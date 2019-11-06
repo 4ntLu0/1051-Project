@@ -17,3 +17,4 @@ show(load_image('red_channel.jpg'))  # shows image to double check
 
 print('end')
 exit()
+

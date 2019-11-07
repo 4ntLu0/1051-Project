@@ -1,37 +1,39 @@
 from Cimpl import load_image, create_color, set_color, show, Image, save_as
 
 def createBlue(image_path):
+    """ the function createBlue displays the original image, once closed it displays the image with a blue filter
     
-    image = load_image('p2-original.jpg')  # reads in the image
+    -Emilio Lindia
+    """
+    image = load_image('p2-original.jpg')  # loads the original colourless picture
     show(image)  # shows original image
     
-    '''remember: we don't want to make changes to the original file - this step is just to make sure'''
     new_image = image
     
-    for x, y, (r, g, b) in image:  # reads through the image pixel by pixel
-        blue = create_color(0, 0, b)  # creates new colour
-        # remaps each x,y coordinate to the new red channel
+    for x, y, (r, g, b) in image:  # examines all pixels
+        blue = create_color(0, 0, b)  # creates a 100% blue filter
+        
         set_color(new_image, x, y, blue)
     
-    save_as(new_image, 'blue_channel.jpg')  # saves as new image
-    show(load_image('blue_channel.jpg'))  # shows image to double check
+    save_as(new_image, 'blue_channel.jpg')  # saves the blue filter as a new image
+    show(load_image('blue_channel.jpg'))  # shows image 
     
-    print('end')    
+    print('blue_channel saved as new_image')    
     return new_image
 
 
 def test_blue() -> None:
     '''This is the test function for the blue filter. 
     
-    it tests if all pixels are blue or not.
+    it tests if all pixels are blue or if they contain any traces of green or red.
     '''
     image1 = createBlue('p2-original.jpg')
    
     for x,y,(r, g, b) in image1:
-        if r ==0 and g ==0:
-            print("PASS")
+        if r ==0 and g ==0:  # if there is no trace of red or green
+            print("PASS") #passed the test
             return
        
     else:
-        print ('fails at: ', x, y, r,g,b, sep='  ')
-        return 
+        print ('FAILS')
+        return

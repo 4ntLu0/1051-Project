@@ -10,11 +10,16 @@ show(b_img)
 
 def test_red(file):
     print('testing red')
+    log = open('redTestLog.txt', 'a')
     for x, y, (r, g, b) in file:
         if g == 0 and b == 0:
             pass
         else:
-            print('fails at:', x, y, 'with', r, g, b)
+            str1 = 'fails at: ' + str(x) + ' , ' + str(y) + \
+                ' |  with: ' + 'R: ' + str(r) + ' ' + 'G: ' + \
+                str(g) + ' ' + 'B: ' + str(b) + '\n'
+            log.write(str1)
+            print(str1)
 def test_green(file):
     print('testing green')
     for x, y, (r, g, b) in file:

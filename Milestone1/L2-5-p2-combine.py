@@ -1,4 +1,4 @@
-from Cimpl import load_image, create_color, set_color, show, Image, save_as
+from Cimpl import load_image, create_color, set_color, show, Image, save_as, get_width, get_height
 
 r_img = load_image('red_channel.jpg')
 g_img = load_image('green_channel.jpg')

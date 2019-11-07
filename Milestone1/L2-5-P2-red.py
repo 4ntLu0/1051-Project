@@ -2,7 +2,7 @@ from Cimpl import load_image, create_color, set_color, show, Image, save_as
 from typing import NewType
 import os
 
-Image = NewType('Image', str)
+Image = NewType('Image')
 
 def createRed(original_img: Image, verify: bool, log: bool):
     """ Takes an original img and saves a new image with only the red channel.
@@ -14,7 +14,6 @@ def createRed(original_img: Image, verify: bool, log: bool):
         except:
             pass
         red_log = open('redImgLog.txt')  # creates a NEW log file
-    image = load_image(original_img)  # loads in the image using CIMPL
     if verify:
         show(image)  # shows the original image
     for x, y, (r, g, b) in image:  # reads through the image pixel by pixel

@@ -17,15 +17,16 @@ def green_filter(image: Image) -> Image:
     show(image1)
     return image1
 
+save_as(image, 'green_channel.jpg')  # saves as a new image
+if verify:
+    show(load_image('green_channel.jpg'))  # shows the image to double check
+
+print('green_channel created')
 
 
 
 def test_green() -> None:
-    '''Test function for green filter. 
-    
-    Tests if the pixels are green.
-    
-    >>> test_green()
+    '''Test function for green filter that tests if all the pixels in the image are green. The function returns 'PASS' if all pixels successfully change to green. If not, the function returns 'FAIL'.
     '''
     image1 = green_filter(image)
    
@@ -37,4 +38,5 @@ def test_green() -> None:
     else:
         print ("FAIL")
         return 
+
         

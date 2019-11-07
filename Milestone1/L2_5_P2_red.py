@@ -39,9 +39,6 @@ def createRed(img_path: Image, verify: bool = True, log: bool = False):
     print('red_channel created')
 
 def testRed(original_path):
-    """Tests the red channel to ensure that there are only red pixels being written.
-    Written by Anthony Luo
-    """
     createRed(original_path, False, True) #runs the red function in debugging mode.
     show(load_image(original_path))
     show(load_image('red_channel.jpg'))

@@ -38,3 +38,5 @@ def combine():
 
     save_as(new_img, 'combined_image.jpg')
     show(load_image('combined_image.jpg'))
+
+combine()

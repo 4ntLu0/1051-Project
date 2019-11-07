@@ -4,7 +4,7 @@ from L2_5_P2_green import green_filter
 from L2_5_P2_blue import createBlue
 from L2_5_P2_combine import combine
 
-original_img = 'p2-original.jpg'
+original_img = load_image('p2-original.jpg')
 
 if __name__ == '__main__':
     """main function to run all the things!

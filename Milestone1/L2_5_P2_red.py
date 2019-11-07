@@ -5,12 +5,12 @@ import os
 Image = NewType('Image', str)
 
 
-# TODO: Currently there are issues with directly passing through an image, but I'm not sure why. for now, passing a filename.
 def createRed(img_path: Image, verify: bool = True, log: bool = False):
     """ takes an image path and creates an image with only red channels.
     Written by Anthony Luo
     """
-    image = load_image(img_path)
+    #image = load_image(img_path)
+    image = img_path
     if log:
         try:
             os.remove('redImgLog.txt')

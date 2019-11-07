@@ -5,12 +5,11 @@ import os
 Image = NewType('Image', str)
 
 
-def createRed(img_path: Image, verify: bool = True, log: bool = False):
+def createRed(img: Image, verify: bool = True, log: bool = False):
     """ takes an image path and creates an image with only red channels.
     Written by Anthony Luo
     """
-    #image = load_image(img_path)
-    image = img_path
+    image = img
     if log:
         try:
             os.remove('redImgLog.txt')
@@ -37,6 +36,7 @@ def createRed(img_path: Image, verify: bool = True, log: bool = False):
         show(load_image('red_channel.jpg'))  # shows the image to double check
 
     print('red_channel created')
+    os.remove('temp_img.jpg')
 
 def testRed(original_path):
     createRed(original_path, False, True) #runs the red function in debugging mode.

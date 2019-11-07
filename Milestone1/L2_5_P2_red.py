@@ -27,8 +27,8 @@ def createRed(img_path: Image, verify: bool = True, log: bool = False):
 
         # creates a string to write to log
         str1 = 'X: ' + str(x) + ' Y: ' + str(y) + ' WITH ORIGINAL R: ' + str(r) + \
-               ' G: ' + str(g) + ' B: ' + str(b) + ' | WITH NEW: R: ' + str(red[0]) + \
-               ' G: ' + str(red[1]) + ' B: ' + str(red[2]) + '\n'  # compiles string
+               ' G: ' + str(g) + ' B: ' + str(b) + ' | WITH NEW' +  '-R: ' + str(red[0]) + \
+               ' -G: ' + str(red[1]) + ' -B: ' + str(red[2]) + '\n'  # compiles string
         if log:
             red_log.write(str1)  # saves string
 
@@ -37,3 +37,18 @@ def createRed(img_path: Image, verify: bool = True, log: bool = False):
         show(load_image('red_channel.jpg'))  # shows the image to double check
 
     print('red_channel created')
+
+def testRed(original_path):
+    createRed(original_path, False, True) #runs the red function in debugging mode.
+    show(load_image(original_path))
+    show(load_image('red_channel.jpg'))
+    log = open('redImgLog.txt', 'r')
+    for line in log:
+        if '-G: 0' and '-B: 0' in line:
+            pass
+        else:
+            print('fails at', line)
+            exit()
+    print('PASS')
+
+

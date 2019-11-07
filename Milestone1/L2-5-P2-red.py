@@ -2,12 +2,13 @@ from Cimpl import load_image, create_color, set_color, show, Image, save_as
 from typing import NewType
 import os
 
-Image = NewType('Image')
+Image = NewType('Image', str)
 
-def createRed(original_img: Image, verify: bool, log: bool):
+def createRed(img_path: Image, verify: bool = True, log: bool = False):
     """ Takes an original img and saves a new image with only the red channel.
     Written by Anthony Luo
     """
+    image = load_image(img_path)
     if log:
         try:
             os.remove('redImgLog.txt')
@@ -34,4 +35,3 @@ def createRed(original_img: Image, verify: bool, log: bool):
         show(load_image('red_channel.jpg'))  # shows the image to double check
     
     print('red_channel created')
-    exit()

@@ -17,13 +17,15 @@ def createBlue(image_path):
     show(load_image('blue_channel.jpg'))  # shows image to double check
     
     print('end')    
-    
+    return new_image
+
+
 def test_blue() -> None:
     '''This is the test function for the blue filter. 
     
     it tests if all pixels are blue or not.
     '''
-    image1 = blue_filter(image)
+    image1 = createBlue('p2-original.jpg')
    
     for x,y,(r, g, b) in image1:
         if r ==0 and g ==0:
@@ -31,5 +33,5 @@ def test_blue() -> None:
             return
        
     else:
-        print ("FAIL")
+        print ('fails at: ', x, y, r,g,b, sep='  ')
         return 

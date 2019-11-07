@@ -4,7 +4,7 @@ r_img = load_image('red_channel.jpg')
 g_img = load_image('green_channel.jpg')
 b_img = load_image('blue_channel.jpg')
 
-new_img = r_img
+new_img = Image(width=640, height=480)
 
 r_chan = []
 g_chan = []

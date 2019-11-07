@@ -4,6 +4,7 @@ import os
 
 Image = NewType('Image', str)
 
+# TODO: Currently there are issues with directly passing through an image, but I'm not sure why. for now, passing a filename.
 def createRed(img_path: Image, verify: bool = True, log: bool = False):
     """ Takes an original img and saves a new image with only the red channel.
     Written by Anthony Luo
@@ -14,7 +15,7 @@ def createRed(img_path: Image, verify: bool = True, log: bool = False):
             os.remove('redImgLog.txt')
         except:
             pass
-        red_log = open('redImgLog.txt')  # creates a NEW log file
+        red_log = open('redImgLog.txt', 'a')  # creates a NEW log file
     if verify:
         show(image)  # shows the original image
     for x, y, (r, g, b) in image:  # reads through the image pixel by pixel

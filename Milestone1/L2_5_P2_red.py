@@ -33,9 +33,8 @@ def createRed( img: Image, verify: bool = True, log: bool = False ):
         set_color(image, x, y, red)
 
         # creates a string to write to log
-        str1 = 'X: ' + str(x) + ' Y: ' + str(y) + ' WITH ORIGINAL R: ' + str(r) + \
-               ' G: ' + str(g) + ' B: ' + str(b) + ' | WITH NEW' + '-R: ' + str(red[0]) + \
-               ' -G: ' + str(red[1]) + ' -B: ' + str(red[2]) + '\n'  # compiles string
+        str1 = f'{x:03}' + f'{y:03}' + f'{r:03}' + f'{g:03}' + f'{b:03}' + f'{red[0]:03}' + \
+            f'{red[1]:03}' + f'{red[2]:03}' + '\n'
         if log:
             red_log.write(str1)  # saves string
 
@@ -46,15 +45,17 @@ def createRed( img: Image, verify: bool = True, log: bool = False ):
     print('red_channel created')
 
 
-def testRed( original_path ):
-    createRed(original_path, False, True)  # runs the red function in debugging mode.
-    show(load_image(original_path))
+def testRed( ori_img ):
+    createRed(ori_img, False, True)  # runs the red function in debugging mode.
+    show(ori_img)
     show(load_image('red_channel.jpg'))
     log = open('redImgLog.txt', 'r')
     for line in log:
-        if '-G: 0' and '-B: 0' in line:
+        if line[18:] == '000000':
             pass
         else:
-            print('fails at', line)
+            print('fails with log line: ', line, '\n')
             exit()
     print('PASS')
+
+testRed(load_image('p2-original.jpg'))

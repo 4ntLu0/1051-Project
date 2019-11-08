@@ -6,8 +6,16 @@ Image = NewType('Image', str)
 
 
 def createRed(img: Image, verify: bool = True, log: bool = False):
-    """ takes an image path and creates an image with only red channels.
+    """ Saves a new image which constitutes only the red channel of an image img
     Written by Anthony Luo
+    :param img: Original image
+    :type img: Image
+    :param verify: Whether or not to verify the image (ie, show it to the user)
+    :type verify: bool
+    :param log: whether or not to save image data to log files
+    :type log: bool
+    :return: None
+    :rtype: NoneType
     """
     image = copy(img)
     if log:

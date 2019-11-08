@@ -2,9 +2,11 @@ from Cimpl import load_image, create_color, set_color, show, Image, save_as, get
 
 
 def combine(log = False):
-    """ Combines three images red_channel, green_channel, and blue_channel (rgb) to form a
-    full colour image saved to combined_image.jpg.
+    """ Combines three single-colour images (red, green, and blue) into a final image.
     Written by Anthony Luo
+    :param log: Determines whether or not to return a datalog
+    :type log: Defaults to False, ie no log
+    :return: returns logs as tuple if log
     """
     # loads images in
     r_img = load_image('red_channel.jpg')

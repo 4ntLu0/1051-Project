@@ -1,7 +1,7 @@
 from Cimpl import load_image, create_color, set_color, show, Image, save_as, get_width, get_height
 
 
-def combine(log = False):
+def combine( log = False ):
     """ Combines three single-colour images (red, green, and blue) into a final image.
     Written by Anthony Luo
     :param log: Determines whether or not to return a datalog
@@ -15,7 +15,7 @@ def combine(log = False):
 
     # creates new image with hard dimensions.
     # TODO: create a way to dynamically assign height
-    new_img = Image(width=640, height=480)
+    new_img = Image(width = 640, height = 480)
 
     # creates the different channels for RGB
     # TODO: figure out a way to store these in a numpy matrix?
@@ -25,13 +25,13 @@ def combine(log = False):
 
     rgb = []
 
-    for x, y, (r, g, b) in r_img: #grabs r value
+    for x, y, (r, g, b) in r_img:  # grabs r value
         r_chan.append(r)
 
-    for x, y, (r, g, b) in g_img: # grabs g value
+    for x, y, (r, g, b) in g_img:  # grabs g value
         g_chan.append(g)
 
-    for x, y, (r, g, b) in b_img: # grabs b value
+    for x, y, (r, g, b) in b_img:  # grabs b value
         b_chan.append(b)
 
     counter = 0
@@ -53,6 +53,7 @@ def combine(log = False):
         save_as(new_img, 'combined_image.jpg')
         show(load_image('combined_image.jpg'))
         return (r_chan, g_chan, b_chan, rgb)
+
 
 def testCombine():
     """Tests to ensure that combine is made up of the constituent rgb parts.
@@ -81,7 +82,7 @@ def testCombine():
     count = 0
 
     for x, y, (r, g, b) in combined_img:
-        if (r_chan[count], g_chan[count], b_chan[count])== (log_r[count], log_g[count], log_b[count]):
+        if (r_chan[count], g_chan[count], b_chan[count]) == (log_r[count], log_g[count], log_b[count]):
             pass
         else:
             print('fails at', x, y, r, g, b)
@@ -90,7 +91,5 @@ def testCombine():
     print('PASS')
 
 
-
 if __name__ == '__main__':
     testCombine()
-

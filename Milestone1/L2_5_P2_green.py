@@ -3,7 +3,7 @@ from Cimpl import *
 image = load_image('p2-original.jpg')  # loads the desired image
 
 
-def green_filter(image1: Image) -> Image:
+def green_filter( image1: Image ) -> Image:
     """Alia Nichol
 
     """
@@ -17,7 +17,7 @@ def green_filter(image1: Image) -> Image:
     save_as(image, 'green_channel.jpg')
     show(load_image('green_channel.jpg'))
     print('green_channel saved as new image')
-    
+
     return image1
 
 

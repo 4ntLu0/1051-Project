@@ -1,7 +1,7 @@
 from Cimpl import load_image, create_color, set_color, show, Image, save_as, get_width, get_height
 
 
-def combine():
+def combine(log = False):
     """ Combines three images red_channel, green_channel, and blue_channel (rgb) to form a
     full colour image saved to combined_image.jpg.
     Written by Anthony Luo
@@ -21,6 +21,8 @@ def combine():
     g_chan = []
     b_chan = []
 
+    rgb = []
+
     for x, y, (r, g, b) in r_img: #grabs r value
         r_chan.append(r)
 
@@ -31,10 +33,62 @@ def combine():
         b_chan.append(b)
 
     counter = 0
-    for x, y, (r, g, b) in new_img:
-        colour = create_color(r_chan[counter], g_chan[counter], b_chan[counter])
-        set_color(new_img, x, y, colour)
-        counter += 1
+    if not log:
+        for x, y, (r, g, b) in new_img:
+            colour = create_color(r_chan[counter], g_chan[counter], b_chan[counter])
+            set_color(new_img, x, y, colour)
+            counter += 1
 
-    save_as(new_img, 'combined_image.jpg')
-    show(load_image('combined_image.jpg'))
+        save_as(new_img, 'combined_image.jpg')
+        show(load_image('combined_image.jpg'))
+    else:
+        for x, y, (r, g, b) in new_img:
+            colour = create_color(r_chan[counter], g_chan[counter], b_chan[counter])
+            rgb.append(colour)
+            set_color(new_img, x, y, colour)
+            counter += 1
+
+        save_as(new_img, 'combined_image.jpg')
+        show(load_image('combined_image.jpg'))
+        return (r_chan, g_chan, b_chan, rgb)
+
+def testCombine():
+    """Tests to ensure that combine is made up of the constituent rgb parts
+    Written by Anthony Luo
+    """
+    log_r, log_g, log_b, log_rgb = combine(True)
+
+    r_img = load_image('red_channel.jpg')
+    g_img = load_image('green_channel.jpg')
+    b_img = load_image('blue_channel.jpg')
+
+    r_chan = []
+    g_chan = []
+    b_chan = []
+
+    for x, y, (r, g, b) in r_img:  # grabs r value
+        r_chan.append(r)
+
+    for x, y, (r, g, b) in g_img:  # grabs g value
+        g_chan.append(g)
+
+    for x, y, (r, g, b) in b_img:  # grabs b value
+        b_chan.append(b)
+
+    combined_img = load_image('combined_image.jpg')
+    count = 0
+
+    for x, y, (r, g, b) in combined_img:
+        if (r_chan[count], g_chan[count], b_chan[count])== (log_r[count], log_g[count], log_b[count]):
+            pass
+        else:
+            print('fails at', x, y, r, g, b)
+            exit()
+        count += 1
+    print('PASS')
+
+
+
+if __name__ == '__main__':
+    testCombine()
+

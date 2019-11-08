@@ -1,10 +1,11 @@
-from Cimpl import load_image, create_color, set_color, show, Image, save_as
+from Cimpl import load_image, create_color, set_color, show, Image, save_as, copy
 
-def createBlue(image):
+def createBlue(img):
     """ the function createBlue displays the original image, once closed it displays the image with a blue filter
     
     -Emilio Lindia
     """
+    image = copy(img)
     #image = load_image('p2-original.jpg')  # loads the original colourless picture
     show(image)  # shows original image
     

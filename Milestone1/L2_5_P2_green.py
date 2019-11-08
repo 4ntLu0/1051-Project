@@ -7,7 +7,7 @@ def green_filter(image1: Image) -> Image:
     """Alia Nichol
 
     """
-    image = image1  # creates a copy of the image so it is not overrided
+    image = copy(image1)  # creates a copy of the image so it is not overrided
     show(image)
 
     for x, y, (r, g, b) in image:  # reads through the image

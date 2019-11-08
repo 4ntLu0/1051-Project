@@ -1,4 +1,4 @@
-from Cimpl import load_image, create_color, set_color, show, Image, save_as
+from Cimpl import load_image, create_color, set_color, show, Image, save_as, copy
 from typing import NewType
 import os
 
@@ -9,7 +9,7 @@ def createRed(img: Image, verify: bool = True, log: bool = False):
     """ takes an image path and creates an image with only red channels.
     Written by Anthony Luo
     """
-    image = img
+    image = copy(img)
     if log:
         try:
             os.remove('redImgLog.txt')
@@ -36,7 +36,6 @@ def createRed(img: Image, verify: bool = True, log: bool = False):
         show(load_image('red_channel.jpg'))  # shows the image to double check
 
     print('red_channel created')
-    os.remove('temp_img.jpg')
 
 def testRed(original_path):
     createRed(original_path, False, True) #runs the red function in debugging mode.

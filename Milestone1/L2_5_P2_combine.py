@@ -53,8 +53,8 @@ def combine(log = False):
         return (r_chan, g_chan, b_chan, rgb)
 
 def testCombine():
-    """Tests to ensure that combine is made up of the constituent rgb parts
-    Written by Anthony Luo
+    """Tests to ensure that combine is made up of the constituent rgb parts.
+    TODO: I'm STILL not completely sure if this is how it's supposed to be...
     """
     log_r, log_g, log_b, log_rgb = combine(True)
 

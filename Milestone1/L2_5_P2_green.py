@@ -27,7 +27,7 @@ def test_green() -> None:
 
     Tests if the pixels are green.
 
-    >>> test_green()
+    #>>> test_green()
     '''
     image1 = green_filter(image)
 

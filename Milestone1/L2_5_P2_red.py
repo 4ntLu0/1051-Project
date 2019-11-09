@@ -1,16 +1,23 @@
-from Cimpl import load_image, create_color, set_color, show, Image, save_as
+from Cimpl import load_image, create_color, set_color, show, Image, save_as, copy
 from typing import NewType
 import os
 
 Image = NewType('Image', str)
 
 
-def createRed(img_path: Image, verify: bool = True, log: bool = False):
-    """ takes an image path and creates an image with only red channels.
+def createRed( img: Image, verify: bool = True, log: bool = False ):
+    """ Saves a new image which constitutes only the red channel of an image img
     Written by Anthony Luo
+    :param img: Original image
+    :type img: Image
+    :param verify: Whether or not to verify the image (ie, show it to the user)
+    :type verify: bool
+    :param log: whether or not to save image data to log files
+    :type log: bool
+    :return: None
+    :rtype: NoneType
     """
-    #image = load_image(img_path)
-    image = img_path
+    image = copy(img)
     if log:
         try:
             os.remove('redImgLog.txt')
@@ -26,29 +33,32 @@ def createRed(img_path: Image, verify: bool = True, log: bool = False):
         set_color(image, x, y, red)
 
         # creates a string to write to log
-        str1 = 'X: ' + str(x) + ' Y: ' + str(y) + ' WITH ORIGINAL R: ' + str(r) + \
-               ' G: ' + str(g) + ' B: ' + str(b) + ' | WITH NEW' +  '-R: ' + str(red[0]) + \
-               ' -G: ' + str(red[1]) + ' -B: ' + str(red[2]) + '\n'  # compiles string
+        str1 = f'{x:03}' + f'{y:03}' + f'{r:03}' + f'{g:03}' + f'{b:03}' + f'{red[0]:03}' + \
+               f'{red[1]:03}' + f'{red[2]:03}' + '\n'
         if log:
             red_log.write(str1)  # saves string
 
-    save_as(image, 'red_channel.jpg')  # saves as a new image
+    save_as(image, 'red_channel.png')  # saves as a new image
     if verify:
-        show(load_image('red_channel.jpg'))  # shows the image to double check
+        show(load_image('red_channel.png'))  # shows the image to double check
 
-    print('red_channel created')
+    print('red_channel created')  # notifies user
 
-def testRed(original_path):
-    createRed(original_path, False, True) #runs the red function in debugging mode.
-    show(load_image(original_path))
-    show(load_image('red_channel.jpg'))
-    log = open('redImgLog.txt', 'r')
+
+def testRed( ori_img: Image ):
+    createRed(ori_img, False, True)  # runs the red function in debugging mode.
+    show(ori_img)  # shows the original image, to ensure that it is correct
+    show(load_image('red_channel.png'))  # shows the red image, to ensure that it's correct.
+    log = open('redImgLog.txt', 'r')  # opens logger
+    fail = False
     for line in log:
-        if '-G: 0' and '-B: 0' in line:
+        if line[18:24] == str('000000'):  # double checks that last 6 digits (ggg,bbb) are all 0
             pass
         else:
-            print('fails at', line)
-            exit()
-    print('PASS')
-
-
+            print('fails with log line: ', line, '\n')  # notifies user of fail
+            print(line[18:24])
+            fail = True  # has failed tests
+    if fail:
+        return ('1')  # error code 1
+    else:
+        print('PASS')

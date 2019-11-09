@@ -3,7 +3,10 @@ from Cimpl import *
 
 
 def green_filter(image: Image) -> Image:
-    """Alia Nichol
+    """
+    Given an image from a selected file, the function sets all the pixels in the image to the color green and saves it as a new image. 
+    
+    Written by Alia Nichol.
     
     """
     image = load_image('p2-original.jpg') #loads the desired image
@@ -19,7 +22,7 @@ def green_filter(image: Image) -> Image:
     save_as(image1, 'green_channel.jpg')  # saves as a new image
     show(load_image('green_channel.jpg'))  # shows the image to double check
 
-    print('green_channel created')
+    print('green_channel saved as new image')
 
     return image1
 

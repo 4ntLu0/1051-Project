@@ -40,9 +40,9 @@ def createRed( img: Image, verify: bool = True, log: bool = False ):
         if log:
             red_log.write(str1)  # saves string
 
-    save_as(image, 'red_channel.jpg')  # saves as a new image
+    save_as(image, 'red_channel.png')  # saves as a new image
     if verify:
-        show(load_image('red_channel.jpg'))  # shows the image to double check
+        show(load_image('red_channel.png'))  # shows the image to double check
 
     print('red_channel created')  # notifies user
 
@@ -50,7 +50,7 @@ def createRed( img: Image, verify: bool = True, log: bool = False ):
 def testRed( ori_img: Image ):
     createRed(ori_img, False, True)  # runs the red function in debugging mode.
     show(ori_img)  # shows the original image, to ensure that it is correct
-    show(load_image('red_channel.jpg'))  # shows the red image, to ensure that it's correct.
+    show(load_image('red_channel.png'))  # shows the red image, to ensure that it's correct.
     log = open('redImgLog.txt', 'r')  # opens logger
     fail = False
     for line in log:
@@ -82,8 +82,8 @@ def createBlue( img ):
 
         set_color(new_image, x, y, blue)
 
-    save_as(new_image, 'blue_channel.jpg')  # saves the blue filter as a new image
-    show(load_image('blue_channel.jpg'))  # shows image
+    save_as(new_image, 'blue_channel.png')  # saves the blue filter as a new image
+    show(load_image('blue_channel.png'))  # shows image
 
     print('blue_channel saved as new_image')
     return new_image
@@ -117,8 +117,8 @@ def green_filter( image1: Image ) -> Image:
         green = create_color(0, g, 0)
         set_color(image, x, y, green)  # sets all the pixels of defined locations in that image to the color
 
-    save_as(image, 'green_channel.jpg')
-    show(load_image('green_channel.jpg'))
+    save_as(image, 'green_channel.png')
+    show(load_image('green_channel.png'))
     print('green_channel saved as new image')
 
     return image1
@@ -151,9 +151,9 @@ def combine( log = False ):
     :return: returns logs as tuple if log
     """
     # loads images in
-    r_img = load_image('red_image.png')
-    g_img = load_image('green_image.png')
-    b_img = load_image('blue_image.png')
+    r_img = load_image('red_channel.png')
+    g_img = load_image('green_channel.png')
+    b_img = load_image('blue_channel.png')
 
     # creates new image with hard dimensions.
     # TODO: create a way to dynamically assign height
@@ -204,9 +204,9 @@ def testCombine():
     log_r, log_g, log_b, log_rgb = combine(True)  # collects return from combine()
 
     # loads images
-    r_img = load_image('red_channel.jpg')
-    g_img = load_image('green_channel.jpg')
-    b_img = load_image('blue_channel.jpg')
+    r_img = load_image('red_channel.png')
+    g_img = load_image('green_channel.png')
+    b_img = load_image('blue_channel.png')
 
     r_chan = []
     g_chan = []
@@ -224,12 +224,12 @@ def testCombine():
     rgb = []
     combined_img = load_image('combined_image.png')
     ori_img = load_image('p2-original.jpg')
-    for x, y, (r,g,b) in ori_img:
-        rgb.append( (r, g, b))
+    for x, y, (r, g, b) in ori_img:
+        rgb.append((r, g, b))
     count = 0
 
     for x, y, (r, g, b) in combined_img:  # checks to ensure that rgb constituents are correct
-        if (r_chan[count], g_chan[count], b_chan[count]) == (log_r[count], log_g[count], log_b[count]) and rgb[count]\
+        if (r_chan[count], g_chan[count], b_chan[count]) == (log_r[count], log_g[count], log_b[count]) and rgb[count] \
                 == (r, g, b):
             pass
         else:

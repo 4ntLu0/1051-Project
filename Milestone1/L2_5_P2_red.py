@@ -34,31 +34,31 @@ def createRed( img: Image, verify: bool = True, log: bool = False ):
 
         # creates a string to write to log
         str1 = f'{x:03}' + f'{y:03}' + f'{r:03}' + f'{g:03}' + f'{b:03}' + f'{red[0]:03}' + \
-            f'{red[1]:03}' + f'{red[2]:03}' + '\n'
+               f'{red[1]:03}' + f'{red[2]:03}' + '\n'
         if log:
             red_log.write(str1)  # saves string
 
-    save_as(image, 'red_channel.jpg')  # saves as a new image
+    save_as(image, 'red_channel.png')  # saves as a new image
     if verify:
-        show(load_image('red_channel.jpg'))  # shows the image to double check
+        show(load_image('red_channel.png'))  # shows the image to double check
 
-    print('red_channel created') #notifies user
+    print('red_channel created')  # notifies user
 
 
 def testRed( ori_img: Image ):
     createRed(ori_img, False, True)  # runs the red function in debugging mode.
-    show(ori_img) #shows the original image, to ensure that it is correct
-    show(load_image('red_channel.jpg')) #shows the red image, to ensure that it's correct.
-    log = open('redImgLog.txt', 'r') #opens logger
+    show(ori_img)  # shows the original image, to ensure that it is correct
+    show(load_image('red_channel.png'))  # shows the red image, to ensure that it's correct.
+    log = open('redImgLog.txt', 'r')  # opens logger
     fail = False
     for line in log:
-        if line[18:24] == str('000000'): #double checks that last 6 digits (ggg,bbb) are all 0
+        if line[18:24] == str('000000'):  # double checks that last 6 digits (ggg,bbb) are all 0
             pass
         else:
-            print('fails with log line: ', line, '\n') # notifies user of fail
+            print('fails with log line: ', line, '\n')  # notifies user of fail
             print(line[18:24])
-            fail = True #has failed tests
+            fail = True  # has failed tests
     if fail:
-        return('1') #error code 1
+        return ('1')  # error code 1
     else:
         print('PASS')

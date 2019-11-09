@@ -9,9 +9,9 @@ def combine( log = False ):
     :return: returns logs as tuple if log
     """
     # loads images in
-    r_img = load_image('red_image.png')
-    g_img = load_image('green_image.png')
-    b_img = load_image('blue_image.png')
+    r_img = load_image('red_channel.png')
+    g_img = load_image('green_channel.png')
+    b_img = load_image('blue_channel.png')
 
     # creates new image with hard dimensions.
     # TODO: create a way to dynamically assign height
@@ -34,16 +34,16 @@ def combine( log = False ):
         b_chan.append(b)
 
     counter = 0
-    if not log: #checks whether or not we should be logging (once, instead of every time the loop runs)
+    if not log:  # checks whether or not we should be logging (once, instead of every time the loop runs)
         for x, y, (r, g, b) in new_img:
-            colour = create_color(r_chan[counter], g_chan[counter], b_chan[counter]) #create colour from constituents
-            set_color(new_img, x, y, colour) #set colour
+            colour = create_color(r_chan[counter], g_chan[counter], b_chan[counter])  # create colour from constituents
+            set_color(new_img, x, y, colour)  # set colour
             counter += 1
 
         show(new_img)
-        save_as(new_img, 'combined_image.png') #save and show image
+        save_as(new_img, 'combined_image.png')  # save and show image
         show(load_image('combined_image.png'))
-    else: #this is the same as above, except it saves all the files.
+    else:  # this is the same as above, except it saves all the files.
         for x, y, (r, g, b) in new_img:
             colour = create_color(r_chan[counter], g_chan[counter], b_chan[counter])
             rgb.append(colour)
@@ -82,12 +82,12 @@ def testCombine():
     rgb = []
     combined_img = load_image('combined_image.png')
     ori_img = load_image('p2-original.jpg')
-    for x, y, (r,g,b) in ori_img:
-        rgb.append( (r, g, b))
+    for x, y, (r, g, b) in ori_img:
+        rgb.append((r, g, b))
     count = 0
 
     for x, y, (r, g, b) in combined_img:  # checks to ensure that rgb constituents are correct
-        if (r_chan[count], g_chan[count], b_chan[count]) == (log_r[count], log_g[count], log_b[count]) and rgb[count]\
+        if (r_chan[count], g_chan[count], b_chan[count]) == (log_r[count], log_g[count], log_b[count]) and rgb[count] \
                 == (r, g, b):
             pass
         else:
@@ -95,5 +95,6 @@ def testCombine():
             exit()
         count += 1
     print('PASS')
+
 
 testCombine()

@@ -14,8 +14,8 @@ def green_filter( image1: Image ) -> Image:
         green = create_color(0, g, 0)
         set_color(image, x, y, green)  # sets all the pixels of defined locations in that image to the color
 
-    save_as(image, 'green_channel.jpg')
-    show(load_image('green_channel.jpg'))
+    save_as(image, 'green_channel.png')
+    show(load_image('green_channel.png'))
     print('green_channel saved as new image')
 
     return image1

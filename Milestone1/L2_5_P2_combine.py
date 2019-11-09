@@ -95,6 +95,3 @@ def testCombine():
             exit()
         count += 1
     print('PASS')
-
-
-testCombine()

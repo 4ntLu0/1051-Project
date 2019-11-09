@@ -7,6 +7,8 @@ def combine( log = False ):
     :param log: Determines whether or not to return a datalog
     :type log: Defaults to False, ie no log
     :return: returns logs as tuple if log
+    >>> combine()
+    >>> show(load_image('combined_image.png'))
     """
     # loads images in
     r_img = load_image('red_channel.png')
@@ -58,6 +60,8 @@ def combine( log = False ):
 def testCombine():
     """Tests to ensure that combine is made up of the constituent rgb parts.
     TODO: I'm STILL not completely sure if this is how it's supposed to be...
+    >>> testCombine()
+    'Combined image Passes'
     """
     log_r, log_g, log_b, log_rgb = combine(True)  # collects return from combine()
 
@@ -94,4 +98,4 @@ def testCombine():
             print('fails at', x, y, r, g, b)
             exit()
         count += 1
-    print('PASS')
+    print('Combined image PASSES')

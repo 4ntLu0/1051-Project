@@ -18,27 +18,35 @@ def createRed( img: Image, verify: bool = True, log: bool = False ):
     :type log: bool
     :return: None
     :rtype: NoneType
+    >>> image = load_image(choose_image())
+    >>> createRed(image)
+    >>> show(image)
     """
     image = copy(img)
+    if verify:
+        show(image)  # shows the original image
+
+    # checks if you are logging or not (once, at the start, instead of everytime)
     if log:
         try:
             os.remove('redImgLog.txt')
         except:
             pass
         red_log = open('redImgLog.txt', 'a')  # creates a NEW log file
-    if verify:
-        show(image)  # shows the original image
-    for x, y, (r, g, b) in image:  # reads through the image pixel by pixel
-        red = create_color(r, 0, 0)  # creates new 'colour' tuple
+        for x, y, (r, g, b) in image:  # reads through the image pixel by pixel
+            red = create_color(r, 0, 0)  # creates new 'colour' tuple
 
-        # remaps each x,y coordinate to new colour
-        set_color(image, x, y, red)
-
-        # creates a string to write to log
+            # remaps each x,y coordinate to new colour
+            set_color(image, x, y, red)
         str1 = f'{x:03}' + f'{y:03}' + f'{r:03}' + f'{g:03}' + f'{b:03}' + f'{red[0]:03}' + \
-               f'{red[1]:03}' + f'{red[2]:03}' + '\n'
-        if log:
-            red_log.write(str1)  # saves string
+               f'{red[1]:03}' + f'{red[2]:03}' + '\n'  # creates logger string
+        red_log.write(str1)  # saves string
+    else:
+        for x, y, (r, g, b) in image:  # reads through the image pixel by pixel
+            red = create_color(r, 0, 0)  # creates new 'colour' tuple
+
+            # remaps each x,y coordinate to new colour
+            set_color(image, x, y, red)
 
     save_as(image, 'red_channel.png')  # saves as a new image
     if verify:
@@ -48,6 +56,13 @@ def createRed( img: Image, verify: bool = True, log: bool = False ):
 
 
 def testRed( ori_img: Image ):
+    """ Tests the red image to ensure there are no traces of blue or green in the image.
+    written by Anthony Luo
+    :param ori_img: Original image
+    :type ori_img: load_image('')
+    >>> test_red( load_image(choose_image()))
+    'Red PASSES'
+    """
     createRed(ori_img, False, True)  # runs the red function in debugging mode.
     show(ori_img)  # shows the original image, to ensure that it is correct
     show(load_image('red_channel.png'))  # shows the red image, to ensure that it's correct.
@@ -63,7 +78,8 @@ def testRed( ori_img: Image ):
     if fail:
         return ('1')  # error code 1
     else:
-        print('PASS')
+        print('Red PASSES')
+
 
 
 def createBlue( img ):
@@ -149,6 +165,8 @@ def combine( log = False ):
     :param log: Determines whether or not to return a datalog
     :type log: Defaults to False, ie no log
     :return: returns logs as tuple if log
+    >>> combine()
+    >>> show(load_image('combined_image.png'))
     """
     # loads images in
     r_img = load_image('red_channel.png')
@@ -157,7 +175,7 @@ def combine( log = False ):
 
     # creates new image with hard dimensions.
     # TODO: create a way to dynamically assign height
-    new_img = create_image(640, 480)
+    new_img = Image(width = 640, height = 480)
 
     # creates the different channels for RGB
     # TODO: figure out a way to store these in a numpy matrix?
@@ -200,13 +218,15 @@ def combine( log = False ):
 def testCombine():
     """Tests to ensure that combine is made up of the constituent rgb parts.
     TODO: I'm STILL not completely sure if this is how it's supposed to be...
+    >>> testCombine()
+    'Combined image Passes'
     """
     log_r, log_g, log_b, log_rgb = combine(True)  # collects return from combine()
 
     # loads images
-    r_img = load_image('red_channel.png')
-    g_img = load_image('green_channel.png')
-    b_img = load_image('blue_channel.png')
+    r_img = load_image('red_image.png')
+    g_img = load_image('green_image.png')
+    b_img = load_image('blue_image.png')
 
     r_chan = []
     g_chan = []
@@ -236,7 +256,7 @@ def testCombine():
             print('fails at', x, y, r, g, b)
             exit()
         count += 1
-    print('PASS')
+    print('Combined image PASSES')
 
 
 if __name__ == '__main__':

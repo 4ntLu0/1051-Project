@@ -16,27 +16,35 @@ def createRed( img: Image, verify: bool = True, log: bool = False ):
     :type log: bool
     :return: None
     :rtype: NoneType
+    >>> image = load_image(choose_image())
+    >>> createRed(image)
+    >>> show(image)
     """
     image = copy(img)
+    if verify:
+        show(image)  # shows the original image
+
+    # checks if you are logging or not (once, at the start, instead of everytime)
     if log:
         try:
             os.remove('redImgLog.txt')
         except:
             pass
         red_log = open('redImgLog.txt', 'a')  # creates a NEW log file
-    if verify:
-        show(image)  # shows the original image
-    for x, y, (r, g, b) in image:  # reads through the image pixel by pixel
-        red = create_color(r, 0, 0)  # creates new 'colour' tuple
+        for x, y, (r, g, b) in image:  # reads through the image pixel by pixel
+            red = create_color(r, 0, 0)  # creates new 'colour' tuple
 
-        # remaps each x,y coordinate to new colour
-        set_color(image, x, y, red)
-
-        # creates a string to write to log
+            # remaps each x,y coordinate to new colour
+            set_color(image, x, y, red)
         str1 = f'{x:03}' + f'{y:03}' + f'{r:03}' + f'{g:03}' + f'{b:03}' + f'{red[0]:03}' + \
-               f'{red[1]:03}' + f'{red[2]:03}' + '\n'
-        if log:
-            red_log.write(str1)  # saves string
+               f'{red[1]:03}' + f'{red[2]:03}' + '\n'  # creates logger string
+        red_log.write(str1)  # saves string
+    else:
+        for x, y, (r, g, b) in image:  # reads through the image pixel by pixel
+            red = create_color(r, 0, 0)  # creates new 'colour' tuple
+
+            # remaps each x,y coordinate to new colour
+            set_color(image, x, y, red)
 
     save_as(image, 'red_channel.png')  # saves as a new image
     if verify:
@@ -46,6 +54,13 @@ def createRed( img: Image, verify: bool = True, log: bool = False ):
 
 
 def testRed( ori_img: Image ):
+    """ Tests the red image to ensure there are no traces of blue or green in the image.
+    written by Anthony Luo
+    :param ori_img: Original image
+    :type ori_img: load_image('')
+    >>> test_red( load_image(choose_image()))
+    'Red PASSES'
+    """
     createRed(ori_img, False, True)  # runs the red function in debugging mode.
     show(ori_img)  # shows the original image, to ensure that it is correct
     show(load_image('red_channel.png'))  # shows the red image, to ensure that it's correct.
@@ -61,4 +76,4 @@ def testRed( ori_img: Image ):
     if fail:
         return ('1')  # error code 1
     else:
-        print('PASS')
+        print('Red PASSES')

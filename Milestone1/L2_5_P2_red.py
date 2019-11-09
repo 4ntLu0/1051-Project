@@ -42,20 +42,25 @@ def createRed( img: Image, verify: bool = True, log: bool = False ):
     if verify:
         show(load_image('red_channel.jpg'))  # shows the image to double check
 
-    print('red_channel created')
+    print('red_channel created') #notifies user
 
 
-def testRed( ori_img ):
+def testRed( ori_img: Image ):
     createRed(ori_img, False, True)  # runs the red function in debugging mode.
-    show(ori_img)
-    show(load_image('red_channel.jpg'))
-    log = open('redImgLog.txt', 'r')
+    show(ori_img) #shows the original image, to ensure that it is correct
+    show(load_image('red_channel.jpg')) #shows the red image, to ensure that it's correct.
+    log = open('redImgLog.txt', 'r') #opens logger
+    fail = False
     for line in log:
-        if line[18:] == '000000':
+        if line[18:24] == str('000000'): #double checks that last 6 digits (ggg,bbb) are all 0
             pass
         else:
-            print('fails with log line: ', line, '\n')
-            exit()
-    print('PASS')
+            print('fails with log line: ', line, '\n') # notifies user of fail
+            print(line[18:24])
+            fail = True #has failed tests
+    if fail:
+        return('1') #error code 1
+    else:
+        print('PASS')
 
 testRed(load_image('p2-original.jpg'))

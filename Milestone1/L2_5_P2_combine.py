@@ -22,7 +22,6 @@ def combine( log = False ):
     r_chan = []
     g_chan = []
     b_chan = []
-
     rgb = []
 
     for x, y, (r, g, b) in r_img:  # grabs r value
@@ -35,15 +34,15 @@ def combine( log = False ):
         b_chan.append(b)
 
     counter = 0
-    if not log:
+    if not log: #checks whether or not we should be logging (once, instead of every time the loop runs)
         for x, y, (r, g, b) in new_img:
-            colour = create_color(r_chan[counter], g_chan[counter], b_chan[counter])
-            set_color(new_img, x, y, colour)
+            colour = create_color(r_chan[counter], g_chan[counter], b_chan[counter]) #create colour from constituents
+            set_color(new_img, x, y, colour) #set colour
             counter += 1
 
-        save_as(new_img, 'combined_image.jpg')
+        save_as(new_img, 'combined_image.jpg') #save and show image
         show(load_image('combined_image.jpg'))
-    else:
+    else: #this is the same as above, except it saves all the files.
         for x, y, (r, g, b) in new_img:
             colour = create_color(r_chan[counter], g_chan[counter], b_chan[counter])
             rgb.append(colour)
@@ -59,8 +58,9 @@ def testCombine():
     """Tests to ensure that combine is made up of the constituent rgb parts.
     TODO: I'm STILL not completely sure if this is how it's supposed to be...
     """
-    log_r, log_g, log_b, log_rgb = combine(True)
+    log_r, log_g, log_b, log_rgb = combine(True) #collects return from combine()
 
+    #loads images
     r_img = load_image('red_channel.jpg')
     g_img = load_image('green_channel.jpg')
     b_img = load_image('blue_channel.jpg')
@@ -81,7 +81,7 @@ def testCombine():
     combined_img = load_image('combined_image.jpg')
     count = 0
 
-    for x, y, (r, g, b) in combined_img:
+    for x, y, (r, g, b) in combined_img: #checks to ensure that rgb constituents are correct
         if (r_chan[count], g_chan[count], b_chan[count]) == (log_r[count], log_g[count], log_b[count]):
             pass
         else:
@@ -89,7 +89,3 @@ def testCombine():
             exit()
         count += 1
     print('PASS')
-
-
-if __name__ == '__main__':
-    testCombine()

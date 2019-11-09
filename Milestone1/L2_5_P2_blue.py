@@ -1,13 +1,16 @@
 from Cimpl import load_image, create_color, set_color, show, Image, save_as, copy
 from typing import NewType
 
-def createBlue( img ):
+image = load_image('p2-original.jpg')  # loads the original colourless picture 
+
+def createBlue( image ):
     """ the function createBlue displays the original image, once closed it displays the image with a blue filter
     
     -Emilio Lindia
     """
-    image = copy(img)
-    # image = load_image('p2-original.jpg')  # loads the original colourless picture
+      
+    image = copy(image)
+   
     show(image)  # shows original image
 
     new_image = image
@@ -30,7 +33,7 @@ def test_blue() -> None:
     it tests if all pixels are blue or if they contain any traces of green or red.
     -Emilio Lindia
     '''
-    image1 = createBlue('p2-original.jpg')
+    image1 = createBlue(image)
 
     for x, y, (r, g, b) in image1:
         if r == 0 and g == 0:  # if there is no trace of red or green

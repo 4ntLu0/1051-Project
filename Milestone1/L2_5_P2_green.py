@@ -22,7 +22,8 @@ def green_filter( image1: Image ) -> Image:
 
 
 def test_green() -> None:
-    '''Test function for green filter.
+    ''' Alia Nichol
+    Test function for green filter.
 
     Tests if the pixels are green.
 

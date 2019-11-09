@@ -1,5 +1,5 @@
 from Cimpl import load_image, create_color, set_color, show, Image, save_as, copy
-
+from typing import NewType
 
 def createBlue( img ):
     """ the function createBlue displays the original image, once closed it displays the image with a blue filter
@@ -28,6 +28,7 @@ def test_blue() -> None:
     '''This is the test function for the blue filter. 
     
     it tests if all pixels are blue or if they contain any traces of green or red.
+    -Emilio Lindia
     '''
     image1 = createBlue('p2-original.jpg')
 

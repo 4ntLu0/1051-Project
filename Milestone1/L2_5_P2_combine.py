@@ -1,4 +1,4 @@
-from Cimpl import load_image, create_color, set_color, show, Image, save_as, get_width, get_height
+from Cimpl import load_image, create_color, set_color, show, Image, save_as, get_width, get_height, green_filter
 
 
 def combine( log = False ):

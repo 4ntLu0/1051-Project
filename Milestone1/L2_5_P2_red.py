@@ -62,5 +62,3 @@ def testRed( ori_img: Image ):
         return('1') #error code 1
     else:
         print('PASS')
-
-testRed(load_image('p2-original.jpg'))

@@ -5,6 +5,7 @@ from typing import NewType
 original_img = load_image('p2-original.jpg')
 
 Image = NewType('Image', str)
+checked = False
 
 
 def createRed( img: Image, verify: bool = True, log: bool = False ):
@@ -175,7 +176,7 @@ def combine( log = False ):
 
     # creates new image with hard dimensions.
     # TODO: create a way to dynamically assign height
-    new_img = Image(width = 640, height = 480)
+    new_img = create_image(640, 480)
 
     # creates the different channels for RGB
     # TODO: figure out a way to store these in a numpy matrix?
@@ -258,7 +259,6 @@ def testCombine():
         count += 1
     print('Combined image PASSES')
 
-
 if __name__ == '__main__':
     """main function to run all the things!
     Written by Anthony Luo
@@ -271,3 +271,17 @@ if __name__ == '__main__':
     createBlue(original_img)
     print('done blue' + '\n' + 'running combined')
     combine()
+    while not checked:
+        test_check = input('Test? [Y/N]')
+        if test_check == 'Y':
+            testRed(original_image)
+            test_green()
+            test_blue()
+            testCombine()
+            checked = True
+        elif test_check == 'N':
+            print('Done creating and combining images!')
+            checked = True
+        else: 
+            print('Ipnut not recognized, please try again')
+    print('exiting! byebye!')

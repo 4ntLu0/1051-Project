@@ -17,7 +17,7 @@ def combine( log = False ):
 
     # creates new image with hard dimensions.
     # TODO: create a way to dynamically assign height
-    new_img = Image(width = 640, height = 480)
+    new_img = create_image(640, 480)
 
     # creates the different channels for RGB
     # TODO: figure out a way to store these in a numpy matrix?

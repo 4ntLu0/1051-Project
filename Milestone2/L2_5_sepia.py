@@ -2,6 +2,8 @@ from Utils.Cimpl import load_image, choose_file, show, set_color, save_as, creat
 from Utils.simple_Cimpl_filters import grayscale
 from typing import NewType
 Image = NewType('Image', str)
+from datetime import datetime
+now = datetime.now()
 
 
 def sepia(sep_img):
@@ -16,5 +18,10 @@ def sepia(sep_img):
     return sep_img
 
 if __name__ == '__main__':
+    #TODO: work on saving things better
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+    dt_string.strip()
+    print("date and time =", dt_string)
     working_img = grayscale(load_image(choose_file()))
     save_as(sepia(working_img), 'returns/sepia.jpg')

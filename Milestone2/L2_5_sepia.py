@@ -7,6 +7,13 @@ from datetime import datetime
 
 
 def sepia(sep_img):
+    """ Adjusts the r, g, and b values of a grayscale image to create a sepia image.
+    Written by Anthony Luo
+    :param sep_img:
+    :type sep_img:
+    :return:
+    :rtype:
+    """
     for x, y, (r, g, b) in sep_img:
         if r < 63:
             set_color(sep_img, x, y, create_color(r * 1.1, g, b * 0.9))
@@ -18,6 +25,9 @@ def sepia(sep_img):
     return sep_img
 
 if __name__ == '__main__':
+    """Runs sepia program
+    written by Anthony Luo
+    """
     #TODO: work on saving things better
     image = load_image(choose_file())
     print('image loaded, program starting')

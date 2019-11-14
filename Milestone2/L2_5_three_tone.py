@@ -1,16 +1,18 @@
-from Utils.Cimpl import load_image, choose_file, show, set_color, save_as, create_color, get_width, get_height #change
+from Utils.Cimpl import load_image, choose_file, show, set_color, save_as, create_color, get_width, get_height  # change
 # this later please
 from Utils.simple_Cimpl_filters import grayscale
 from typing import NewType, List
 import numpy as np
+
 Image = NewType('Image', str)
 from datetime import datetime
 
-tones = {'black': (0, 0, 0), 'white': (255, 255, 255), 'red': (255, 0, 0), 'lime': (0, 255, 0), 'blue': (0, 0, 255),
+tones = {'black' : (0, 0, 0), 'white': (255, 255, 255), 'red': (255, 0, 0), 'lime': (0, 255, 0), 'blue': (0, 0, 255),
          'yellow': (255, 255, 0), 'cyan': (0, 255, 255), 'magenta': (255, 0, 255), 'gray': (128, 128, 128)}
 brightness = []
 
-def threeTone(image: Image, col1: str, col2: str, col3: str) -> Image:
+
+def threeTone( image: Image, col1: str, col2: str, col3: str ) -> Image:
     """ Returns an image with three tones, with the darkest being the first tone, and brightest being the third tone.
     Written by Anthony Luo.
     :param image:
@@ -31,7 +33,7 @@ def threeTone(image: Image, col1: str, col2: str, col3: str) -> Image:
     tone2 = create_color(tone2r, tone2g, tone2b)
     tone3 = create_color(tone3r, tone3g, tone3b)
     for x, y, (r, g, b) in image:
-        avg = (r + g + b ) / 3
+        avg = (r + g + b) / 3
         if avg < 84:
             set_color(image, x, y, tone1)
         elif avg <= 170:
@@ -40,6 +42,7 @@ def threeTone(image: Image, col1: str, col2: str, col3: str) -> Image:
             set_color(image, x, y, tone3)
 
     return image
+
 
 if __name__ == '__main__':
     image = load_image(choose_file())

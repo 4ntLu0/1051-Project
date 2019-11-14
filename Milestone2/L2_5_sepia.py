@@ -3,7 +3,7 @@ from Utils.simple_Cimpl_filters import grayscale
 from typing import NewType
 Image = NewType('Image', str)
 from datetime import datetime
-now = datetime.now()
+
 
 
 def sepia(sep_img):
@@ -14,14 +14,20 @@ def sepia(sep_img):
             set_color(sep_img, x, y, create_color(r * 1.15, g, b * 0.85))
         else:
             set_color(sep_img, x, y, create_color(r * 1.08, g, b * 0.93))
-    show(sep_img)
+    #show(sep_img)
     return sep_img
 
 if __name__ == '__main__':
     #TODO: work on saving things better
+    image = load_image(choose_file())
+    print('image loaded, program starting')
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
     dt_string.strip()
-    print("date and time =", dt_string)
-    working_img = grayscale(load_image(choose_file()))
+    print("start time =", dt_string)
+    working_img = grayscale(image)
     save_as(sepia(working_img), 'returns/sepia.jpg')
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+    dt_string.strip()
+    print("end time =", dt_string)

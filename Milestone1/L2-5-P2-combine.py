@@ -1,6 +1,4 @@
-from Cimpl import load_image, create_color, set_color, show, Image, save_as, get_width, get_height
-
-
+from Cimpl import load_image, create_color, set_color, show, Image, save_as, get_width, get_height, create_image
 def combine( log = False ):
     """ Combines three single-colour images (red, green, and blue) into a final image.
     Written by Anthony Luo

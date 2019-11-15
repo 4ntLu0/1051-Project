@@ -47,7 +47,7 @@ def threeTone( image: Image, col1: str, col2: str, col3: str ) -> Image:
 if __name__ == '__main__':
     image = load_image(choose_file())
     print('image loaded, starting conversion')
-    save_as(threeTone(image, 'yellow', 'cyan', 'magenta'), 'returns/three_tone.jpg')
+    save_as(threeTone(image, 'white', 'gray', 'black'), 'returns/three_tone.jpg')
     print('conversion finished.')
     if input(' would you like to view the image? [Y/N]') == 'Y':
         show(image)

@@ -9,9 +9,10 @@ image1 = copy(image) #creates a copy of the image so it is not overrided when th
 
 def extreme_contrast(image: Image) -> Image:
     
-    """ Given an 
+    """ Given an ****** Need to finish writing the doc string
     Written by Alia Nichol
     """   
+    
     for pixel in image1:
         x, y, (r, g, b) = pixel
         

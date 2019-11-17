@@ -4,7 +4,7 @@ Some simple Cimpl image processing filters.
 Last edited: Nov. 5, 2019
 """
 
-from Utils.Cimpl import choose_file, load_image, copy, create_color, set_color,\
+from Cimpl import choose_file, load_image, copy, create_color, set_color,\
                   show, Image, get_color
 
 def invert(image: Image) -> Image:

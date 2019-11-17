@@ -13,8 +13,7 @@ def extreme_contrast(image: Image) -> Image:
     Written by Alia Nichol
     """   
     
-    for pixel in image1:
-        x, y, (r, g, b) = pixel
+    for x, y, (r, g, b) in image1:
         
         if 0 < r < 127:
             r = 0 

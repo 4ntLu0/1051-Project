@@ -1,16 +1,16 @@
 from Cimpl import *
 
 image = load_image(choose_file())  # loads the desired image from a given file
-show(image)
+show(image) # displays the image to the user
 
-image1 = copy(image) #creates a copy of the image so it is not overrided when the new image is returned"""
+image1 = copy(image) #creates a copy of the image so it is not overrided when the new image is returned
 
 
 
-def extreme_contrast(image: Image) -> Image:
+def extreme(image: Image) -> Image:
     
-    """ Given an ****** Need to finish writing the doc string
-    Written by Alia Nichol
+    """ Using a given image, the r, g, b components are altered so that 
+    Written by Alia Nichol. 
     """   
     
     for x, y, (r, g, b) in image1:
@@ -31,7 +31,7 @@ def extreme_contrast(image: Image) -> Image:
             b = 255
     
     
-        set_color(image1, x, y, create_color(r,g,b))
+        set_color(image1, x, y, create_color(r, g, b))
     
     show(image1)  
     return image1

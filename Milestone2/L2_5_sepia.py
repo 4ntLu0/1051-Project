@@ -20,7 +20,7 @@ def sepia(sep_img):
             set_color(sep_img, x, y, create_color(r * 1.15, g, b * 0.85))
         else:
             set_color(sep_img, x, y, create_color(r * 1.08, g, b * 0.93))
-    #show(sep_img)
+    show(sep_img)
     return sep_img
 
 if __name__ == '__main__':

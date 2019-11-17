@@ -2,7 +2,7 @@ from Utils.Cimpl import load_image, choose_file, show, set_color, save_as, creat
 # later please
 from Utils.simple_Cimpl_filters import grayscale
 from typing import NewType
-from L2_5_two_tone import twoTone
+#from L2_5_two_tone import twoTone
 from L2_5_three_tone import threeTone
 Image = NewType('Image', str)
 from datetime import datetime
@@ -41,14 +41,15 @@ def testThreeTone():
     img = create_image(3, 1)  # creates image
     set_color(img, 0, 0, create_color(0, 0, 0))
     set_color(img, 1, 0, create_color(128, 128, 128))
-    set_color(img, 2, 0, create_color())
+    set_color(img, 2, 0, create_color(255, 255, 255))
     test_img = copy(img)
-    for count in range(len(tone_list) - 1):
-        set_color(test_img, 0, 0, create_color(tone_list[count]))
-        set_color(test_img, 1, 0, create_color(tone_list[count + 1]))
-        if twoTone(tone_list[count], tone_list[count + 1]) == test_img:
+    for count in range(len(tone_list) - 2):
+        set_color(test_img, 0, 0, create_color(tones[tone_list[count]]))
+        set_color(test_img, 1, 0, create_color(tones[tone_list[count + 1]]))
+        set_color(test_img, 2, 0, create_color(tones[tone_list[count + 2]]))
+        if threeTone(tone_list[count], tone_list[count + 1], tone_list[count + 2]) == test_img:
             print('yote')
         else:
             print('fails')
 
-testTwoTone()
+testThreeTone()

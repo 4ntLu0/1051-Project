@@ -1,4 +1,4 @@
-from Cimpl import load_image, create_color, set_color, show, Image, save_as, copy
+from Utils.Cimpl import load_image, create_color, set_color, show, Image, save_as, copy
 
 image = load_image(choose_file())  # loads the desired image from a given file
 show(image)

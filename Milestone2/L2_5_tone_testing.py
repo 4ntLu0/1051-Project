@@ -1,9 +1,11 @@
-from Utils.Cimpl import load_image, choose_file, show, set_color, save_as, create_color, create_image, copy #change this
+from Utils.Cimpl import load_image, choose_file, show, set_color, save_as, create_color, create_image, copy  # change
+# this
 # later please
 from Utils.simple_Cimpl_filters import grayscale
 from typing import NewType
-#from L2_5_two_tone import twoTone
+# from L2_5_two_tone import twoTone
 from L2_5_three_tone import threeTone
+
 Image = NewType('Image', str)
 from datetime import datetime
 
@@ -13,6 +15,7 @@ tones = {'black' : (0, 0, 0), 'white': (255, 255, 255), 'red': (255, 0, 0), 'lim
          'yellow': (255, 255, 0), 'cyan': (0, 255, 255), 'magenta': (255, 0, 255), 'gray': (128, 128, 128)}
 colours = [(0, 0, 0), (255, 255, 255), (255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255),
            (255, 0, 255), (128, 128, 128)]
+
 
 def testTwoTone():
     ''' Tests to ensure that two tone functions
@@ -54,5 +57,6 @@ def testThreeTone():
                 print('pass ', end = '')
             else:
                 print('fails at', col, r, g, b)
+
 
 testThreeTone()

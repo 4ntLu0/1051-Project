@@ -1,10 +1,6 @@
-from Utils.Cimpl import create_color, create_image, copy, get_color, set_color
-from typing import NewType
+from Utils.Cimpl import create_color, create_image, copy, get_color, set_color, Image
+from typing import Tuple
 from L2_5_three_tone import threeTone
-
-Image = NewType('Image', str)
-
-# TODO: fix commenting
 
 tones = ['black', 'white', 'red', 'lime', 'blue',
          'yellow', 'cyan', 'magenta', 'gray']
@@ -39,18 +35,23 @@ def testThreeTone():
         col3 = _setCol(colours[i - 2])
 
         # compares colours and prints test results.
-        if (get_color(test_img, 0, 0) == col1) and (get_color(test_img, 1, 0) == col2) and (get_color(test_img, 2,
-                                                                                                      0) == col3):
+        if (get_color(test_img, 0, 0) == col1) and (get_color(test_img, 1, 0) == col2) and (get_color(test_img, 2, 0) == col3):
             print('Passed')
         else:
             print('Fails at:', tones[i], tones[i - 1], tones[i - 2])
 
 
-def _setCol( tone ):
+def _setCol( tone: Tuple[int] ):
+    """ returns a colour created from a tuple with three integers.
+        Written by Anthony Luo
+        :param tone:
+        :return: Colour
+        """
     r = tone[0]
     g = tone[1]
     b = tone[2]
     return create_color(r, g, b)
 
 
-testThreeTone()
+if __name__ == '__main__':
+    testThreeTone()

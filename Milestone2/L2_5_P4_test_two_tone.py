@@ -1,5 +1,5 @@
-from Utils.Cimpl import  set_color, create_color, create_image, copy, get_color
-from typing import NewType
+from Utils.Cimpl import set_color, create_color, create_image, copy, get_color
+from typing import NewType, Tuple
 from L2_5_two_tone import twoTone
 
 Image = NewType('Image', str)
@@ -15,18 +15,20 @@ colours = [(0, 0, 0), (255, 255, 255), (255, 0, 0), (0, 255, 0), (0, 0, 255), (2
 
 def testTwoTone():
     ''' Tests to ensure that two tone creates an image with the colours specified.
-    Tests both ranges, both High (255, 255, 255) and Low (0, 0, 0)
+    Tests both ranges, both High (255, 255, 255) and Low (0, 0, 0), with all tones in all positions.
     Written by Anthony Luo
     :return:
     :rtype:
     '''
 
     img = create_image(2, 1)  # creates image
+
+    # sets two ranges for the colours ( low / high )
     set_color(img, 0, 0, create_color(0, 0, 0))
     set_color(img, 1, 0, create_color(255, 255, 255))
     test_img = copy(img)
 
-    for i in range(len(tones)):
+    for i in range(len(tones)):  # iterates through to ensure all tones are tested
         image = copy(img)
         print('\n--- testing', tones[i], tones[i - 1], '---')
         test_img = twoTone(image, tones[i], tones[i - 1])
@@ -39,7 +41,12 @@ def testTwoTone():
             print('Fails at:', tones[i], tones[i - 1])
 
 
-def _setCol( tone ):
+def _setCol( tone: Tuple[int] ):
+    """ returns a colour created from a tuple with three integers.
+    Written by Anthony Luo
+    :param tone:
+    :return: Colour
+    """
     r = tone[0]
     g = tone[1]
     b = tone[2]

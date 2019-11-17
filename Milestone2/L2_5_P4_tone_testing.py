@@ -11,29 +11,32 @@ from datetime import datetime
 
 # TODO: write the rest of this code :(
 
-tones = {'black' : (0, 0, 0), 'white': (255, 255, 255), 'red': (255, 0, 0), 'lime': (0, 255, 0), 'blue': (0, 0, 255),
-         'yellow': (255, 255, 0), 'cyan': (0, 255, 255), 'magenta': (255, 0, 255), 'gray': (128, 128, 128)}
+tones = ['black', 'white', 'red', 'lime', 'blue',
+         'yellow', 'cyan', 'magenta', 'gray']
 colours = [(0, 0, 0), (255, 255, 255), (255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255),
            (255, 0, 255), (128, 128, 128)]
 
 
 def testTwoTone():
-    ''' Tests to ensure that two tone functions
+    ''' Tests to ensure that two tone creates an image with the colours specified.
+    Tests both ranges, both High (255, 255, 255) and Low (0, 0, 0)
     Written by Anthony Luo
     :return:
     :rtype:
     '''
     img = create_image(2, 1)  # creates image
     set_color(img, 0, 0, create_color(0, 0, 0))
-    set_color(img, 1, 0, create_color(128, 128, 128))
+    set_color(img, 1, 0, create_color(255, 255, 255))
     test_img = copy(img)
-    for count in range(len(tone_list) - 1):
-        set_color(test_img, 0, 0, create_color(tone_list[count]))
-        set_color(test_img, 1, 0, create_color(tone_list[count + 1]))
-        if twoTone(tone_list[count], tone_list[count + 1]) == test_img:
-            print('yote')
-        else:
-            print('fails')
+
+    for i in range(len(tones)):
+        print('\n testing', tones[i])
+        test_img = twoTone(img, tones[i], tones[i])
+        for x , y, (r, g, b) in test_img:
+            if (r, g, b) == colours[i]:
+                print('pass', end = '')
+            else:
+                print('fails at', tones[i], r, g, b)
 
 
 def testThreeTone():
@@ -49,14 +52,14 @@ def testThreeTone():
     set_color(img, 2, 0, create_color(255, 255, 255))
     test_img = copy(img)
 
-    for col in colours:
-        print('\n testing', col)
-        test_img = threeTone(test_img, col, col, col, txt = False)
-        for x, y, (r, g, b) in test_img:
-            if (r, g, b) == col:
-                print('pass ', end = '')
+    for i in range(len(tones)):
+        print('\n testing', tones[i])
+        test_img = threeTone(img, tones[i], tones[i], tones[i])
+        for x , y, (r, g, b) in test_img:
+            if (r, g, b) == colours[i]:
+                print('pass', end = '')
             else:
-                print('fails at', col, r, g, b)
+                print('fails at', tones[i], r, g, b)
 
 
 testThreeTone()

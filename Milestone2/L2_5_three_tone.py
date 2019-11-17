@@ -12,7 +12,7 @@ tones = {'black' : (0, 0, 0), 'white': (255, 255, 255), 'red': (255, 0, 0), 'lim
 brightness = []
 
 
-def threeTone( image: Image, col1: str, col2: str, col3: str , show = False, dict = False) -> Image:
+def threeTone( image: Image, col1: str, col2: str, col3: str , show = False, txt = True) -> Image:
     """ Returns an image with three tones, with the darkest being the first tone, and brightest being the third tone.
     Written by Anthony Luo.
     :param image:
@@ -26,7 +26,7 @@ def threeTone( image: Image, col1: str, col2: str, col3: str , show = False, dic
     :return:
     :rtype:
     """
-    if dict:
+    if txt:
         tone1r, tone1g, tone1b = tones[col1]
         tone2r, tone2g, tone2b = tones[col2]
         tone3r, tone3g, tone3b = tones[col3]

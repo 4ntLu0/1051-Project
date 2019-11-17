@@ -51,7 +51,7 @@ def testThreeTone():
 
     for col in colours:
         print('\n testing', col)
-        test_img = threeTone(test_img, col, col, col)
+        test_img = threeTone(test_img, col, col, col, txt = False)
         for x, y, (r, g, b) in test_img:
             if (r, g, b) == col:
                 print('pass ', end = '')

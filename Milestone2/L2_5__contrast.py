@@ -4,7 +4,7 @@ image = load_image(choose_file())  # loads the desired image from a given file
 show(image)
 image1 = copy(image) #creates a copy of the image so it is not overrided when the new image is returned
 
-def extreme_contrast(image):
+def extremeContrast(image):
     """ Given an 
     Written by Alia Nichol
     """    

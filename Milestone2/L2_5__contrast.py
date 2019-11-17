@@ -35,4 +35,4 @@ def extremeContrast(image):
     
     return image1
 
-extreme_contrast(image)
+extremeContrast(image)

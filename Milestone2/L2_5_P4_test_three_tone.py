@@ -32,7 +32,7 @@ def testThreeTone():
         test_img = threeTone(img, tones[i], tones[i], tones[i])
         for x , y, (r, g, b) in test_img:
             if (r, g, b) == colours[i]:
-                print('pass', end = '')
+                print('pass ', end = '')
             else:
                 print('fails at', tones[i], r, g, b)
 

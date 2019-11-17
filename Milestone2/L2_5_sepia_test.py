@@ -7,6 +7,14 @@ def sepiaTest() -> None:
     Written by Alia Nichol.
     """
     img = sepia(load_image(choose_file()), disp = False)
+
+    img = create_image(3, 1)  # creates image
+    set_color(img, 0, 0, create_color(10, 20, 40))
+    set_color(img, 1, 0, create_color(70, 100, 180))
+    set_color(img, 2, 0, create_color(200, 240, 255))
+    test_img = copy(img)
+
+
     for x, y, (r, g, b) in img:
         if 0<= r <= 63:
             if g == r / 1.1 and g == b / 0.9:

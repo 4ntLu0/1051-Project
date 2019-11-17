@@ -1,11 +1,9 @@
-from Utils.Cimpl import *
+from Utils.Cimpl import create_color, set_color, save_as, show, load_image, Image, choose_file, copy
 
-image = load_image(choose_file())  # loads the desired image from a given file
-show(image)
-image1 = copy(image) #creates a copy of the image so it is not overrided when the new image is returned
+
 
 def extremeContrast(image):
-    """ Given an 
+    """ Given an image, turns up the contrast.
     Written by Alia Nichol
     """    
 
@@ -33,6 +31,10 @@ def extremeContrast(image):
     show(load_image('returns/contrast_channel.png'))
     print('contrast_channel saved as new image')
     
-    return image1
+    return image
 
-extremeContrast(image)
+if __name__ == '__main__':
+    image = load_image(choose_file())  # loads the desired image from a given file
+    show(image)
+    image1 = copy(image)  # creates a copy of the image so it is not overrided when the new image is returned
+    extremeContrast(image)

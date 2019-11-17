@@ -28,7 +28,7 @@ def sepia(img, disp = True, save = True):
     if disp:
         show(sep_img)
     if save:
-        save_as(image, 'returns/sepia.jpg')
+        save_as(sep_img, 'returns/sepia.jpg')
     return sep_img
 
 if __name__ == '__main__':

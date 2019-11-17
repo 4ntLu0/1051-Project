@@ -8,10 +8,14 @@ from datetime import datetime
 def sepia(img, disp = True, save = True):
     """ Adjusts the r, g, and b values of an image to create a sepia image.
     Written by Anthony Luo
-    :param img:
-    :type img:
-    :return:
-    :rtype:
+    :param img: Full colour image
+    :type img: 'Image'
+    :param disp: whether or not to display the image
+    :type disp: bool
+    :param save: whether or not to save the image
+    :type save: bool
+    :return: sepia-image
+    :rtype: 'Image'
     """
     sep_img = grayscale(img)
     for x, y, (r, g, b) in sep_img:
@@ -24,7 +28,7 @@ def sepia(img, disp = True, save = True):
     if disp:
         show(sep_img)
     if save:
-        save_as(sepia(image), 'returns/sepia.jpg')
+        save_as(image, 'returns/sepia.jpg')
     return sep_img
 
 if __name__ == '__main__':

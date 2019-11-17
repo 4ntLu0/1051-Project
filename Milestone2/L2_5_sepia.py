@@ -5,7 +5,6 @@ Image = NewType('Image', str)
 from datetime import datetime
 
 
-
 def sepia(sep_img):
     """ Adjusts the r, g, and b values of a grayscale image to create a sepia image.
     Written by Anthony Luo

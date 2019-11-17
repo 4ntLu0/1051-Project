@@ -1,6 +1,4 @@
-from Utils.Cimpl import load_image, choose_file, show, set_color, save_as, create_color, create_image, copy  # change
-# this
-# later please
+from Utils.Cimpl import  set_color, create_color, create_image, copy, get_color
 from typing import NewType
 from L2_5_two_tone import twoTone
 
@@ -22,19 +20,31 @@ def testTwoTone():
     :return:
     :rtype:
     '''
+
     img = create_image(2, 1)  # creates image
     set_color(img, 0, 0, create_color(0, 0, 0))
     set_color(img, 1, 0, create_color(255, 255, 255))
     test_img = copy(img)
 
     for i in range(len(tones)):
-        print('\n testing', tones[i])
-        test_img = twoTone(img, tones[i], tones[i])
-        for x , y, (r, g, b) in test_img:
-            if (r, g, b) == colours[i]:
-                print('pass', end = '')
-            else:
-                print('fails at', tones[i], r, g, b)
+        image = copy(img)
+        print('\n--- testing', tones[i], tones[i - 1], '---')
+        test_img = twoTone(image, tones[i], tones[i - 1])
+
+        col1 = _setCol(colours[i])
+        col2 = _setCol(colours[i - 1])
+        if (get_color(test_img, 0, 0) == col1) and (get_color(test_img, 1, 0) == col2):
+            print('Passed')
+        else:
+            print('Fails at:', tones[i], tones[i - 1])
+
+
+def _setCol( tone ):
+    r = tone[0]
+    g = tone[1]
+    b = tone[2]
+    return create_color(r, g, b)
+
 
 if __name__ == '__main__':
     testTwoTone()

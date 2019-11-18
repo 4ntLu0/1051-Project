@@ -25,6 +25,7 @@ This should create final test image
     2    low    low    high   low    low     --->     2   Blank  Edge    Blank   Blank   Edge
     3    low    high   high   low    high    --->     3   
 
+
 Memefied by Anthony Luo    
 '''
 

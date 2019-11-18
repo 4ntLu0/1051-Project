@@ -38,4 +38,4 @@ def posterize(image: Image) -> Image:
     return image  
 
 
-posterize(image)
+posterize(image) #display the final product

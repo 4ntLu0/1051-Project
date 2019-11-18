@@ -1,4 +1,4 @@
-from Utils.Cimpl import create_color, create_image, copy, get_color, set_color, Image
+from Cimpl import create_color, create_image, copy, get_color, set_color, Image
 from typing import Tuple
 from L2_5_three_tone import threeTone
 
@@ -41,7 +41,7 @@ def testThreeTone():
             print('Fails at:', tones[i], tones[i - 1], tones[i - 2])
 
 
-def _setCol( tone: Tuple[int] ):
+def _setCol(tone: Tuple[int]):
     """ returns a colour created from a tuple with three integers.
         Written by Anthony Luo
         :param tone:

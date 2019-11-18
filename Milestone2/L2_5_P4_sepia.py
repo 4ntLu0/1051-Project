@@ -1,11 +1,11 @@
-from Utils.Cimpl import load_image, choose_file, show, set_color, save_as, create_color #change this later please
-from Utils.simple_Cimpl_filters import grayscale
+from Cimpl import load_image, choose_file, show, set_color, save_as, create_color  # change this later please
+from simple_Cimpl_filters import grayscale
 from typing import NewType
 Image = NewType('Image', str)
 from datetime import datetime
 
 
-def sepia(img, disp = True, save = True):
+def sepia(img, disp=True, save=True):
     """ Adjusts the r, g, and b values of an image to create a sepia image.
     Written by Anthony Luo
     :param img: Full colour image
@@ -31,11 +31,12 @@ def sepia(img, disp = True, save = True):
         save_as(sep_img, 'returns/sepia.jpg')
     return sep_img
 
+
 if __name__ == '__main__':
     """Runs sepia program
     written by Anthony Luo
     """
-    #TODO: work on saving things better
+    # TODO: work on saving things better
     image = load_image(choose_file())
     print('image loaded, program starting')
     now = datetime.now()

@@ -1,11 +1,9 @@
-from Utils.Cimpl import set_color, create_color, create_image, copy, get_color
+from Cimpl import set_color, create_color, create_image, copy, get_color
 from typing import NewType, Tuple
 from L2_5_two_tone import twoTone
 
 Image = NewType('Image', str)
 from datetime import datetime
-
-# TODO: write the rest of this code :(
 
 tones = ['black', 'white', 'red', 'lime', 'blue',
          'yellow', 'cyan', 'magenta', 'gray']
@@ -41,7 +39,7 @@ def testTwoTone():
             print('Fails at:', tones[i], tones[i - 1])
 
 
-def _setCol( tone: Tuple[int] ):
+def _setCol(tone: Tuple[int]):
     """ returns a colour created from a tuple with three integers.
     Written by Anthony Luo
     :param tone:

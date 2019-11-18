@@ -7,10 +7,13 @@ image1 = copy(image) #creates a copy of the image so it is not overrided when th
 
 
 
-def extreme(image: Image) -> Image:
+def extreme_contrast(image: Image) -> Image:
     
     """ Using a given image, the this function alters the r, g and b components to create a new contrasted image. 
     Written by Alia Nichol. 
+    >>> extreme_contrast(IMAGE)
+    IMAGE comes out with all pixels being extremely contrasted. 
+    <Cimpl.Image object at 0x00000278831087B8>
     """   
     
     for x, y, (r, g, b) in image1:

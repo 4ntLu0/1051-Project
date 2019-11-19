@@ -6,7 +6,7 @@ def _adjust_component(r, g , b)  -> tuple:
     Author: PRAYANSHU NARAYAN S# 101144277
     Returns an image but filtered to posterize:
     Examples:
-    >>> posterize_channel('p2-original.jpg')
+    >>> posterize('p2-original.jpg')
     sets all the pixels in the file in posterize
     """  
     r2 = 0

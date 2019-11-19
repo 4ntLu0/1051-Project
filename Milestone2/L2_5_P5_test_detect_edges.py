@@ -23,7 +23,7 @@ def testEdgeDetector():
         low    low    low    low    low
 
     This should create final test image below:
-            1      2      3      4      5                    1       2      3      4       5
+             1      2      3      4      5                    1       2      3      4       5
         1    low    low    low    low    low     --->    1   Blank   Blank  Edge   Blank   Blank
         2    low    low    high   low    low     --->    2   Blank   Blank  Edge   Blank   Blank
         3    low    low    low    low    low     --->    3   Blank   Blank  Blank  Blank   Blank

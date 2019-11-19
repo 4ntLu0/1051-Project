@@ -8,4 +8,7 @@ Tests the posterize function: which basically sets each rgb to the midpoint?
 Different test scenarios:
 --- Make sure that for each RGB component, they are set to the right values? ---
     Iterates through the 5 cases, with RGB offset slightly so as to not create a grayscale image.
+
+
+Memefied by Anthony Luo
 '''

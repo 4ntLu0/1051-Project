@@ -1,4 +1,5 @@
 from Cimpl import load_image, choose_file, get_color, Image, get_width, get_height, set_color, create_color, create_image, show, save_as
+import os
 
 
 def edgeDetect( image: Image, thresh: int = 0 , disp: bool = True, save: bool = True):
@@ -23,7 +24,7 @@ def edgeDetect( image: Image, thresh: int = 0 , disp: bool = True, save: bool = 
     if disp:
         show(new_image)
     if save:
-        save_as(new_image, 'returns/edge_detect.png')
+        save_as(new_image, 'returns/better_edge_detect.png')
 
 
 def avgBright( colour ):
@@ -32,4 +33,7 @@ def avgBright( colour ):
 
 
 if __name__ == '__main__':
-    edgeDetect(load_image(choose_file()), 12)
+    new_path = os.getcwd() + '/returns'
+    try: os.mkdir(new_path)
+    except: pass
+    edgeDetect(load_image(choose_file()), 15)

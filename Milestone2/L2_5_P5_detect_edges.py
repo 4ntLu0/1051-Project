@@ -11,7 +11,6 @@ def edgeDetect( image: Image, thresh: int = 0 , disp: bool = True, save: bool = 
     width = get_width(image)
     height = get_height(image)
     new_image = create_image(width, height - 1) # you lose one row of data.
-    print(width, height)
     white = create_color(255, 255, 255)
     black = create_color(0, 0, 0)
     for y in range(height-1):  # starts at the first level, then moves down
@@ -24,6 +23,7 @@ def edgeDetect( image: Image, thresh: int = 0 , disp: bool = True, save: bool = 
         show(new_image)
     if save:
         save_as(new_image, 'returns/edge_detect.png')
+    return new_image
 
 
 def avgBright( colour ):

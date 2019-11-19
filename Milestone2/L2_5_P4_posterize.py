@@ -37,5 +37,8 @@ def posterize(image: Image) -> Image:
     show(new_image)
     return image  
 
+posterize(image) #display the final product
 
-posterize(image)
+if __name__ == '__main__':
+    posterize(image)
+

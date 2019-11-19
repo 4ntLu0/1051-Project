@@ -10,13 +10,21 @@ def edgeDetect( image: Image, thresh: int = 0, disp: bool = True, save: bool = T
     :param thresh:
     :return:
     """
+    # TODO: create padded image.
+    # TODO: efficiency TMTM
     # functional definitions
     width = get_width(image)
     height = get_height(image)
     new_image = create_image(width, height)
     white = create_color(255, 255, 255)
     black = create_color(0, 0, 0)
-
+    '''
+    for x, y, (r, g, b) in image:
+        if abs(_avgBright( (r,g,b) ) - _avgBright(tuple(get_color(image, x ,y + 1)))) > thresh \ 
+            or abs(_avgBright (r, g, b)  - _avgBright(tuple(get_color(image, x + 1, y)))) > thresh:
+            set_color(new_image, x, y, black)
+        else: set_color(new_image, x, y, white)
+    '''
     for y in range(height - 1):  # starts at the first level, then moves down
         for x in range(width - 1):
             # compares brightness between two images and then resets colours.
@@ -41,17 +49,11 @@ def edgeDetect( image: Image, thresh: int = 0, disp: bool = True, save: bool = T
 
 
 def _avgBright( colour ):
-    '''Returns avg brightness of things
-    written by anthony luo'''
     r, g, b = colour
     return (r + g + b) / 3
 
 
 def _newCol( colour ):
-    ''' Returns a colour type from a colour
-    written by Anthony Luo
-    '''
-    # TODO: try to see if there's a way to integrate this directly into the program
     r, g, b = tuple(colour)
     return create_color(r, g, b)
 

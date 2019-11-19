@@ -27,7 +27,6 @@ def testEdgeDetector():
         2    low    low    high   low    low     --->    2   Blank   Blank  Edge   Blank   Blank
         3    low    low    low    low    low     --->    3   Blank   Blank  Blank  Blank   Blank
 
-<<<<<<< HEAD
         --- Side - Side testing:
             2,2 - 3,2 & 3,2 - 4,2.
         --- Up - Down testing:
@@ -35,39 +34,6 @@ def testEdgeDetector():
         --- Diagonal Testing
             2,1 & 2,3 & 3,2 & 4,1 & 4,3
 
-=======
-def testEdgeDetector():
-    ''' Tests to make sure that edge detection is functioning as it should with certain threshold values.
-    Test cases --- (high / low refer to brightness levels).
-    directly below it is right colour
-        high
-        low
-    make sure ones to left/right are not influenced
-        low    high                 should not return edges at ALL
-        low    high
-    make sure that it is not influenced by the one above it
-        high                        should only return:   edge
-        low                                               no edge
-        low                                               no edge
-    make sure that there is no diagonal influence
-        low    low    low    low    low
-        low    low    high   low    low
-        low    low    low    low    low
-
-    This should create final test image below:
-            1      2      3      4      5                    1       2      3      4       5
-        1    low    low    low    low    low     --->    1   Blank   Blank  Edge   Blank   Blank
-        2    low    low    high   low    low     --->    2   Blank   Blank  Edge   Blank   Blank
-        3    low    low    low    low    low     --->    3   Blank   Blank  Blank  Blank   Blank
-
-        --- Side - Side testing:
-            2,2 - 3,2 & 3,2 - 4,2.
-        --- Up - Down testing:
-            3,1 - 3, 2 & 3,2 - 3,3.
-        --- Diagonal Testing
-            2,1 & 2,3 & 3,2 & 4,1 & 4,3
-
->>>>>>> master
     The same test will be run with a threshold higher than expected, which should return a completely blank image.
     '''
     test_pass = True # so far, all tests have passed.
@@ -91,13 +57,8 @@ def testEdgeDetector():
         print('### Testing done ### \n--- FAILS')
 
 def _createImages(ver: int) -> Tuple[Image]:
-<<<<<<< HEAD
     """ Creates the test images for each 'version' of the test.
     Written by Anthony Luo
-=======
-    """
-    Creates the test images for each 'version' of the test.
->>>>>>> master
     :param ver: version0: modified compare
                 version1: non-modifide compare
     :type ver: int

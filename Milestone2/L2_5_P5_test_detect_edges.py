@@ -37,30 +37,41 @@ def testEdgeDetector():
 
     The same test will be run with a threshold higher than expected, which should return a completely blank image.
     '''
+    error_list = []
     test_pass = True  # so far, all tests have passed.
     test_img, compare_img = _createImages(0)
-    test_img = detectEdges(test_img, 100)  # this thresh of 100 is a decent average to be testing on.
+    # this thresh of 100 is a decent average to be testing on.
+    test_img = detectEdges(test_img, 100, False)
+    print('### testing normal thresh ###')
     for x, y, (r, g, b) in test_img:
-        if (r, g, b) == tuple(get_color(compare_img, x-1, y-1)):
+        if (r, g, b) == tuple(get_color(compare_img, x, y)):
             pass
         else:
-            print('error at', x, y); test_pass = False
+            print('-- error at', x, y)
+            print('test img: ', r, g, b, 'should be: ', tuple(get_color(compare_img, x, y)))
+            test_pass = False
 
     test_img, compare_img = _createImages(1)
-    test_img = detectEdges(test_img, 255)  # this thresh of 255 is higher than we should ever be getting
+    # this thresh of 255 is higher than we should ever be getting
+    test_img = detectEdges(test_img, 255, False)
+    print('### testing high thresh ###')
     for x, y, (r, g, b) in test_img:
-        if (r, g, b) == tuple(get_color(compare_img, x-1, y-1)):
+        if (r, g, b) == tuple(get_color(compare_img, x, y)):
             pass
         else:
-            print('error at', x, y); test_pass = False
+            print('-- error at', x, y)
+            print('test img:', r, g, b, 'should be:', tuple(get_color(compare_img, x, y)))
+            test_pass = False
 
     if test_pass:
         print('### Testing done ### \n--- PASSES')
     else:
         print('### Testing done ### \n--- FAILS')
 
+    print(error_list)
 
-def _createImages( ver: int ) -> Tuple[Image]:
+
+def _createImages(ver: int) -> Tuple[Image]:
     """ Creates the test images for each 'version' of the test.
     Written by Anthony Luo
     :param ver: version0: modified compare
@@ -69,7 +80,7 @@ def _createImages( ver: int ) -> Tuple[Image]:
     """
     test_img = create_image(5, 3, create_color(30, 10, 20))
     set_color(test_img, 2, 1, create_color(250, 240, 230))
-    compare_img = create_image(5, 2, create_color(255, 255, 255))
+    compare_img = create_image(5, 3, create_color(255, 255, 255))
     if ver == 0:
         set_color(compare_img, 2, 0, create_color(0, 0, 0))
         set_color(compare_img, 2, 1, create_color(0, 0, 0))

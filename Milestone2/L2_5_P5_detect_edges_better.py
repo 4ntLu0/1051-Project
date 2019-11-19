@@ -35,13 +35,12 @@ def betterEdgeDetect( image: Image, thresh: int = 0, disp: bool = True, save: bo
         # sets last column of pixels to be equal to the ones to the left
         set_color(new_image, width - 1, y, _newCol(get_color(new_image, width - 2, y)))
 
-    # adds in data for the very corner pixel
+    # sets the colour for the last pixel
     if get_color(new_image, width - 2, height - 1) == create_color(0, 0, 0) or \
             get_color(new_image, width - 1, height - 2) == create_color(0, 0, 0):
         set_color(new_image, width - 1, height - 1, create_color(0, 0, 0))
     else:
         set_color(new_image, width - 1, height - 1, create_color(255, 255, 255))
-
     if disp:
         show(new_image)  # shows image
     if save:

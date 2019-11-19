@@ -1,12 +1,16 @@
+from Cimpl import *
+from L2_5_P5_detect_edges_better import betterEdgeDetect
+
 def edgeTest() -> str:
-    """ Test function that checks if the r, g, b components have been correctly altered by the Improved Edge Detection filter. According to the threshold value inputed by the user and whether the contrast between two pixels is low or high, the pixel will be changed to either white or black. If this is successfully executed and the pixels in the image are correctly altered, the test function returns "PASS" to the user. If this is not the case, test function returns "FAIL". 
+    """
+    est function that checks if the r, g, b components have been correctly altered by the Improved Edge Detection filter. According to the threshold value inputed by the user and whether the contrast between two pixels is low or high, the pixel will be changed to either white or black. If this is successfully executed and the pixels in the image are correctly altered, the test function returns "PASS" to the user. If this is not the case, test function returns "FAIL".
     
     Written by Alia Nichol (#101143486). 
     >>> edgeTest(image)
     """
     
     fails = 0 # creating a counter for the number of pixels that fail to change to the correct colour
-    new_img = detect_edges(image, threshold) # putting the original image through the Improved Edge Detection Filter
+    new_img = betterEdgeDetect(image, threshold) # putting the original image through the Improved Edge Detection Filter
     
     for y in range(get_height(image) - 1):
         for x in range(get_width(image) - 1):

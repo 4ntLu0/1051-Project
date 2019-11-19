@@ -52,7 +52,7 @@ def testEdgeDetector():
             print('test img: ', r, g, b, 'should be: ',
                   tuple(get_color(compare_img, x, y)))
             test_pass = False
-    print('-- normal thresh testing done --\n')
+    print('-- normal thresh testing done --')
 
     test_img, compare_img = _createImages(1)
     # this thresh of 255 is higher than we should ever be getting
@@ -66,7 +66,7 @@ def testEdgeDetector():
             print('test img:', r, g, b, 'should be:',
                   tuple(get_color(compare_img, x, y)))
             test_pass = False
-    print('-- high thresh testing done --\n')
+    print('-- high thresh testing done --')
 
     if test_pass:
         print('### Testing done ### \n--- PASSES ALL TESTS ---')

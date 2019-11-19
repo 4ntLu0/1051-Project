@@ -3,6 +3,7 @@ from Cimpl import load_image, choose_file, get_color, Image, get_width, get_heig
 from typing import Tuple
 from L2_5_P5_detect_edges import edgeDetect
 
+
 def testEdgeDetector():
     ''' Tests to make sure that edge detection is functioning as it should with certain threshold values.
     Test cases --- (high / low refer to brightness levels).
@@ -36,27 +37,30 @@ def testEdgeDetector():
 
     The same test will be run with a threshold higher than expected, which should return a completely blank image.
     '''
-    test_pass = True # so far, all tests have passed.
+    test_pass = True  # so far, all tests have passed.
     test_img, compare_img = _createImages(0)
-    test_img = edgeDetect(test_img, 100, False, False) # this thresh of 100 is a decent average to be testing on.
+    test_img = edgeDetect(test_img, 100, False, False)  # this thresh of 100 is a decent average to be testing on.
     for x, y, (r, g, b) in test_img:
         if (r, g, b) == tuple(get_color(compare_img, x, y)):
             pass
-        else: print('error at', x, y); test_pass = False
+        else:
+            print('error at', x, y); test_pass = False
 
     test_img, compare_img = _createImages(1)
-    test_img = edgeDetect(test_img, 255, False, False) # this thresh of 255 is higher than we should ever be getting
+    test_img = edgeDetect(test_img, 255, False, False)  # this thresh of 255 is higher than we should ever be getting
     for x, y, (r, g, b) in test_img:
         if (r, g, b) == tuple(get_color(compare_img, x, y)):
             pass
-        else: print('error at', x, y); test_pass = False
+        else:
+            print('error at', x, y); test_pass = False
 
     if test_pass:
         print('### Testing done ### \n--- PASSES')
     else:
         print('### Testing done ### \n--- FAILS')
 
-def _createImages(ver: int) -> Tuple[Image]:
+
+def _createImages( ver: int ) -> Tuple[Image]:
     """ Creates the test images for each 'version' of the test.
     Written by Anthony Luo
     :param ver: version0: modified compare

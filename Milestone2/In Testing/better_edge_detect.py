@@ -15,9 +15,16 @@ def edgeDetect( image: Image, thresh: int = 0, disp: bool = True, save: bool = T
     # functional definitions
     width = get_width(image)
     height = get_height(image)
-    new_image = create_image(width, height)
+    new_image = create_image(width + 1, height + 1)
     white = create_color(255, 255, 255)
     black = create_color(0, 0, 0)
+
+    for x in range(width - 1):
+        # sets the last row of pixels.
+        set_color(new_image, x, height - 1, _newCol(get_color(new_image, x-1, height - 2)))
+    for y in range(height - 1):
+        set_color(new_image, width - 1, y, _newCol(get_color(new_image, width - 2, y-1)))
+
     '''
     for x, y, (r, g, b) in image:
         if abs(_avgBright( (r,g,b) ) - _avgBright(tuple(get_color(image, x ,y + 1)))) > thresh \ 
@@ -25,8 +32,8 @@ def edgeDetect( image: Image, thresh: int = 0, disp: bool = True, save: bool = T
             set_color(new_image, x, y, black)
         else: set_color(new_image, x, y, white)
     '''
-    for y in range(height - 1):  # starts at the first level, then moves down
-        for x in range(width - 1):
+    for y in range(height-1):  # starts at the first level, then moves down
+        for x in range(width-1):
             # compares brightness between two images and then resets colours.
             if abs(_avgBright(tuple(get_color(image, x, y))) - _avgBright(tuple(get_color(image, x, y + 1)))) > thresh \
                     or \
@@ -36,11 +43,7 @@ def edgeDetect( image: Image, thresh: int = 0, disp: bool = True, save: bool = T
             else:
                 set_color(new_image, x, y, white)
 
-    for x in range(width):
-        # sets the last row of pixels.
-        set_color(new_image, x, height - 1, _newCol(get_color(new_image, x, height - 2)))
-    for y in range(height):
-        set_color(new_image, width - 1, y, _newCol(get_color(new_image, width - 2, y)))
+
     if disp:
         show(new_image)  # shows image
     if save:

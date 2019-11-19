@@ -3,7 +3,7 @@ from Cimpl import load_image, choose_file, get_color, Image, get_width, get_heig
 import os
 
 
-def edgeDetect( image: Image, thresh: int = 0, disp: bool = True, save: bool = True ):
+def betterEdgeDetect( image: Image, thresh: int = 0, disp: bool = True, save: bool = True ):
     """
     Written by Anthony Luo
     :param image:
@@ -62,4 +62,4 @@ if __name__ == '__main__':
         os.mkdir(new_path)
     except:
         pass
-    ret_img = edgeDetect(load_image(choose_file()), 15)
+    ret_img = betterEdgeDetect(load_image(choose_file()), 15)

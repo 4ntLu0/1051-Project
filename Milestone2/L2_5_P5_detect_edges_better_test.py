@@ -32,4 +32,6 @@ def edgeTest() -> str:
     else:
         print("FAIL")
         
-edgeTest()
+
+if __name__ == '__main__':
+    edgeTest()

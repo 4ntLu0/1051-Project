@@ -6,7 +6,7 @@ def detectEdges(image: Image, threshold: int, disp = True) -> Image:
     
     Written by Alia Nichol (#101143486)
     
-    >>> edgeDetect(image, 12)
+    # >>> edgeDetect(image, 12)
     480 640 
     """
     

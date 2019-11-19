@@ -2,6 +2,7 @@ from Cimpl import load_image, choose_file, get_color, Image, get_width, get_heig
     create_image, show, save_as
 from typing import Tuple
 from L2_5_P5_detect_edges import detectEdges
+from whoops_edge_detect import edgeDetect
 
 
 def testEdgeDetector():
@@ -41,7 +42,7 @@ def testEdgeDetector():
     test_pass = True  # so far, all tests have passed.
     test_img, compare_img = _createImages(0)
     # this thresh of 100 is a decent average to be testing on.
-    test_img = detectEdges(test_img, 100, False)
+    test_img = edgeDetect(test_img, 100, False)
     print('### testing normal thresh ###')
     for x, y, (r, g, b) in test_img:
         if (r, g, b) == tuple(get_color(compare_img, x, y)):
@@ -50,10 +51,11 @@ def testEdgeDetector():
             print('-- error at', x, y)
             print('test img: ', r, g, b, 'should be: ', tuple(get_color(compare_img, x, y)))
             test_pass = False
-
+    print('-- normal thresh testing done --')        
+    
     test_img, compare_img = _createImages(1)
     # this thresh of 255 is higher than we should ever be getting
-    test_img = detectEdges(test_img, 255, False)
+    test_img = edgeDetect(test_img, 255, False)
     print('### testing high thresh ###')
     for x, y, (r, g, b) in test_img:
         if (r, g, b) == tuple(get_color(compare_img, x, y)):
@@ -62,11 +64,12 @@ def testEdgeDetector():
             print('-- error at', x, y)
             print('test img:', r, g, b, 'should be:', tuple(get_color(compare_img, x, y)))
             test_pass = False
-
+    print('-- high thresh testing done --')
+    
     if test_pass:
-        print('### Testing done ### \n--- PASSES')
+        print('### Testing done ### \n--- PASSES ALL TESTS ---')
     else:
-        print('### Testing done ### \n--- FAILS')
+        print('### Testing done ### \n--- FAILS ---')
 
     print(error_list)
 

@@ -31,3 +31,5 @@ def edgeTest() -> str:
         print("PASS")
     else:
         print("FAIL")
+        
+edgeTest()

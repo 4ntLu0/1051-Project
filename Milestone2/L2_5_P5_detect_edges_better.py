@@ -6,9 +6,9 @@ import os
 def betterEdgeDetect( image: Image, thresh: int = 0, disp: bool = True, save: bool = True ):
     """
     Written by Anthony Luo
-    :param image:
-    :param thresh:
-    :return:
+    :param image: Image to detect edges on
+    :param thresh: Threshold value for detection
+    :return: edge-y boi image.
     """
     # functional definitions
     width = get_width(image)
@@ -21,18 +21,27 @@ def betterEdgeDetect( image: Image, thresh: int = 0, disp: bool = True, save: bo
         for x in range(width - 1):
             # compares brightness between two images and then resets colours.
             if abs(_avgBright(tuple(get_color(image, x, y))) - _avgBright(tuple(get_color(image, x, y + 1)))) > thresh \
-                    or \
-                    abs(_avgBright(tuple(get_color(image, x, y))) - _avgBright(
-                        tuple(get_color(image, x + 1, y)))) > thresh:
-                set_color(new_image, x, y, black)
+                    or abs(_avgBright(tuple(get_color(image, x, y))) - _avgBright(
+                tuple(get_color(image, x + 1, y)))) > thresh:
+                set_color(new_image, x, y, black)  # sets colour to black (edge detected)
             else:
-                set_color(new_image, x, y, white)
+                set_color(new_image, x, y, white)  # sets colour to white (no edge)
 
     for x in range(width):
-        # sets the last row of pixels.
+        # sets the last row of pixels to be equal to the one right above
         set_color(new_image, x, height - 1, _newCol(get_color(new_image, x, height - 2)))
+
     for y in range(height):
+        # sets last column of pixels to be equal to the ones to the left
         set_color(new_image, width - 1, y, _newCol(get_color(new_image, width - 2, y)))
+
+    # adds in data for the very corner pixel
+    if get_color(new_image, width - 2, height - 1) == create_color(0, 0, 0) or \
+            get_color(new_image, width - 1, height - 2) == create_color(0, 0, 0):
+        set_color(new_image, width - 1, height - 1, create_color(0, 0, 0))
+    else:
+        set_color(new_image, width - 1, height - 1, create_color(255, 255, 255))
+
     if disp:
         show(new_image)  # shows image
     if save:

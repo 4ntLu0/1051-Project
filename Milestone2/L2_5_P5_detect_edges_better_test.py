@@ -1,5 +1,5 @@
 from Cimpl import *
-from L2_5_P5_detect_edges_better import betterEdgeDetect
+from L2_5_P5_detect_edges_better import detect_edges_better
 
 
 def edgeTest() -> str:
@@ -12,7 +12,7 @@ def edgeTest() -> str:
 
     fails = 0  # creating a counter for the number of pixels that fail to change to the correct colour
     # putting the original image through the Improved Edge Detection Filter
-    new_img = betterEdgeDetect(image, threshold)
+    new_img = detect_edges_better(image, threshold)
 
     for y in range(get_height(image) - 1):
         for x in range(get_width(image) - 1):

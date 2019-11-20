@@ -3,7 +3,7 @@ from Cimpl import load_image, choose_file, get_color, Image, get_width, get_heig
 import os
 
 
-def betterEdgeDetect(image: Image, thresh: int = 0, disp: bool = True, save: bool = True):
+def detect_edges_better(image: Image, thresh: int = 0, disp: bool = True, save: bool = True):
     """
     Written by Anthony Luo
     :param image: Image to detect edges on

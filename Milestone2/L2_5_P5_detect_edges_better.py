@@ -2,7 +2,6 @@ from Cimpl import load_image, choose_file, get_color, Image, get_width, get_heig
     create_image, show, save_as
 import os
 
-
 def detect_edges_better(img: Image, thresh: int = 0, disp: bool = True, save: bool = True):
     """
     Written by Anthony Luo
@@ -13,7 +12,7 @@ def detect_edges_better(img: Image, thresh: int = 0, disp: bool = True, save: bo
     # functional definitions
     width = get_width(img)
     height = get_height(img)
-    new_image = create_image(width, height)
+    new_img = create_image(width, height)
     white = create_color(255, 255, 255)
     black = create_color(0, 0, 0)
 
@@ -21,36 +20,37 @@ def detect_edges_better(img: Image, thresh: int = 0, disp: bool = True, save: bo
         for x in range(width - 1):
             # compares brightness between two images and then resets colours.
             if abs(_avgBright(tuple(get_color(img, x, y))) - _avgBright(tuple(get_color(img, x, y + 1)))) > thresh \
-                    or abs(_avgBright(tuple(get_color(img, x, y))) - _avgBright(tuple(get_color(img, x + 1, y)))) > thresh:
+                    or abs(
+                _avgBright(tuple(get_color(img, x, y))) - _avgBright(tuple(get_color(img, x + 1, y)))) > thresh:
                 # sets colour to black (edge detected)
-                set_color(new_image, x, y, black)
+                set_color(new_img, x, y, black)
             else:
                 # sets colour to white (no edge)
-                set_color(new_image, x, y, white)
+                set_color(new_img, x, y, white)
 
     for x in range(width):
         # sets the last row of pixels to be equal to the one right above
-        set_color(new_image, x, height - 1,
-                  _newCol(get_color(new_image, x, height - 2)))
+        set_color(new_img, x, height - 1,
+                  _newCol(get_color(new_img, x, height - 2)))
 
     for y in range(height):
         # sets last column of pixels to be equal to the ones to the left
-        set_color(new_image, width - 1, y,
-                  _newCol(get_color(new_image, width - 2, y)))
+        set_color(new_img, width - 1, y,
+                  _newCol(get_color(new_img, width - 2, y)))
 
     # sets the colour for the last pixel
-    if get_color(new_image, width - 2, height - 1) == create_color(0, 0, 0) or \
-            get_color(new_image, width - 1, height - 2) == create_color(0, 0, 0):
-        set_color(new_image, width - 1, height - 1, create_color(0, 0, 0))
+    if get_color(new_img, width - 2, height - 1) == create_color(0, 0, 0) or \
+            get_color(new_img, width - 1, height - 2) == create_color(0, 0, 0):
+        set_color(new_img, width - 1, height - 1, create_color(0, 0, 0))
     else:
-        set_color(new_image, width - 1, height -
+        set_color(new_img, width - 1, height -
                   1, create_color(255, 255, 255))
     if disp:
-        show(new_image)  # shows image
+        show(new_img)  # shows image
     if save:
         # saves to returns/
-        save_as(new_image, 'returns/better_edge_detect.png')
-    return new_image
+        save_as(new_img, 'returns/better_edge_detect.png')
+    return new_img
 
 
 def _avgBright(colour):

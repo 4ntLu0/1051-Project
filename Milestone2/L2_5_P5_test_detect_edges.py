@@ -2,7 +2,6 @@ from Cimpl import load_image, choose_file, get_color, Image, get_width, get_heig
     create_image, show, save_as
 from typing import Tuple
 from L2_5_P5_detect_edges import detectEdges
-from whoops_edge_detect import edgeDetect
 
 
 def test_edge_detect(pass_last_line: bool = True):

@@ -6,10 +6,10 @@ new_image = copy(image)                  #creates the copy to prevent it from be
 
 def flip_vertical(image):
     """
-    creates a function which mirrors the inputed image vertically... ex: photo 
+    A photo is displayed. The function is called and the rgb values for each pixel is printed. ... ex: photo 
     facing left, creates photo facing right
     
-    Written by Emilio Lindia
+    Written by Emilio Lindia: 101143244
     
     code has been attributed from given files on CUlearn
     """

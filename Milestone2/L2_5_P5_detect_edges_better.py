@@ -2,13 +2,21 @@ from Cimpl import load_image, choose_file, get_color, Image, get_width, get_heig
     create_image, show, save_as
 import os
 
+'''
+Written by Anthony Luo, Nov 20, 2019
+Cimpl attributed from CuLearn, 2019.
+'''
+
 def detect_edges_better(img: Image, thresh: int = 0, disp: bool = True, save: bool = True):
-    """
-    Written by Anthony Luo
+    """ return an image with the edge detects.
+    Written by Anthony Luo (#101145222)
     :param image: Image to detect edges on
     :param thresh: Threshold value for detection
-    :return: edge-y boi image.
+    :return: edge detected image.
+    >>> detect_edges_better(load_image(choose_file()), 13)
+    >>> detect_edges_better(load_image(choose_file()), 15, False, True)
     """
+
     # functional definitions
     width = get_width(img)
     height = get_height(img)
@@ -75,4 +83,4 @@ if __name__ == '__main__':
         os.mkdir(new_path)
     except:
         pass
-    ret_img = betterEdgeDetect(load_image(choose_file()), 15)
+    ret_img = detect_edges_better(load_image(choose_file()), 15)

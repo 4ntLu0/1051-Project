@@ -3,7 +3,7 @@ from Cimpl import load_image, choose_file, get_color, Image, get_width, get_heig
 import os
 
 
-def detect_edges_better(image: Image, thresh: int = 0, disp: bool = True, save: bool = True):
+def detect_edges_better(img: Image, thresh: int = 0, disp: bool = True, save: bool = True):
     """
     Written by Anthony Luo
     :param image: Image to detect edges on
@@ -11,8 +11,8 @@ def detect_edges_better(image: Image, thresh: int = 0, disp: bool = True, save: 
     :return: edge-y boi image.
     """
     # functional definitions
-    width = get_width(image)
-    height = get_height(image)
+    width = get_width(img)
+    height = get_height(img)
     new_image = create_image(width, height)
     white = create_color(255, 255, 255)
     black = create_color(0, 0, 0)
@@ -20,9 +20,8 @@ def detect_edges_better(image: Image, thresh: int = 0, disp: bool = True, save: 
     for y in range(height - 1):  # starts at the first level, then moves down
         for x in range(width - 1):
             # compares brightness between two images and then resets colours.
-            if abs(_avgBright(tuple(get_color(image, x, y))) - _avgBright(tuple(get_color(image, x, y + 1)))) > thresh \
-                    or abs(_avgBright(tuple(get_color(image, x, y))) - _avgBright(
-                        tuple(get_color(image, x + 1, y)))) > thresh:
+            if abs(_avgBright(tuple(get_color(img, x, y))) - _avgBright(tuple(get_color(img, x, y + 1)))) > thresh \
+                    or abs(_avgBright(tuple(get_color(img, x, y))) - _avgBright(tuple(get_color(img, x + 1, y)))) > thresh:
                 # sets colour to black (edge detected)
                 set_color(new_image, x, y, black)
             else:

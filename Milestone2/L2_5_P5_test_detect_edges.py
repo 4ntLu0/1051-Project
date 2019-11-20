@@ -5,7 +5,7 @@ from L2_5_P5_detect_edges import detectEdges
 from whoops_edge_detect import edgeDetect
 
 
-def testEdgeDetector():
+def test_edge_detect():
     ''' Tests to make sure that edge detection is functioning as it should with certain threshold values.
     Test cases --- (high / low refer to brightness levels).
     directly below it is right colour
@@ -40,7 +40,7 @@ def testEdgeDetector():
     '''
     error_list = []
     test_pass = True  # so far, all tests have passed.
-    test_img, compare_img = _createImages(0)
+    test_img, compare_img = _create_images(0)
     # this thresh of 100 is a decent average to be testing on.
     test_img = detectEdges(test_img, 100, False)
     print('### testing normal thresh ###')
@@ -54,7 +54,7 @@ def testEdgeDetector():
             test_pass = False
     print('-- normal thresh testing done --\n')
 
-    test_img, compare_img = _createImages(1)
+    test_img, compare_img = _create_images(1)
     # this thresh of 255 is higher than we should ever be getting
     test_img = detectEdges(test_img, 255, False)
     print('### testing high thresh ###')
@@ -76,7 +76,7 @@ def testEdgeDetector():
     print(error_list)
 
 
-def _createImages(ver: int) -> Tuple[Image]:
+def _create_images(ver: int) -> Tuple[Image]:
     """ Creates the test images for each 'version' of the test.
     Written by Anthony Luo
     :param ver: version0: modified compare
@@ -95,4 +95,4 @@ def _createImages(ver: int) -> Tuple[Image]:
 
 
 if __name__ == '__main__':
-    testEdgeDetector()
+    test_edge_detect()

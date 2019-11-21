@@ -3,7 +3,7 @@ from L2_5_P5_vertical import *
 image = load_image("miss_sullivan.jpg")
 
 def test_flip_vertical(image: Image) -> Image:
-    """ Writen by Taala Ayoubi (101142788). Function tests that all values of the x axis of the inputted image (into the flip_vertical function) are assigned to to their negative counterparts"""
+    """ Writen by Abdelrahman Alatoom. Function tests that all values of the x axis of the inputted image (into the flip_vertical function) are assigned to to their negative counterparts"""
     vertical_image = flip_vertical(image)
     for x in range(get_width(image)):
         

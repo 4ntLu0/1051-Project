@@ -36,6 +36,7 @@ def test_edge_detect(pass_last_line: bool = True):
             2,1 & 2,3 & 3,2 & 4,1 & 4,3
 
     The same test will be run with a threshold higher than expected, which should return a completely blank image.
+    Written by Anthony Luo #101145222
     '''
     error_list = []
     test_pass = True  # so far, all tests have passed.
@@ -45,7 +46,7 @@ def test_edge_detect(pass_last_line: bool = True):
     print('### testing normal thresh ###')
     for x, y, (r, g, b) in test_img:
         if pass_last_line and y == 2:
-            pass # does not test last line as most edge-detectors are not equipped to handle this.
+            pass  # does not test last line as most edge-detectors are not equipped to handle this.
         elif (r, g, b) == tuple(get_color(compare_img, x, y)):
             pass
         else:
@@ -61,7 +62,7 @@ def test_edge_detect(pass_last_line: bool = True):
     print('### testing high thresh ###')
     for x, y, (r, g, b) in test_img:
         if pass_last_line and y == 2:
-            pass # does not test last line as most edge-detectors are not equipped to handle this.
+            pass  # does not test last line as most edge-detectors are not equipped to handle this.
         elif (r, g, b) == tuple(get_color(compare_img, x, y)):
             pass
         else:
@@ -79,11 +80,11 @@ def test_edge_detect(pass_last_line: bool = True):
     print(error_list)
 
 
-def _create_images(ver: int) -> Tuple[Image]:
+def _create_images(ver: int) -> Tuple[Image, Image]:
     """ Creates the test images for each 'version' of the test.
     Written by Anthony Luo
     :param ver: version0: modified compare
-                version1: non-modifide compare
+                version1: non-modified compare
     :type ver: int
     """
     test_img = create_image(5, 3, create_color(30, 10, 20))

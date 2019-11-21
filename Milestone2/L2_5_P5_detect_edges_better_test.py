@@ -1,4 +1,4 @@
-"""This is the Improved Edge Detection Test from group L2-5. This code has been attributed from cuLearn using images taken from cuLea"""
+"""ECOR 1051 Fall 2019 Project - Improved Edge Detection Test from group L2-5. This code has been attributed from cuLearn using images taken from cuLearn"""
 
 from Cimpl import *
 from L2_5_P5_detect_edges_better import detect_edges_better

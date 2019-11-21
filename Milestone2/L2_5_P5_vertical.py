@@ -1,12 +1,9 @@
 # L2-5, Milestone 2, Submitted: 11/22/2019
 from Cimpl import *
-image = load_image(choose_file())        #allows you to choose a file
-show(image)
-new_image = copy(image)                  #creates the copy to prevent it from/
-                                         #being overwritten
 
 
-def flip_vertical(image):
+
+def flip_vertical(img):
     """
     A photo is displayed. The function is called and the rgb values for each /
     pixel is printed. ... 
@@ -30,7 +27,9 @@ def flip_vertical(image):
     
     CODE HAS BEEN ATTRIBUTED FROM GIVEN FILES FOUND ON CULEARN
     """
-    
+    show(img)
+    image = copy(img)                  #creates the copy to prevent it from/
+                                             #being overwritten    
     
     h= get_height(image)                 #interprets the height of the image
     
@@ -56,6 +55,7 @@ def flip_vertical(image):
 
 
 if __name__ == '__main__':
+    new_image = load_image(choose_file())
     flip_vertical(new_image)
 
 

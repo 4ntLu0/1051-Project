@@ -1,6 +1,6 @@
 from Cimpl import*
 from L2_5_P5_vertical import *
-image = load_image("miss_sullivan.jpg")
+
 
 def test_flip_vertical(image: Image) -> Image:
     """ Writen by Abdelrahman Alatoom. Function tests that all values of the x axis of the inputted image (into the flip_vertical function) are assigned to to their negative counterparts"""
@@ -19,3 +19,8 @@ def test_flip_vertical(image: Image) -> Image:
     if original_colour == vertical_colour:
         print('Test Passed')
     else: print('Test Failed')
+    
+if __name__ == '__main__':
+    limg = load_image("miss_sullivan.jpg")
+    image = copy(limg)
+    test_flip_vertical(image)

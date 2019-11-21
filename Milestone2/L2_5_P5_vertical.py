@@ -44,10 +44,11 @@ def flip_vertical(img):
                                          
     for pixel in image:                  #examines all pixels in the new image
         x,y,(r,g,b) = pixel
-        print(r,g,b)                     #prints the r g b values of every pixel
+        #print(r,g,b)                     #prints the r g b values of every pixel
         new_color = create_color(r,g,b)  
         set_color(new_image, w-x-1, y-1, new_color)  
-    show(new_image)                                  
+    show(new_image)       
+    return new_image
 
 #adjust pixels along x axis(width of image) ex: one pixel has a particular/
 #distance from one edge of the image, to flip the image, the pixel's distance/

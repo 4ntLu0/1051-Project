@@ -1,18 +1,34 @@
+# L2-5, Milestone 2, Submitted: 11/22/2019
 from Cimpl import *
 image = load_image(choose_file())        #allows you to choose a file
 show(image)
-new_image = copy(image)                  #creates the copy to prevent it from being overwritten
+new_image = copy(image)                  #creates the copy to prevent it from/
+                                         #being overwritten
 
 
 def flip_vertical(image):
     """
     A photo is displayed. The function is called and the rgb values for each /
-    pixel is printed. ... ex: photo 
-    facing left, creates photo facing right
+    pixel is printed. ... 
+    ex: 
+    photo facing left, creates photo facing right
     
-    Written by Emilio Lindia: 101143244
+    'Written by Emilio Lindia: 101143244'
     
-    code has been attributed from given files on CUlearn
+    DOCSTRING TESTING (How to run the code)
+    Code is run
+    File explorer appears
+    Choose a file, an image you wish to flip
+    Image will appear when opened
+    Close the image
+    The height and width of this image is recorded and the rgb values for each 
+    pixel are changed
+    New flipped image is returned with changed applied to it
+    Close the new image
+    
+    
+    
+    CODE HAS BEEN ATTRIBUTED FROM GIVEN FILES FOUND ON CULEARN
     """
     
     
@@ -39,10 +55,8 @@ def flip_vertical(image):
 #from the edge is now the same distance but from the other edge   
 
 
-flip_vertical(new_image)
-    
-
-
+if __name__ == '__main__':
+    flip_vertical(new_image)
 
 
 

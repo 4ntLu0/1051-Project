@@ -12,8 +12,10 @@ def flip_horizontal(image):
                         
         new_color = create_color(r,g,b)  
         set_color(new_image,x-1, h- y-1, new_color)  
-    show(new_image)           
+    show(new_image)        
     
-flip_horizontal(new_image)
+    
+if __name__ == '__main__':
+    flip_horizontal(new_image)
 
     

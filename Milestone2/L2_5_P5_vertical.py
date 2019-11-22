@@ -1,6 +1,6 @@
 # L2-5, Milestone 2, Submitted: 11/22/2019
-from Cimpl import *
-
+from Cimpl import show, copy, get_height, get_width,create_color, \
+set_color, load_image, choose_file, create_image
 
 
 def flip_vertical(img):
@@ -22,37 +22,37 @@ def flip_vertical(img):
     pixel are changed
     New flipped image is returned with changed applied to it
     Close the new image
-    
+    END OF CODE
     
     
     CODE HAS BEEN ATTRIBUTED FROM GIVEN FILES FOUND ON CULEARN
     """
     show(img)
-    image = copy(img)                  #creates the copy to prevent it from/
-                                             #being overwritten    
+    image = copy(img)                  #Creates the copy to prevent it from/
+                                       #Being overwritten    
     
-    h= get_height(image)                 #interprets the height of the image
+    h= get_height(image)                 #Interprets the height of the image
     
-    w = get_width(image)                 #interprets the width of the image
+    w = get_width(image)                 #Interprets the width of the image
     
-    new_image = create_image(w, h )      #creates an image with the same values/
-                                         #as h,w
+    new_image = create_image(w, h )      #Creates an image with the same values/
+                                         #As h,w
                                          
-                                         #(essentially creating an image of the/
-                                         #same dimensions)
+                                         #(Essentially creating an image of the/
+                                         #Same dimensions)
                                          
                                          
-    for pixel in image:                  #examines all pixels in the new image
+    for pixel in image:                  #Examines all pixels in the new image
         x,y,(r,g,b) = pixel
-        #print(r,g,b)                     #prints the r g b values of every pixel
+        #Print(r,g,b)                    #Prints the r g b values of every pixel
         new_color = create_color(r,g,b)  
         set_color(new_image, w-x-1, y-1, new_color)  
     show(new_image)       
     return new_image
 
-#adjust pixels along x axis(width of image) ex: one pixel has a particular/
-#distance from one edge of the image, to flip the image, the pixel's distance/
-#from the edge is now the same distance but from the other edge   
+#Adjust pixels along x axis(width of image) ex: one pixel has a particular/
+#Distance from one edge of the image, to flip the image, the pixel's distance/
+#From the edge is now the same distance but from the other edge   
 
 
 if __name__ == '__main__':

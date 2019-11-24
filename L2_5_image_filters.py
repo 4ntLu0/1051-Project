@@ -153,7 +153,6 @@ def combine( log = False ):
 def extreme_contrast( image: Image ):
     """ Given an image, the r, g, b components are altered to be extremely contrasted.
     Written by Alia Nichol (#101143486).
-
     >>> extreme_contrast("miss_sullivan.jpg")
     """
 
@@ -348,7 +347,6 @@ def detect_edges( image: Image, threshold: int ) -> Image:
     >>> detect_edges(choose_file(), 12)
     <Cimpl.Image object at 0x0000017986874A20>
     """
-    image = load_image(image)  # Loads an image of choice.
     new_image = copy(image)
 
     for y in range(get_height(new_image) - 1):  # Begins at the first row and moves down through each row in the image.

@@ -1,4 +1,4 @@
-"""ECOR 1051 Fall 2019 Project. L2-5. Milestone 2, P5. Improved Edge Detection Test. This code has been attributed \
+"""ECOR 1051 Fall 2019 Project. L2-5. Milestone 2, P6. Improved Edge Detection Test. This code has been attributed \
 from given files on cuLearn. Submitted 22/11/2019"""
 
 from Cimpl import load_image, choose_file, get_color, Image, get_width, get_height, set_color, create_color,\
@@ -14,7 +14,7 @@ def detect_edges(image: Image, threshold: int) -> Image:
     >>> detect_edges(choose_file(), 12)
     <Cimpl.Image object at 0x0000017986874A20>
     """    
-    image = load_image(image)                                       # Loads a file of choice. 
+    image = load_image(image)                                               # Loads an image of choice. 
     new_image = copy(image)    
     
     for y in range(get_height(new_image) - 1):                              # Begins at the first row and moves down through each row in the image.
@@ -31,8 +31,8 @@ def detect_edges(image: Image, threshold: int) -> Image:
     show(new_image)
     return new_image
 
-#if __name__ == '__main__':
-    #detect_edges(image, 12)
+if __name__ == '__main__':
+    detect_edges(choose_file(), 12)
 
 
 

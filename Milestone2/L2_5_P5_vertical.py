@@ -46,7 +46,7 @@ def flip_vertical(img):
         x,y,(r,g,b) = pixel
         #Print(r,g,b)                    #Prints the r g b values of every pixel
         new_color = create_color(r,g,b)  
-        set_color(new_image, w-x-1, y-1, new_color)  
+        set_color(new_image, w - x - 1 , y - 1 , new_color)  
     show(new_image)       
     return new_image
 

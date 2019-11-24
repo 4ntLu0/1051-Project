@@ -1,5 +1,5 @@
 """ECOR 1051 Fall 2019 Project - Improved Edge Detection Test from group L2-5. 
-This code has been attributed from given files on cuLearn"""
+This code has been attributed from given files on cuLearn."""
 
 from Cimpl import load_image, choose_file, get_color, Image, get_width, get_height, set_color, create_color, create_image, show, save_as, copy
 from L2_5_P5_detect_edges_better import detect_edges_better      

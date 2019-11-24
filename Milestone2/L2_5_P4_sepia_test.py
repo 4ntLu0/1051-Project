@@ -1,3 +1,6 @@
+"""ECOR 1051 Fall 2019 Project - Sepia Test from group L2-5. 
+This code has been attributed from given files on cuLearn."""
+
 from Utils.Cimpl import *
 from Utils.simple_Cimpl_filters import grayscale
 from L2_5_P4_sepia import sepia

@@ -501,3 +501,10 @@ def flip_vertical( img ):
 # Adjust pixels along x axis(width of image) ex: one pixel has a particular/
 # Distance from one edge of the image, to flip the image, the pixel's distance/
 # From the edge is now the same distance but from the other edge
+
+if __name__ == '__main__':
+    new_path = os.getcwd() + '/returns'  # creates path
+    try:
+        os.mkdir(new_path)
+    except:
+        pass

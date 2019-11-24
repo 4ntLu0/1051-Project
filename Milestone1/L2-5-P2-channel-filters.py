@@ -274,7 +274,7 @@ if __name__ == '__main__':
     while not checked:
         test_check = input('Test? [Y/N]')
         if test_check == 'Y':
-            testRed(original_image)
+            testRed(original_img)
             test_green()
             test_blue()
             testCombine()

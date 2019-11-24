@@ -8,16 +8,14 @@ def flip_vertical(img):
     A photo is displayed. The function is called and the rgb values for each /
     pixel is printed. ... 
     ex: 
-    photo facing left, creates photo facing right
+    photo facing left is inserted
+    photo facing right is returned
     
     'Written by Emilio Lindia: 101143244'
     
-    DOCSTRING TESTING (How to run the code)
+    DOCSTRING TESTING (what the function does)
     Code is run
-    File explorer appears
-    Choose a file, an image you wish to flip
-    Image will appear when opened
-    Close the image
+    File explorer appears and an image can be selected
     The height and width of this image is recorded and the rgb values for each 
     pixel are changed
     New flipped image is returned with changed applied to it
@@ -35,7 +33,7 @@ def flip_vertical(img):
     
     w = get_width(image)                 #Interprets the width of the image
     
-    new_image = create_image(w, h )      #Creates an image with the same values/
+    new_image = create_image( w, h )     #Creates an image with the same values/
                                          #As h,w
                                          
                                          #(Essentially creating an image of the/

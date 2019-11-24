@@ -1,7 +1,7 @@
 # L2-5, Milestone 2, Submitted: 11/22/2019
 from Cimpl import set_color, create_image, create_color, get_color
 
-from L2_5_P5_horizontal import (flip_horizontal)    #import the filter function
+from L2_5_P5_horizontal import (flip_horizontal)    #Import the filter function
 
 def test_horizontal() :
     """
@@ -19,10 +19,8 @@ def test_horizontal() :
     DOCSTRING TESTING (How to run the code)
     Code is run
     image of size (1,4) is displayed somewhere on screen
-    Close the image
-    Refer to shell
     If test was run correctly and the filter passed all tests, PASS should be
-    printed
+    returned
     END OF CODE
   
     
@@ -42,7 +40,7 @@ def test_horizontal() :
     set_color(flipped_image, 0, 3, create_color(0, 0, 0))  
 #Notice this second image that is created possesses opposite RGB values
 #This accounts for the images to be identical, except for the fact that \
-#he flipped_image is the upside-down version
+#The flipped_image is the upside-down version
 
     result_image = flip_horizontal(image)
     
@@ -52,7 +50,7 @@ def test_horizontal() :
         else:
             print("FAIL")
 #If the images are equal, then the filter has properly flipped the image
-#printing PASS will be an indication that this is the case
+#Printing PASS will be an indication that this is the case
 #Otherwise, FAIL would be printed
    
   

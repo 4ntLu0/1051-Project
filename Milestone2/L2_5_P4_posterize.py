@@ -1,4 +1,4 @@
-from Utils.Cimpl import *
+from Cimpl import *
 """
 written by Emilio Lindia
 """

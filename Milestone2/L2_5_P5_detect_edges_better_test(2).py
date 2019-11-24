@@ -27,7 +27,8 @@ def detect_edges_better_test() -> None:
     set_color(original_image, 3, 2, bright)
     set_color(original_image, 4, 1, bright)         
     
-    expected_image =  create_image(7, 3, color = create_color(255, 255, 255))   # Creates image that is width 6 and height 2 set to a bright colour.
+    expected_image =  create_image(7, 3, color = create_color(255, 255, 255))   
+    # Creates image that is width 6 and height 2 set to a bright colour.
     black = create_color(0, 0, 0)
     set_color(expected_image, 0, 0, black)
     set_color(expected_image, 1, 0, black)
@@ -39,14 +40,17 @@ def detect_edges_better_test() -> None:
     set_color(expected_image, 4, 1, black)    
     set_color(expected_image, 4, 2, black)    
     
-    actual_image = detect_edges_better(original_image, 100, False)              # The Improved Edge Detection filter is applied to original_image. 
+    actual_image = detect_edges_better(original_image, 100, False)              
+    # The Improved Edge Detection filter is applied to original_image. 
        
     for x, y, (r, g, b) in actual_image:
-        if (r, g, b) == tuple(get_color(expected_image, x, y)):                 # Checks if the pixels in the actual image equal the ones in the expected image.
+        if (r, g, b) == tuple(get_color(expected_image, x, y)):                 
+            # Checks if the pixels in the actual image equal the ones in the expected image.
             print('PASS')
         else:
             print('FAIL')
         
-detect_edges_better_test()                                                      # Calls the test function.
+detect_edges_better_test()                                                      
+# Calls the test function.
                 
                 

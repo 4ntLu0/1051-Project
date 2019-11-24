@@ -1,13 +1,15 @@
-from Utils.Cimpl import create_color, set_color, save_as, show, load_image, Image, choose_file, copy
+"""ECOR 1051 Fall 2019 Project - Extreme Contrast from group L2-5. This code has been attributed from given files on cuLearn"""
 
+from Cimpl import create_color, set_color, save_as, show, load_image, Image, choose_file, copy
 
-
-def extremeContrast(image):
-    """ Given an image, turns up the contrast.
-    Written by Alia Nichol
+def extreme_contrast(image: Image):
+    """ Given an image, the r, g, b components are altered to be extremely contrasted. 
+    Written by Alia Nichol (#101143486).
+    
+    >>> extreme_contrast("miss_sullivan.jpg")
     """    
 
-    for x, y, (r, g, b) in image:  # reads through each pixel in the image
+    for x, y, (r, g, b) in image:  # Reads through each pixel in the chosen image.
         if 0 < r < 127:
             contrast = create_color(0, g, b)
             set_color(image, x, y, contrast)            
@@ -27,14 +29,14 @@ def extremeContrast(image):
             contrast = create_color(r, g, 255)
             set_color(image, x, y, contrast)                 
 
-    save_as(image, 'returns/contrast_channel.png') # saves the image
+    save_as(image, 'returns/contrast_channel.png') 
     show(load_image('returns/contrast_channel.png'))
     print('contrast_channel saved as new image')
     
     return image
 
 if __name__ == '__main__':
-    image = load_image(choose_file())  # loads the desired image from a given file
+    image = load_image(choose_file())  # Loads the desired image from a given file.
     show(image)
-    image1 = copy(image)  # creates a copy of the image so it is not overrided when the new image is returned
-    extremeContrast(image)
+    image1 = copy(image)  # Creates a copy of the image so it is not overrided when the new image is returned.
+    extreme_contrast(image)

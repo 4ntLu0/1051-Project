@@ -1,26 +1,34 @@
-from Cimpl import*
-from L2_5_P5_vertical import *
+from Cimpl import *
 
-
-def test_flip_vertical(image: Image) -> Image:
-    """ Writen by Abdelrahman Alatoom. Function tests that all values of the x axis of the inputted image (into the flip_vertical function) are assigned to to their negative counterparts"""
-    vertical_image = flip_vertical(image)
-    for x in range(get_width(image)):
-        
-        for y in range(get_height(image)):
-            original_colour = get_color(image, x, y)
-        
-        
-    for x in range(get_width(vertical_image)):
-        
-        for y in range(get_height(vertical_image)):
-            vertical_colour = get_color(vertical_image, -x, y)
-            
-    if original_colour == vertical_colour:
-        print('Test Passed')
-    else: print('Test Failed')
+def vertical_test(Flipped_Image:Image, Original_Image: Image):
+    """Return if the image is vertically flipped and how many errors are present
     
-if __name__ == '__main__':
-    limg = load_image("miss_sullivan.jpg")
-    image = copy(limg)
-    test_flip_vertical(image)
+    >>>vertical_test('VFlipped.jpg','p2-original.jpg')
+    
+    Anthony Petrov
+    """
+    Original = load_image(Original_Image)
+    Flipped = load_image(Flipped_Image)
+    new_picture = copy(Flipped)
+    
+    
+    for x in range(get_width(Flipped)):             #Flips the flipped image 
+        for y in range(get_height(Flipped)):
+            color = get_color(Flipped, x, y)
+            set_color(new_picture, get_width(Flipped)-x-1, y, color)
+    
+    errors = 0     
+    statement = ""
+    
+    for x, y, (r,g,b) in new_picture and Original:      #Compares the pixels in the new image and the original image 
+        Flipped_Pixels = get_color(new_picture,x,y)
+        Original_Pixels = get_color(Original, x, y)
+        red, green, blue = Flipped_Pixels
+        red1, green1, blue1 = Original_Pixels
+        if red1 != red or green1 != green or blue1 != blue:       #If the pixels in each image do not match, then an error is added.
+            errors+= 1
+        if errors >0:
+            statement = "This image is not vertically flipped. The image has" ,errors, "errors"
+        if errors == 0:
+            statement = "This image is vertically flipped"
+    return statement 

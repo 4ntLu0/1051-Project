@@ -4,8 +4,9 @@ image = load_image(choose_file())
 
 
 def flip_vertical(image: image) -> Image:
-     
     
+    
+   
     vertical_image = copy(image)
 
     for x in range(get_width(image)):
@@ -34,3 +35,6 @@ def test_flip_vertical(image: Image) -> Image:
     if original_colour == vertical_colour:
         print('Test Passed')
     else: print('Test Failed')
+        
+    
+    

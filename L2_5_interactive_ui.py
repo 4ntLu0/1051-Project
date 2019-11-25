@@ -12,7 +12,7 @@ def prompt(command: str) ->str :
     
     all_commands = ["L", "S", "2", "3", "X", "T", "P", "E", "I", "V", "H", "Q"]
    
-    while command in all_commands:
+    while command not in all_commands:
         pass
     
     print("Prompt is not valid. Please Try Again")

@@ -4,24 +4,36 @@ from typing import Tuple
 from Cimpl import load_image, create_color, set_color, show, Image, save_as, get_width, get_height, copy, \
     create_image, save_as, get_color, choose_file, copy
 
-
-def prompt():
+def prompt(command: str) ->str :
     """
     Prompts the user for an input. Checks validity before returning an
     """
+    command = input("Please enter a command from the following list: [L, S, 2, 3, X, T, P, E, I, V, H, Q]")
+    
+    all_commands = ["L", "S", "2", "3", "X", "T", "P", "E", "I", "V", "H", "Q"]
+   
+    while command in all_commands:
+        pass
+    
+    print("Prompt is not valid. Please Try Again")
 
+def is_valid():
+    """
+    checks the validity of the input
+    :return:
+    :rtype:
+    """
 
 def apply_filter(selection: str, image: Image) -> Image:
     """
-    Applies the selected filter
+    Applies the selected filter.
     """
-
+    
 
 def main():
     image = load_image(choose_file())
     while True:
         image = apply_filter(prompt(), image)
-
 
 if __name__ == '__main__':
     new_path = os.getcwd() + '/returns'  # creates path

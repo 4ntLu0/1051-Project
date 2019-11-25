@@ -499,29 +499,7 @@ def flip_vertical(img):
 # Distance from one edge of the image, to flip the image, the pixel's distance/
 # From the edge is now the same distance but from the other edge
 
-def prompt():
-    """
-    Prompts the user for an input. Checks validity before returning.
-    :return:
-    :rtype:
-    """
 
-def is_valid():
-    """
-    checks the validity of the input
-    :return:
-    :rtype:
-    """
-
-def apply_filter(selection: str, image: Image) -> Image:
-    """
-    Applies the selected filter
-    """
-
-def main():
-    image = load_image(choose_file())
-    while True:
-        image = apply_filter(prompt(), image)
 
 
 if __name__ == '__main__':

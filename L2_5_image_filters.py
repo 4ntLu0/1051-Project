@@ -5,7 +5,7 @@ import os
 from typing import NewType
 
 
-def create_red( img: Image, verify: bool = True, log: bool = False ):
+def create_red(img: Image, verify: bool = True, log: bool = False):
     """ Saves a new image which constitutes only the red channel of an image img
     Written by Anthony Luo
     :param img: Original image
@@ -17,7 +17,7 @@ def create_red( img: Image, verify: bool = True, log: bool = False ):
     :return: None
     :rtype: NoneType
     >>> image = load_image(choose_image())
-    >>> createRed(image)
+    >>> create_red(image)
     >>> show(image)
     """
     image = copy(img)
@@ -46,14 +46,14 @@ def create_red( img: Image, verify: bool = True, log: bool = False ):
             # remaps each x,y coordinate to new colour
             set_color(image, x, y, red)
 
-    save_as(image, 'red_channel.png')  # saves as a new image
+    save_as(image, 'returns/red_channel.png')  # saves as a new image
     if verify:
         show(load_image('red_channel.png'))  # shows the image to double check
 
     print('red_channel created')  # notifies user
 
 
-def create_blue( img ):
+def create_blue(img):
     """ the function createBlue displays the original image, once closed it displays the image with a blue filter
 
     -Emilio Lindia
@@ -69,14 +69,14 @@ def create_blue( img ):
 
         set_color(new_image, x, y, blue)
 
-    save_as(new_image, 'blue_channel.png')  # saves the blue filter as a new image
+    save_as(new_image, 'returns/blue_channel.png')  # saves the blue filter as a new image
     show(load_image('blue_channel.png'))  # shows image
 
     print('blue_channel saved as new_image')
     return new_image
 
 
-def green_filter( image1: Image ) -> Image:
+def green_filter(image1: Image) -> Image:
     """Alia Nichol
 
     """
@@ -87,14 +87,14 @@ def green_filter( image1: Image ) -> Image:
         green = create_color(0, g, 0)
         set_color(image, x, y, green)  # sets all the pixels of defined locations in that image to the color
 
-    save_as(image, 'green_channel.png')
+    save_as(image, 'returns/green_channel.png')
     show(load_image('green_channel.png'))
     print('green_channel saved as new image')
 
     return image1
 
 
-def combine( log = False ):
+def combine(log=False):
     """ Combines three single-colour images (red, green, and blue) into a final image.
     Written by Anthony Luo
     :param log: Determines whether or not to return a datalog
@@ -145,7 +145,7 @@ def combine( log = False ):
             set_color(new_img, x, y, colour)
             counter += 1
 
-        save_as(new_img, 'combined_image.png')
+        save_as(new_img, 'returns/combined_image.png')
         show(load_image('combined_image.png'))
         return (r_chan, g_chan, b_chan, rgb)
 
@@ -155,30 +155,31 @@ def extreme_contrast(image: Image):
     Written by Alia Nichol (#101143486).
     >>> extreme_contrast("miss_sullivan.jpg")
     """
-    new_image = copy(image)  
+    new_image = copy(image)
 
-    for x, y, (r, g, b) in new_image: # Reads through each pixel in the chosen image
-       
+    for x, y, (r, g, b) in new_image:  # Reads through each pixel in the chosen image
+
         if 0 < r <= 127:
             r = 0
         else:
             r = 255
-            
+
         if 0 < g <= 127:
             g = 0
         else:
             g = 255
-            
+
         if 0 < b <= 127:
             b = 0
         else:
             b = 255
-            
+
         set_color(image, x, y, create_color(r, g, b))
     show(new_image)
-    return new_image  
+    return new_image
 
-def _adjust_component( comp: int ) -> int:  # enters a red, green, or blue component
+
+def _adjust_component(comp: int) -> int:  # enters a red, green, or blue component
 
     if 0 <= comp <= 63:
         return 31
@@ -198,7 +199,7 @@ def _adjust_component( comp: int ) -> int:  # enters a red, green, or blue compo
 # this function is a helper function that will be called upon
 
 
-def posterize( image: Image ) -> Image:
+def posterize(image: Image) -> Image:
     new_image = copy(image)  # assigns new image as a copy of original
     for pixel in image:  # examines all pixels in the new image
         x, y, (r, g, b) = pixel
@@ -209,7 +210,7 @@ def posterize( image: Image ) -> Image:
     return image
 
 
-def sepia( img, disp = True, save = True ):
+def sepia(img, disp=True, save=True):
     """ Adjusts the r, g, and b values of an image to create a sepia image.
     Written by Anthony Luo
     :param img: Full colour image
@@ -248,7 +249,7 @@ cyan = (0, 255, 255)
 magenta = (255, 0, 255)
 
 
-def two_tone( image: Image, CR1, CR2: str ) -> Image:
+def two_tone(image: Image, CR1, CR2: str) -> Image:
     '''
 
     Returns a copy of the loaded image with only the chosen two pixel colours
@@ -288,7 +289,7 @@ def two_tone( image: Image, CR1, CR2: str ) -> Image:
     return show(image)
 
 
-def three_tone( image: Image, CR1, CR2, CR3: str ) -> Image:
+def three_tone(image: Image, CR1, CR2, CR3: str) -> Image:
     '''
 
     Returns a copy of the loaded image with only the three chosen pixel colours
@@ -332,7 +333,7 @@ def three_tone( image: Image, CR1, CR2, CR3: str ) -> Image:
     return show(image)
 
 
-def detect_edges( image: Image, threshold: int ) -> Image:
+def detect_edges(image: Image, threshold: int) -> Image:
     """ Using a selected image, this function alters the r, g, b components of an image to return a new image\
     that looks like a pencil sketch (aka edge detected image). The pixels in the image are changed to either black\
     or white depending on the difference in contrast between the two pixels.
@@ -360,6 +361,7 @@ def detect_edges( image: Image, threshold: int ) -> Image:
     show(new_image)
     return new_image
 
+
 def _avg_bright(colour):
     """Returns avg brightness of three colours
     written by anthony luo
@@ -375,6 +377,7 @@ def _new_col(colour):
     # TODO: try to see if there's a way to integrate this directly into the program
     r, g, b = tuple(colour)
     return create_color(r, g, b)
+
 
 def detect_edges_better(img: Image, thresh: int = 0, disp: bool = True, save: bool = True):
     """ return an image with the edge detects.
@@ -400,7 +403,7 @@ def detect_edges_better(img: Image, thresh: int = 0, disp: bool = True, save: bo
             # compares brightness between two images and then resets colours.
             if abs(_avg_bright(tuple(get_color(img, x, y))) - _avg_bright(
                     tuple(get_color(img, x, y + 1)))) > thresh or abs(
-                    _avg_bright(tuple(get_color(img, x, y))) - _avg_bright(tuple(get_color(img, x + 1, y)))) > thresh:
+                _avg_bright(tuple(get_color(img, x, y))) - _avg_bright(tuple(get_color(img, x + 1, y)))) > thresh:
                 # sets colour to black (edge detected)
                 set_color(new_img, x, y, black)
             else:
@@ -432,7 +435,7 @@ def detect_edges_better(img: Image, thresh: int = 0, disp: bool = True, save: bo
     return new_img
 
 
-def flip_horizontal( image ):
+def flip_horizontal(image):
     h = get_height(image)
     w = get_width(image)
     new_image = create_image(w, h)
@@ -445,7 +448,7 @@ def flip_horizontal( image ):
     return new_image
 
 
-def flip_vertical( img ):
+def flip_vertical(img):
     """
     A photo is displayed. The function is called and the rgb values for each /
     pixel is printed. ...
@@ -491,9 +494,13 @@ def flip_vertical( img ):
     show(new_image)
     return new_image
 
+
 # Adjust pixels along x axis(width of image) ex: one pixel has a particular/
 # Distance from one edge of the image, to flip the image, the pixel's distance/
 # From the edge is now the same distance but from the other edge
+
+
+
 
 if __name__ == '__main__':
     new_path = os.getcwd() + '/returns'  # creates path

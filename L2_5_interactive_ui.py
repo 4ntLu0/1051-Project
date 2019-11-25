@@ -4,10 +4,12 @@ from typing import Tuple
 from Cimpl import load_image, create_color, set_color, show, Image, save_as, get_width, get_height, copy, \
     create_image, save_as, get_color, choose_file, copy
 
+
 def prompt():
     """
     Prompts the user for an input. Checks validity before returning an
     """
+
 
 def is_valid():
     """
@@ -16,15 +18,18 @@ def is_valid():
     :rtype:
     """
 
+
 def apply_filter(selection: str, image: Image) -> Image:
     """
     Applies the selected filter
     """
 
+
 def main():
     image = load_image(choose_file())
     while True:
         image = apply_filter(prompt(), image)
+
 
 if __name__ == '__main__':
     new_path = os.getcwd() + '/returns'  # creates path

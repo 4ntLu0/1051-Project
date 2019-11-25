@@ -4,6 +4,7 @@ from simple_Cimpl_filters import grayscale
 import os
 from L2_5_image_filters import create_red, create_blue, green_filter, combine, extreme_contrast, posterize, sepia, \
     two_tone, three_tone, detect_edges, detect_edges_better, flip_horizontal, flip_vertical
+from typing import Tuple
 
 
 def test_red( ori_img: Image ):

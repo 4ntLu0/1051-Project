@@ -1,7 +1,7 @@
 from Cimpl import load_image, choose_file, show, set_color, save_as, create_color  # change this later please
 from simple_Cimpl_filters import grayscale
 from typing import NewType
-Image = NewType('Image', str)
+Image = NewType('Image', None)
 from datetime import datetime
 
 

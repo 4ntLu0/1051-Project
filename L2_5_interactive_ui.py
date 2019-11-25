@@ -5,11 +5,13 @@ from Cimpl import load_image, create_color, set_color, show, Image, save_as, get
     create_image, save_as, get_color, choose_file, copy
 import os
 
-all_commands = ["L", "S", "2", "3", "X", "T", "P", "E", "I", "V", "H", "Q"]
+all_commands = ["L", "l", "S", "s", "2", "3", "X", "x", "T", "t", "P", "p", "E", "e", "I", "i", "V", "v", "H", "h", "Q", "q"]
 
 def prompt() ->str :
     """
-    Prompts the user for an input. Checks validity before returning an
+    Prompts the user for an input. Checks validility of the input before the filter is applied. 
+    
+    
     """
     command = None
     while command not in all_commands:
@@ -25,7 +27,7 @@ def is_valid():
     :rtype:
     """
 
-def apply_filter(selection, image: Image, additional1 = None, additional2 = None, additional3 = None) -> Image:
+def apply_filter(selection: str, image: Image) -> Image:
     """
     Applies the selected filter.
     """
@@ -36,7 +38,7 @@ def apply_filter(selection, image: Image, additional1 = None, additional2 = None
         if selection == prompts[index]:
             fn = functions[index]
             return fn(image)
-
+    
 
 def main():
     image = load_image(choose_file())

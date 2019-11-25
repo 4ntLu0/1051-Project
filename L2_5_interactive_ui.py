@@ -4,8 +4,9 @@ from typing import Tuple
 from Cimpl import load_image, create_color, set_color, show, Image, save_as, get_width, get_height, copy, \
     create_image, save_as, get_color, choose_file, copy
 import os
+import inspect
 
-def prompt(command: str) ->str :
+def prompt() ->str :
     """
     Prompts the user for an input. Checks validity before returning an
     """
@@ -32,10 +33,26 @@ def apply_filter(selection, image: Image, additional1 = None, additional2 = None
 
     functions = [two_tone, three_tone, extreme_contrast, sepia, posterize, detect_edges, detect_edges_better, flip_vertical, flip_horizontal]
     prompts = ['2', '3', 'X', 'T', 'P', 'E', 'I', 'V', 'H']
-    for index in range(len(prompts)):
-        if selection == prompts[index]:
-            fn = functions[index]
-            return fn(image)
+    if selection == '2':
+        arg1 = input('Enter your first colour: ')
+        arg2 = input('Enter your second colour:' )
+        return two_tone(image, arg1, arg2)
+    elif selection == '3':
+        arg1 = input('Enter your first colour: ')
+        arg2 = input('Enter your second colour: ')
+        arg3 = input('Enter your third colour: ')
+        return three_tone(image, arg1, arg2, arg3)
+    elif selection == 'E':
+        thresh = input('please enter your threshold value: ')
+        return detect_edges(image, int(thresh))
+    elif selection == 'I':
+        thresh = input('Please enter you threshold value: ')
+        return detect_edges_better(image, int(thresh))
+    else:
+        for index in range(len(prompts)):
+            if selection == prompts[index]:
+                fn = functions[index]
+                return fn(image)
 
 
 def main():
@@ -49,4 +66,3 @@ if __name__ == '__main__':
         os.mkdir(new_path)
     except:
         pass
-    main()

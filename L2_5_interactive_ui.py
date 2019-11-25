@@ -10,14 +10,12 @@ def prompt() ->str :
     """
     Prompts the user for an input. Checks validity before returning an
     """
-    command = input("Please enter a command from the following list: [L, S, 2, 3, X, T, P, E, I, V, H, Q]")
-    
-    all_commands = ["L", "S", "2", "3", "X", "T", "P", "E", "I", "V", "H", "Q"]
-   
-    while command in all_commands:
-        pass
-    
-    print("Prompt is not valid. Please Try Again")
+    command = None
+    while command not in all_commands:
+        print("Prompt is not valid. Please Try Again.")
+        command = input("Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip H)orizontal flip \n Q)uit \n Command:")
+        
+        return(command)
 
 def is_valid():
     """
@@ -66,3 +64,4 @@ if __name__ == '__main__':
         os.mkdir(new_path)
     except:
         pass
+    prompt()

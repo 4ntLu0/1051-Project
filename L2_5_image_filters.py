@@ -155,8 +155,6 @@ def extreme_contrast(image: Image):
     Written by Alia Nichol (#101143486).
     >>> extreme_contrast("miss_sullivan.jpg")
     """
-    image = load_image(choose_file())  # Loads the desired image from a given file.
-    show(image)    
     new_image = copy(image)  
 
     for x, y, (r, g, b) in new_image: # Reads through each pixel in the chosen image

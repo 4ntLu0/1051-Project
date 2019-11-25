@@ -11,14 +11,6 @@ def prompt():
     """
 
 
-def is_valid():
-    """
-    checks the validity of the input
-    :return:
-    :rtype:
-    """
-
-
 def apply_filter(selection: str, image: Image) -> Image:
     """
     Applies the selected filter

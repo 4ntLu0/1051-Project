@@ -25,21 +25,18 @@ def is_valid():
     :rtype:
     """
 
-def apply_filter(selection, follow_up, image: Image) -> Image:
+def apply_filter(selection, image: Image, additional1 = None, additional2 = None, additional3 = None) -> Image:
     """
     Applies the selected filter.
     """
-<<<<<<< HEAD
+
     functions = [two_tone, three_tone, extreme_contrast, sepia, posterize, detect_edges, detect_edges_better, flip_vertical, flip_horizontal]
     prompts = ['2', '3', 'X', 'T', 'P', 'E', 'I', 'V', 'H']
-    for index in range(prompts):
-        if selection == prompt[index]:
+    for index in range(len(prompts)):
+        if selection == prompts[index]:
             fn = functions[index]
             return fn(image)
 
-=======
-    
->>>>>>> 0b42f80e97ef4fd813fc69b3131cfd05b8027be8
 
 def main():
     image = load_image(choose_file())

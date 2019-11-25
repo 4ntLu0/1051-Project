@@ -513,19 +513,15 @@ def is_valid():
     :rtype:
     """
 
-def apply_filter(selection: str) -> Image:
+def apply_filter(selection: str, image: Image) -> Image:
     """
     Applies the selected filter
-    :param selection:
-    :type selection:
-    :return: Image !
-    :rtype:
     """
 
 def main():
-    img = load_image(choose_file())
+    image = load_image(choose_file())
     while True:
-        image = apply_filter(prompt())
+        image = apply_filter(prompt(), image)
 
 
 if __name__ == '__main__':

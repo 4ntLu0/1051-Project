@@ -19,15 +19,7 @@ def prompt() -> str:
         command = input(
             "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip H)orizontal flip \n Q)uit \n Command:")
         command = command.upper()
-        return (command)
-
-
-def is_valid():
-    """
-    checks the validity of the input
-    :return:
-    :rtype:
-    """
+        return command
 
 
 def apply_filter(selection: str, image: Image) -> Image:
@@ -39,15 +31,15 @@ def apply_filter(selection: str, image: Image) -> Image:
                  flip_vertical, flip_horizontal]
     prompts = ['2', '3', 'X', 'T', 'P', 'E', 'I', 'V', 'H']
     if selection == '2':
-        # two tone filter selected
+    # two tone filter selected
     elif selection == '3':
-        # three tone filter selected
+    # three tone filter selected
     elif selection == 'E'
-        # edge detection selected
+    # edge detection selected
     elif selection == 'I':
-        # improved edge detection selected
+    # improved edge detection selected
     else:
-        for index in range(len(prompts)):
+        for index in range(len(prompts)):  # if it was one that needed extra input, the code would have stopped by now
             if selection == prompts[index]:
                 fn = functions[index]
                 return fn(image)

@@ -9,7 +9,9 @@ all_commands = ["L", "l", "S", "s", "2", "3", "X", "x", "T", "t", "P", "p", "E",
 
 def prompt() ->str :
     """
-    Prompts the user for an input. Checks validility of the input before the filter is applied.     
+    Prompts the user for an input. Checks validility of the input before the filter is applied. 
+    
+    
     """
     command = None
     while command not in all_commands:

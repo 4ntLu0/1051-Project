@@ -19,16 +19,7 @@ def prompt() -> str:
         command = input(
             "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip H)orizontal flip \n Q)uit \n : ")
         command = command.upper()
-<<<<<<< HEAD
         return (command)
-    
-    
-def image_load():
-    
-    
-=======
-    return command
->>>>>>> b3435bc9dea81f5ac2b52cb570076b1c369e7039
 
 
 def image_load():
@@ -51,15 +42,10 @@ def apply_filter(selection: str, image: Image) -> Image:
     prompts = ['2', '3', 'X', 'T', 'P', 'E', 'I', 'V', 'H']
     if selection == '2':
         color1 = input("First colour:")
-<<<<<<< HEAD
-        color2 = input("Seo
-        # two tone filter selected
-=======
         color2 = input("Second colour:")
         new_image = two_tone(loaded_image, color1, color2)
         show(new_image)
         print("Two tone filter has been applied")
->>>>>>> b3435bc9dea81f5ac2b52cb570076b1c369e7039
     elif selection == '3':
         color1 = input("First colour:")
         color2 = input("Second colour:")

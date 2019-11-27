@@ -238,20 +238,11 @@ def sepia(img, disp=True, save=True):
 
 
 '''code for two and three tone below'''
-black = (0, 0, 0)
-white = (255, 255, 255)
-gray = (128, 128, 128)
-red = (255, 0, 0)
-lime = (0, 255, 0)
-blue = (0, 0, 255)
-yellow = (255, 255, 0)
-cyan = (0, 255, 255)
-magenta = (255, 0, 255)
-
+tones = {'black' : (0, 0, 0), 'white': (255, 255, 255), 'red': (255, 0, 0), 'lime': (0, 255, 0), 'blue': (0, 0, 255),
+         'yellow': (255, 255, 0), 'cyan': (0, 255, 255), 'magenta': (255, 0, 255), 'gray': (128, 128, 128)}
 
 def two_tone(image: Image, CR1, CR2: str) -> Image:
     '''
-
     Returns a copy of the loaded image with only the chosen two pixel colours
 
     Preconditions:
@@ -274,11 +265,15 @@ def two_tone(image: Image, CR1, CR2: str) -> Image:
 
     '''
     image = copy(image)
+    
+    tone1r, tone1g, tone1b = tones[CR1]
+    tone2r, tone2g, tone2b = tones[CR2]
+    
 
     for x, y, (r, g, b) in image:
 
-        tone1 = create_color(CR2[0], CR2[1], CR2[2])
-        tone2 = create_color(CR1[0], CR1[1], CR1[2])
+        tone1 = create_color(tone[CR1], tone[CR2])
+        tone2 = create_color(, CR1[1])
 
         if ((r + g + b) / 3) <= 200:
             set_color(image, x, y, tone1)

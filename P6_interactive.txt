@@ -1,0 +1,98 @@
+from L2_5_image_filters import create_red, create_blue, green_filter, combine, extreme_contrast, posterize, sepia, \
+    two_tone, three_tone, detect_edges, detect_edges_better, flip_horizontal, flip_vertical
+from typing import Tuple
+from Cimpl import load_image, create_color, set_color, show, Image, save_as, get_width, get_height, copy, \
+    create_image, get_color, choose_file, copy
+import os
+
+command = None
+def prompt() -> str:
+    all_commands = ["L", "l", "S", "s", "2", "3", "X", "x", "T", "t", "P", "p", "E", "e", "I", "i", "V", "v", "H", "h", "Q",
+                "q"]
+    command = input("Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip H)orizontal flip \n Q)uit \n : ")
+    
+    loaded_first(command, all_commands)
+
+
+def loaded_first(user_input: str, lst) -> str:
+    """
+    Prompts the user for an input. Checks validility of the input before the filter is applied.     
+    """
+    
+    while command != "L" or "l":
+        print("Try Again. Load Image first.")
+        prompt()
+    image_load(command) 
+    
+def image_load(command):
+    if command == "L" or "l":
+        image = input("Name of image to load:")
+        loaded_image = load_image(image)
+        show(loaded_image)
+        print("Image has been loaded")
+        load = True
+        new_image = apply_filter()   
+    load = False
+
+def apply_filter(command: str, loaded_image: Image) -> Image:
+    """
+    Applies the selected filter to the image. 
+    """
+    
+    while load == True and command != "Q" or "q":
+        
+        if command == "2":
+            color1 = input("First colour:")
+            color2 = input("Second colour:")
+            new_image = two_tone(loaded_image, color1, color2)
+            show(new_image)
+            print("Two tone filter has been applied")
+            
+        elif command == "3":
+            color1 = input("First colour:")
+            color2 = input("Second colour:")
+            color3 = input("Third colour:")
+            new_image = three_tone(loaded_image, color1, color2, color3)
+            show(new_image)
+            print("Three tone filter has been applied")
+
+        elif command == "X" or "x":
+            new_image = extreme_contrast(loaded_image)
+            show(new_image)
+            print("Extreme Contrast filter has been applied")
+            
+        elif command == "T" or "t":
+            new_image = sepia(loaded_image)
+            show(new_image)
+            print("Sepia filter has been applied")
+            
+        elif command == "P" or "p":
+            new_image = posterize(loaded_image)
+            show(new_image)
+            print("Posterize filter has been applied")
+        
+        elif command == "E" or "e":
+            new_image = detect_edges(loaded_image)
+            show(new_image)
+            print("Edge Detection filter has been applied")
+        
+        elif command == "I" or "i":
+            new_image = detect_edges_better(loaded_image)
+            show(new_image)
+            print("Improved Edge Detection filter has been applied")
+            
+        elif command == "V" or "v":
+            new_image = flip_vertical(loaded_image)
+            show(new_image)
+            print("Vertical Flip filter has been applied")
+            
+        elif command == "H" or "h":
+            new_image = flip_horizontal(loaded_image)
+            show(new_image)
+            print("Horizontal Flip filter has been applied")
+        
+        elif command == "S" or "s":
+            save_as(new_image)
+            print("New Image has been saved")
+            
+prompt()

@@ -13,9 +13,7 @@ def prompt() -> str:
     """
     Prompts the user for an input. Checks validility of the input before the filter is applied.     
     """
-    command = input(
-        "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip H)orizontal flip \n Q)uit \n Command:")
-    command = command.upper()
+    command = None
     while command not in all_commands:
         print("Prompt is not valid. Please Try Again.")
         command = input(
@@ -33,13 +31,12 @@ def image_load():
 >>>>>>> b3435bc9dea81f5ac2b52cb570076b1c369e7039
 
 
-def image_load():
-    image = input("Name of image to load:")
-    loaded_image = load_image(image)  # use choose?
-    show(loaded_image)
-    print("Image has been loaded")
-    load = True
-    return loaded_image, load
+def is_valid():
+    """
+    checks the validity of the input
+    :return:
+    :rtype:
+    """
 
 
 def apply_filter(selection: str, image: Image) -> Image:
@@ -62,24 +59,12 @@ def apply_filter(selection: str, image: Image) -> Image:
         print("Two tone filter has been applied")
 >>>>>>> b3435bc9dea81f5ac2b52cb570076b1c369e7039
     elif selection == '3':
-        color1 = input("First colour:")
-        color2 = input("Second colour:")
-        color3 = input("Third colour:")
-        new_image = three_tone(loaded_image, color1, color2, color3)
-        show(new_image)
-        print("Three tone filter has been applied")
-    elif selection == 'E':
-        thresh = input('Threshold: ')
-        new_image = detect_edges(loaded_image, thresh)
-        show(new_image)
-        print("Edge Detection filter has been applied")
+        # three tone filter selected
+    elif selection == 'E'
+        # edge detection selected
     elif selection == 'I':
-        thresh = input('Threshold: ')
-        new_image = detect_edges_better(loaded_image, thresh)
-        show(new_image)
-        print("Improved Edge Detection filter has been applied")
+        # improved edge detection selected
     else:
-        # if it was one that needed extra input, the code would have stopped by now
         for index in range(len(prompts)):
             if selection == prompts[index]:
                 fn = functions[index]
@@ -87,14 +72,9 @@ def apply_filter(selection: str, image: Image) -> Image:
 
 
 def main():
-    is_loaded = False
+    image = load_image(choose_file())
     while True:
-        command = prompt()
-        if command == 'L':
-            is_loaded = True
-            image = image_load()
-            img = copy(image)
-        img = apply_filter(command, img)
+        image = apply_filter(prompt(), image)
 
 
 if __name__ == '__main__':
@@ -103,4 +83,4 @@ if __name__ == '__main__':
         os.mkdir(new_path)
     except:
         pass
-    main()
+    prompt()

@@ -37,36 +37,37 @@ def apply_filter(selection: str, loaded_image: Image) -> Image:
     Applies the selected filter.
     """
 
-    functions = [two_tone, three_tone, extreme_contrast, sepia, posterize, detect_edges, detect_edges_better,
-                 flip_vertical, flip_horizontal]
-    prompts = ['2', '3', 'X', 'T', 'P', 'E', 'I', 'V', 'H']
+    functions = [extreme_contrast, sepia, posterize, flip_vertical, flip_horizontal]
+    prompts = ['X', 'T', 'P', 'V', 'H']
     
     if selection == '2':
         color1 = input("First colour:")
         color2 = input("Second colour:")
         new_image = two_tone(loaded_image, color1, color2)
-        show(new_image)
         print("Two tone filter has been applied")
+        return new_image
+        
         
     elif selection == '3':
         color1 = input("First colour:")
         color2 = input("Second colour:")
         color3 = input("Third colour:")
         new_image = three_tone(loaded_image, color1, color2, color3)
-        show(new_image)
         print("Three tone filter has been applied") 
-        
+        return new_image        
+
     elif selection == 'E':
         thresh = input('Threshold: ')
         new_image = detect_edges(loaded_image, thresh)
-        show(new_image)
         print("Edge Detection filter has been applied")
+        return new_image
         
     elif selection == 'I':
         thresh = input('Threshold: ')
         new_image = detect_edges_better(loaded_image, thresh)
-        show(new_image)
         print("Improved Edge Detection filter has been applied")
+        return new_image
+        
         
     else:
         for index in range(len(prompts)):

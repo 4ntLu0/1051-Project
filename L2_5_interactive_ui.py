@@ -31,12 +31,14 @@ def image_load():
 >>>>>>> b3435bc9dea81f5ac2b52cb570076b1c369e7039
 
 
-def is_valid():
-    """
-    checks the validity of the input
-    :return:
-    :rtype:
-    """
+def image_load():
+    image = input("Name of image to load:")
+    loaded_image = load_image(image)  # use choose?
+    show(loaded_image)
+    print("Image has been loaded")
+    load = True
+    return loaded_image, load
+
 
 
 def apply_filter(selection: str, image: Image) -> Image:
@@ -59,11 +61,22 @@ def apply_filter(selection: str, image: Image) -> Image:
         print("Two tone filter has been applied")
 >>>>>>> b3435bc9dea81f5ac2b52cb570076b1c369e7039
     elif selection == '3':
-        # three tone filter selected
+        color1 = input("First colour:")
+        color2 = input("Second colour:")
+        color3 = input("Third colour:")
+        new_image = three_tone(loaded_image, color1, color2, color3)
+        show(new_image)
+        print("Three tone filter has been applied")        
     elif selection == 'E'
-        # edge detection selected
+        thresh = input('Threshold: ')
+        new_image = detect_edges(loaded_image, thresh)
+        show(new_image)
+        print("Edge Detection filter has been applied")
     elif selection == 'I':
-        # improved edge detection selected
+        thresh = input('Threshold: ')
+        new_image = detect_edges_better(loaded_image, thresh)
+        show(new_image)
+        print("Improved Edge Detection filter has been applied")
     else:
         for index in range(len(prompts)):
             if selection == prompts[index]:
@@ -73,8 +86,14 @@ def apply_filter(selection: str, image: Image) -> Image:
 
 def main():
     image = load_image(choose_file())
+    is_loaded = False
     while True:
-        image = apply_filter(prompt(), image)
+        command = prompt()
+        if command == 'L':
+            is_loaded = True
+            image = image_load()
+            img = copy(image)
+        img = apply_filter(command, img)
 
 
 if __name__ == '__main__':
@@ -83,4 +102,4 @@ if __name__ == '__main__':
         os.mkdir(new_path)
     except:
         pass
-    prompt()
+    main()

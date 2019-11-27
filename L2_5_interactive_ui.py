@@ -21,7 +21,7 @@ def prompt() -> str:
         print("No such command")
         command = input("Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip H)orizontal flip \n Q)uit \n : ").upper()
         #command = command.upper()
-        return command
+    return command
 
 def image_load():
     """
@@ -57,23 +57,23 @@ def apply_filter(selection: str, loaded_image: Image) -> Image:
         return new_image        
 
     elif selection == 'E':
-        thresh = input('Threshold: ')
+        thresh = int(input('Threshold: '))
         new_image = detect_edges(loaded_image, thresh)
         print("Edge Detection filter has been applied")
         return new_image
         
     elif selection == 'I':
-        thresh = input('Threshold: ')
+        thresh = int(input('Threshold: '))
         new_image = detect_edges_better(loaded_image, thresh)
         print("Improved Edge Detection filter has been applied")
         return new_image
-        
         
     else:
         for index in range(len(prompts)):
             if selection == prompts[index]:
                 fn = functions[index]
-                return fn(loaded_image)
+                img = fn(loaded_image)
+                return img
 
 
 def main():
@@ -84,9 +84,16 @@ def main():
             is_loaded = True
             image = image_load()
             img = copy(image)
+            
         elif not is_loaded:
             print("No image loaded")
             prompt()
+            
+        elif command == 'S':
+            filename = input("What would you like the file to be saved as? (ex. new_image.jpg): ")
+            save_as(img, filename)
+            print("Image has been saved as:", filename)
+            
         else: 
             img = apply_filter(command, img)
 

@@ -351,8 +351,7 @@ def detect_edges(image: Image, threshold: int) -> Image:
             r, g, b = (get_color(new_image, x, y))
             r1, g1, b1 = (get_color(new_image, x, y + 1))
 
-            if abs(((r + g + b) // 3) - ((
-                                                 r1 + g1 + b1) // 3)) > threshold:  # Changes the pixels to black if
+            if abs(((r + g + b) // 3) - ((r1 + g1 + b1) // 3)) > threshold:  # Changes the pixels to black if
                 # contrast between the two pixels is high.
                 set_color(new_image, x, y, create_color(0, 0, 0))
             else:  # Changes the pixels to white is the contrast between the two pixels is low

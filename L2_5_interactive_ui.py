@@ -1,5 +1,5 @@
-
-
+"""ECOR 1051 Fall 2019 Project - Interactive User Interface from group L2-5. Submitted December 1, 2019. 
+This code has been attributed from given files on cuLearn."""
 
 from L2_5_image_filters import create_red, create_blue, green_filter, combine, extreme_contrast, posterize, sepia, \
     two_tone, three_tone, detect_edges, detect_edges_better, flip_horizontal, flip_vertical
@@ -73,7 +73,6 @@ def apply_filter(selection: str, image: Image) -> Image:
 
 
 def main():
-    image = load_image(choose_file())
     is_loaded = False
     while True:
         command = prompt()
@@ -84,7 +83,8 @@ def main():
         elif not is_loaded:
             print("No image loaded")
             prompt()
-        img = apply_filter(command, img)
+        else: 
+            img = apply_filter(command, img)
 
 
 if __name__ == '__main__':

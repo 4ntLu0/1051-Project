@@ -17,9 +17,14 @@ def prompt() -> str:
     while command not in all_commands:
         print("Prompt is not valid. Please Try Again.")
         command = input(
-            "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip H)orizontal flip \n Q)uit \n Command:")
+            "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip H)orizontal flip \n Q)uit \n : ")
         command = command.upper()
         return (command)
+    
+    
+def image_load():
+    
+    
 
 
 def is_valid():
@@ -39,6 +44,8 @@ def apply_filter(selection: str, image: Image) -> Image:
                  flip_vertical, flip_horizontal]
     prompts = ['2', '3', 'X', 'T', 'P', 'E', 'I', 'V', 'H']
     if selection == '2':
+        color1 = input("First colour:")
+        color2 = input("Seo
         # two tone filter selected
     elif selection == '3':
         # three tone filter selected

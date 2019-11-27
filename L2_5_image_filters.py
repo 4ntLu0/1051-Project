@@ -21,8 +21,6 @@ def create_red(img: Image, verify: bool = True, log: bool = False):
     >>> show(image)
     """
     image = copy(img)
-    if verify:
-        show(image)  # shows the original image
 
     # checks if you are logging or not (once, at the start, instead of everytime)
     if log:
@@ -60,7 +58,6 @@ def create_blue(img):
     """
     image = copy(img)
     # image = load_image('p2-original.jpg')  # loads the original colourless picture
-    show(image)  # shows original image
 
     new_image = image
 
@@ -81,7 +78,6 @@ def green_filter(image1: Image) -> Image:
 
     """
     image = copy(image1)  # creates a copy of the image so it is not overrided
-    show(image)
 
     for x, y, (r, g, b) in image:  # reads through the image
         green = create_color(0, g, 0)
@@ -210,7 +206,7 @@ def posterize(image: Image) -> Image:
     return image
 
 
-def sepia(img, disp=True, save=True):
+def sepia(img, disp=True, save=False):
     """ Adjusts the r, g, and b values of an image to create a sepia image.
     Written by Anthony Luo
     :param img: Full colour image

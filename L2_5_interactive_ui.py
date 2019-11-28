@@ -1,6 +1,14 @@
 """ECOR 1051 Fall 2019 Project - Interactive User Interface from group L2-5. Submitted December 1, 2019. 
 This code has been attributed from given files on cuLearn."""
 
+#Things to double check:
+#- " vs ' are consistent in the code
+#P8 need to finish the README (Contact info, the date, software's name, small description, installation requirements, etc)
+#make sure that the image is shown at the correct times and # of times
+#complete the docstrings and the type annotations
+#in the do's and don't it says that we cannot use break!!
+#do we need to add comments throughout the code??
+
 from L2_5_image_filters import create_red, create_blue, green_filter, combine, extreme_contrast, posterize, sepia, \
     two_tone, three_tone, detect_edges, detect_edges_better, flip_horizontal, flip_vertical
 from typing import Tuple

@@ -265,22 +265,24 @@ def two_tone(image: Image, CR1, CR2: str) -> Image:
     tone1r, tone1g, tone1b = tones[CR1]
     tone2r, tone2g, tone2b = tones[CR2]
     
-
+    tone1 = create_color(tone1r, tone1g, tone1b)
+    tone2 = create_color(tone2r, tone2g, tone2b)    
+    
     for x, y, (r, g, b) in image:
+        average = ((r + g + b) / 3)
 
-        tone1 = create_color(tone[CR1], tone[CR2])
-        tone2 = create_color(, CR1[1])
-
-        if ((r + g + b) / 3) <= 200:
+        if average <= 200:
             set_color(image, x, y, tone1)
 
-        if ((r + g + b) / 3) >= 201:
-            set_color(image, x, y, tone2)
-
-    return show(image)
+        else:
+            set_color(image, x, y, tone2)    
 
 
-def three_tone(image: Image, CR1, CR2, CR3: str) -> Image:
+    show(image)
+    return image
+
+
+def three_tone(image, CR1, CR2, CR3: str):
     '''
 
     Returns a copy of the loaded image with only the three chosen pixel colours
@@ -298,8 +300,6 @@ def three_tone(image: Image, CR1, CR2, CR3: str) -> Image:
     magenta
     gray
 
-
-
     >>>three_tone(image,black,blue,red)
 
     By: Abdelrahman Alatoom
@@ -307,21 +307,28 @@ def three_tone(image: Image, CR1, CR2, CR3: str) -> Image:
 
     image = copy(image)
 
+    tone1r, tone1g, tone1b = tones[CR1]
+    tone2r, tone2g, tone2b = tones[CR2]
+    tone3r, tone3g, tone3b = tones[CR3]
+    
+    tone1 = create_color(tone1r, tone1g, tone1b)
+    tone2 = create_color(tone2r, tone2g, tone2b)
+    tone3 = create_color(tone3r, tone3g, tone3b)
+
     for x, y, (r, g, b) in image:
-
-        tone1 = create_color(CR1[0], CR1[1], CR1[2])
-        tone2 = create_color(CR2[0], CR2[1], CR2[2])
-        tone3 = create_color(CR3[0], CR3[1], CR3[2])
-
-        if ((r + g + b) / 3) <= 84:
-            set_color(image, x, y, tone2)
-
-        if 85 <= ((r + g + b) / 3) <= 170:
+        average = ((r + g + b) / 3)
+        
+        if average < 84:
             set_color(image, x, y, tone1)
 
-        if ((r + g + b) / 3) >= 171:
+        elif average <= 170:
+            set_color(image, x, y, tone2)
+
+        else:
             set_color(image, x, y, tone3)
-    return show(image)
+   
+    show(image)
+    return image
 
 
 def detect_edges(image: Image, threshold: int) -> Image:

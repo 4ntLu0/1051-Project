@@ -2,7 +2,7 @@ from Utils.Cimpl import load_image, choose_file, show, set_color, save_as, creat
 # this later please
 from Utils.simple_Cimpl_filters import grayscale
 from typing import NewType, List
-import numpy as np
+#import numpy as np
 
 Image = NewType('Image', str)
 from datetime import datetime

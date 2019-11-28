@@ -90,7 +90,11 @@ def main():
             is_loaded = True
             image = image_load()
             img = copy(image)
-            
+
+        elif command == 'Q':
+            print('Exiting program')
+            exit()
+
         elif not is_loaded:
             print("No image loaded")
             prompt()
@@ -99,12 +103,7 @@ def main():
             filename = input("What would you like the file to be saved as? (ex. new_image.jpg): ")
             save_as(img, filename)
             print("Image has been saved as:", filename)
-            
-        elif command == 'Q':
-            print("Exiting program")
-            break
-        
-            
+
         else: 
             img = apply_filter(command, img)
 

@@ -92,6 +92,11 @@ def main():
             save_as(img, filename)
             print("Image has been saved as:", filename)
             
+        elif command == 'Q':
+            print("Exiting program")
+            break
+        
+            
         else: 
             img = apply_filter(command, img)
 

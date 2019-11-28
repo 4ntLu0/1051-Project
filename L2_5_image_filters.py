@@ -170,7 +170,7 @@ def extreme_contrast(image: Image):
         else:
             b = 255
 
-        set_color(image, x, y, create_color(r, g, b))
+        set_color(new_image, x, y, create_color(r, g, b))
     show(new_image)
     return new_image
 

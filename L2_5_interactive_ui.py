@@ -46,8 +46,7 @@ def apply_filter(selection: str, loaded_image: Image) -> Image:
         new_image = two_tone(loaded_image, color1, color2)
         print("Two tone filter has been applied")
         return new_image
-        
-        
+           
     elif selection == '3':
         color1 = input("First colour:")
         color2 = input("Second colour:")
@@ -74,7 +73,6 @@ def apply_filter(selection: str, loaded_image: Image) -> Image:
                 fn = functions[index]
                 img = fn(loaded_image)
                 return img
-
 
 def main():
     is_loaded = False

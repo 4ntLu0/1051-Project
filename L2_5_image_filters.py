@@ -1,21 +1,17 @@
+"""ECOR 1051 Fall 2019 Project - Compiled image filters from group L2-5. Submitted December 1, 2019.
+This code has been attributed from given files on cuLearn."""
+
 from Cimpl import load_image, create_color, set_color, show, Image, save_as, get_width, get_height, copy, \
     create_image, save_as, get_color, choose_file, copy
 from simple_Cimpl_filters import grayscale
+from typing import Tuple, List
 import os
 from typing import NewType
 
 
-def create_red(img: Image, verify: bool = True, log: bool = False):
+def create_red(img: Image, verify: bool = True, log: bool = False) -> Image:
     """ Saves a new image which constitutes only the red channel of an image img
-    Written by Anthony Luo
-    :param img: Original image
-    :type img: Image
-    :param verify: Whether or not to verify the image (ie, show it to the user)
-    :type verify: bool
-    :param log: whether or not to save image data to log files
-    :type log: bool
-    :return: None
-    :rtype: NoneType
+    Written by Anthony Luo (#101145222)
     >>> image = load_image(choose_image())
     >>> create_red(image)
     >>> show(image)
@@ -26,29 +22,32 @@ def create_red(img: Image, verify: bool = True, log: bool = False):
     if log:
         try:
             os.remove('redImgLog.txt')
+
         except:
             pass
         red_log = open('redImgLog.txt', 'a')  # creates a NEW log file
-        for x, y, (r, g, b) in image:  # reads through the image pixel by pixel
-            red = create_color(r, 0, 0)  # creates new 'colour' tuple
 
-            # remaps each x,y coordinate to new colour
+        for x, y, (r, g, b) in image:
+            red = create_color(r, 0, 0)
             set_color(image, x, y, red)
+
         str1 = f'{x:03}' + f'{y:03}' + f'{r:03}' + f'{g:03}' + f'{b:03}' + f'{red[0]:03}' + \
                f'{red[1]:03}' + f'{red[2]:03}' + '\n'  # creates logger string
         red_log.write(str1)  # saves string
-    else:
-        for x, y, (r, g, b) in image:  # reads through the image pixel by pixel
-            red = create_color(r, 0, 0)  # creates new 'colour' tuple
 
-            # remaps each x,y coordinate to new colour
+    else:
+        for x, y, (r, g, b) in image:
+            red = create_color(r, 0, 0)
             set_color(image, x, y, red)
 
     save_as(image, 'returns/red_channel.png')  # saves as a new image
+
     if verify:
         show(load_image('red_channel.png'))  # shows the image to double check
 
     print('red_channel created')  # notifies user
+
+    return image
 
 
 def create_blue(img):
@@ -87,15 +86,12 @@ def green_filter(image1: Image) -> Image:
     show(load_image('green_channel.png'))
     print('green_channel saved as new image')
 
-    return image1
+    return image
 
 
-def combine(log=False):
+def combine(log: Tuple = False) -> Tuple[Image, List[int], List[int], List[int], List[Tuple]]:
     """ Combines three single-colour images (red, green, and blue) into a final image.
     Written by Anthony Luo
-    :param log: Determines whether or not to return a datalog
-    :type log: Defaults to False, ie no log
-    :return: returns logs as tuple if log
     >>> combine()
     >>> show(load_image('combined_image.png'))
     """
@@ -105,11 +101,9 @@ def combine(log=False):
     b_img = load_image('blue_channel.png')
 
     # creates new image with hard dimensions.
-    # TODO: create a way to dynamically assign height
     new_img = create_image(640, 480)
 
     # creates the different channels for RGB
-    # TODO: figure out a way to store these in a numpy matrix?
     r_chan = []
     g_chan = []
     b_chan = []
@@ -132,8 +126,8 @@ def combine(log=False):
             counter += 1
 
         show(new_img)
-        save_as(new_img, 'combined_image.png')  # save and show image
         show(load_image('combined_image.png'))
+        return new_img
     else:  # this is the same as above, except it saves all the files.
         for x, y, (r, g, b) in new_img:
             colour = create_color(r_chan[counter], g_chan[counter], b_chan[counter])
@@ -176,7 +170,8 @@ def extreme_contrast(image: Image):
 
 
 def _adjust_component(comp: int) -> int:  # enters a red, green, or blue component
-
+    """ Returns the midpoint of a component
+    """
     if 0 <= comp <= 63:
         return 31
     elif 63 < comp <= 127:
@@ -190,12 +185,10 @@ def _adjust_component(comp: int) -> int:  # enters a red, green, or blue compone
     elif comp < 0:
         return 31
 
-
-# the midpoint of it's quadrant is returned
-# this function is a helper function that will be called upon
-
-
 def posterize(image: Image) -> Image:
+    """ posterizes the image by setting each r, g, b value to the midpoint of it's quadrant
+    Written by: Emilio Lindia
+    """
     new_image = copy(image)  # assigns new image as a copy of original
     for pixel in image:  # examines all pixels in the new image
         x, y, (r, g, b) = pixel
@@ -206,17 +199,9 @@ def posterize(image: Image) -> Image:
     return image
 
 
-def sepia(img, disp=True, save=False):
+def sepia(img: Image, disp: bool = True, save: bool = False) -> Image:
     """ Adjusts the r, g, and b values of an image to create a sepia image.
     Written by Anthony Luo
-    :param img: Full colour image
-    :type img: 'Image'
-    :param disp: whether or not to display the image
-    :type disp: bool
-    :param save: whether or not to save the image
-    :type save: bool
-    :return: sepia-image
-    :rtype: 'Image'
     """
     sep_img = grayscale(img)
     for x, y, (r, g, b) in sep_img:
@@ -234,8 +219,9 @@ def sepia(img, disp=True, save=False):
 
 
 '''code for two and three tone below'''
-tones = {'black' : (0, 0, 0), 'white': (255, 255, 255), 'red': (255, 0, 0), 'lime': (0, 255, 0), 'blue': (0, 0, 255),
+tones = {'black': (0, 0, 0), 'white': (255, 255, 255), 'red': (255, 0, 0), 'lime': (0, 255, 0), 'blue': (0, 0, 255),
          'yellow': (255, 255, 0), 'cyan': (0, 255, 255), 'magenta': (255, 0, 255), 'gray': (128, 128, 128)}
+
 
 def two_tone(image: Image, CR1, CR2: str) -> Image:
     '''
@@ -261,13 +247,13 @@ def two_tone(image: Image, CR1, CR2: str) -> Image:
 
     '''
     image = copy(image)
-    
+
     tone1r, tone1g, tone1b = tones[CR1]
     tone2r, tone2g, tone2b = tones[CR2]
-    
+
     tone1 = create_color(tone1r, tone1g, tone1b)
-    tone2 = create_color(tone2r, tone2g, tone2b)    
-    
+    tone2 = create_color(tone2r, tone2g, tone2b)
+
     for x, y, (r, g, b) in image:
         average = ((r + g + b) / 3)
 
@@ -275,8 +261,7 @@ def two_tone(image: Image, CR1, CR2: str) -> Image:
             set_color(image, x, y, tone1)
 
         else:
-            set_color(image, x, y, tone2)    
-
+            set_color(image, x, y, tone2)
 
     show(image)
     return image
@@ -310,14 +295,14 @@ def three_tone(image, CR1, CR2, CR3: str):
     tone1r, tone1g, tone1b = tones[CR1]
     tone2r, tone2g, tone2b = tones[CR2]
     tone3r, tone3g, tone3b = tones[CR3]
-    
+
     tone1 = create_color(tone1r, tone1g, tone1b)
     tone2 = create_color(tone2r, tone2g, tone2b)
     tone3 = create_color(tone3r, tone3g, tone3b)
 
     for x, y, (r, g, b) in image:
         average = ((r + g + b) / 3)
-        
+
         if average < 84:
             set_color(image, x, y, tone1)
 
@@ -326,7 +311,7 @@ def three_tone(image, CR1, CR2, CR3: str):
 
         else:
             set_color(image, x, y, tone3)
-   
+
     show(image)
     return image
 
@@ -359,7 +344,7 @@ def detect_edges(image: Image, threshold: int) -> Image:
     return new_image
 
 
-def _avg_bright(colour):
+def _avg_bright(colour: Tuple[int]) -> int:
     """Returns avg brightness of three colours
     written by anthony luo
     """
@@ -367,7 +352,7 @@ def _avg_bright(colour):
     return (r + g + b) / 3
 
 
-def _new_col(colour):
+def _new_col(colour: Tuple[int]) -> int:
     """ Returns a colour type from a colour
     written by Anthony Luo
     """
@@ -376,7 +361,8 @@ def _new_col(colour):
     return create_color(r, g, b)
 
 
-def detect_edges_better(img: Image, thresh: int = 0, disp: bool = True, save: bool = True):
+def detect_edges_better(img: Image, thresh: int = 0,\
+                        disp: bool = True, save: bool = False):
     """ return an image with the edge detects.
     Written by Anthony Luo (#101145222)
     :param img: Image to detect edges on
@@ -385,7 +371,7 @@ def detect_edges_better(img: Image, thresh: int = 0, disp: bool = True, save: bo
     :param save: Whether or not ot save the image. True by default.
     :return: edge detected image.
     >>> detect_edges_better(load_image(choose_file()), 13)
-    >>> detect_edges_better(load_image(choose_file()), 15, False, True)
+    >>> detect_edges_better(load_image(choose_file()), 15, True, False)
     """
 
     # functional definitions
@@ -398,9 +384,10 @@ def detect_edges_better(img: Image, thresh: int = 0, disp: bool = True, save: bo
     for y in range(height - 1):  # starts at the first level, then moves down
         for x in range(width - 1):
             # compares brightness between two images and then resets colours.
-            if abs(_avg_bright(tuple(get_color(img, x, y))) - _avg_bright(
-                    tuple(get_color(img, x, y + 1)))) > thresh or abs(
-                _avg_bright(tuple(get_color(img, x, y))) - _avg_bright(tuple(get_color(img, x + 1, y)))) > thresh:
+            if abs(_avg_bright(tuple(get_color(img, x, y))) - _avg_bright( \
+                    tuple(get_color(img, x, y + 1)))) > thresh or abs( \
+                    _avg_bright(tuple(get_color(img, x, y))) - \
+                    _avg_bright(tuple(get_color(img, x + 1, y)))) > thresh:
                 # sets colour to black (edge detected)
                 set_color(new_img, x, y, black)
             else:
@@ -495,8 +482,6 @@ def flip_vertical(img):
 # Adjust pixels along x axis(width of image) ex: one pixel has a particular/
 # Distance from one edge of the image, to flip the image, the pixel's distance/
 # From the edge is now the same distance but from the other edge
-
-
 
 
 if __name__ == '__main__':

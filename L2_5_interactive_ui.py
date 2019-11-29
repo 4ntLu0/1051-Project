@@ -5,7 +5,8 @@ This code has been attributed from given files on cuLearn."""
 #  - P8 need to finish the README (Contact info, the date, software"s name, small description, installation requirements, etc)
 #  - make sure that the image is shown at the correct times and # of times SHOULD BE DONE NOW
 #  - complete the docstrings and the type annotations
-#  - comment the code
+#  - comment the code??
+#  - Need to add shell examples into the docstrings
 
 from L2_5_image_filters import extreme_contrast, posterize, sepia, two_tone, three_tone, detect_edges, \
     detect_edges_better, flip_horizontal, flip_vertical, Image
@@ -35,7 +36,7 @@ def prompt() -> str:
 
 
 def image_load() -> Image:
-    """ prompts the user to enter a filename before loading and returning the image.
+    """ Prompts the user to enter a filename they wish to load before applying a filter and returning the image.
     Written by:
     """
     image = input("Name of image to load:")
@@ -47,8 +48,8 @@ def image_load() -> Image:
 
 def apply_filter(selection: str, loaded_image: Image) -> Image:
     """
-    Applies the selected filter.
-    Written by: Anthony Luo
+    Applies the selected filter to the loaded image. 
+    Written by: Anthony Luo and Alia Nichol 
     """
 
     functions = [extreme_contrast, sepia, posterize, flip_vertical, flip_horizontal]
@@ -90,7 +91,7 @@ def apply_filter(selection: str, loaded_image: Image) -> Image:
 
 
 def main():
-    """ Runs the program!
+    """ Runs the entire interactive program. 
     Written by:
     """
     is_loaded = False

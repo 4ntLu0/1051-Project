@@ -12,7 +12,7 @@ Group Leader: Anthony Luo"""
 
 from L2_5_image_filters import extreme_contrast, posterize, sepia, two_tone, three_tone, detect_edges, \
     detect_edges_better, flip_horizontal, flip_vertical, Image
-from Cimpl import load_image,show, Image, save_as, copy
+from Cimpl import load_image, show, Image, save_as, copy
 import os
 
 all_commands = ["L", "S", "2", "3", "X", "T", "P", "E", "I", "V", "H", "Q"]
@@ -24,16 +24,16 @@ def prompt() -> str:
     Written by: Alia Nichol, Emilio Lindia
     """
     command = input(
-        "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast" \
-            " T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip" \
-            " H)orizontal flip \n Q)uit \n : ").upper()
+        "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast"
+        " T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip"
+        " H)orizontal flip \n Q)uit \n : ").upper()
 
     while command not in all_commands:
         print("No such command")
         command = input(
-            "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme" \
-                " contrast T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip H)orizontal"\
-                "flip \n Q)uit \n : ").upper()
+            "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme"
+            " contrast T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip H)orizontal"
+            "flip \n Q)uit \n : ").upper()
     return command
 
 
@@ -51,6 +51,7 @@ def image_load() -> Image:
     except:
         print("Image could not be loaded")
         return 'Not Loaded'
+
 
 def apply_filter(selection: str, loaded_image: Image) -> Image:
     """

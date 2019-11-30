@@ -33,16 +33,16 @@ USAGE
 CREDITS
 ----------------------------------
 Authors of Functions:
-detect_edges - Alia Nichol
-detect_edges_better - Anthony Luo
-flip_horizontal -
-flip_vertical -
-posterize - Emilio Lindia
-sepia - Anthony Luo
-three_tone -
-two_tone -
-extreme_contrast - Alia Nichol
-interactive program - Anthony Luo, Alia Nichol, Emilio Lindia, Abdelrahman Alatoom.
+    detect_edges - Alia Nichol
+    detect_edges_better - Anthony Luo
+    flip_horizontal -
+    flip_vertical -
+    posterize - Emilio Lindia
+    sepia - Anthony Luo
+    three_tone -
+    two_tone -
+    extreme_contrast - Alia Nichol
+    interactive program - Anthony Luo, Alia Nichol, Emilio Lindia, Abdelrahman Alatoom.
 
 
 LICENSE

@@ -363,7 +363,7 @@ def test_extreme():
     else:
         print("HAS THE ORIGINAL IMAGE BEEN CHANGED? : YES")
 
-    if image1 == extremeContrast(image1):
+    if image1 == extreme_contrast(image1):
         print("the image contrast has: PASSED THE TEST")
     else:
         print("the image contrast has: FAILED THE TEST")
@@ -377,7 +377,7 @@ def posterize_filter_test(image):
     By: Abdelrahman Alatoom
     """
 
-    final_image = posterize_filter(image)
+    final_image = posterize(image)
 
     for pixel in image:
         x, y, (r, g, b) = pixel
@@ -438,7 +438,7 @@ def posterize_filter_test(image):
     print("Filter working properly")
 
 
-def sepiaTest() -> None:
+def sepia_test() -> None:
     """Test function for the sepia filter that checks if all the r, g, b components have gotten the sepia filter
     applied to them. The function returns "PASS" if all the pixels are successfully changed. If "PASS" is returned,
     this indicates that the red component has increased by the correct percentage and the blue component has
@@ -465,7 +465,7 @@ def sepiaTest() -> None:
         print("fails")
 
 
-def _setCol(tone: Tuple[int]):
+def _set_col(tone: Tuple[int]):
     """ returns a colour created from a tuple with three integers.
         Written by Anthony Luo
         :param tone:
@@ -477,7 +477,7 @@ def _setCol(tone: Tuple[int]):
     return create_color(r, g, b)
 
 
-def testThreeTone():
+def test_three_tone():
     tones = ["black", "white", "red", "lime", "blue",
              "yellow", "cyan", "magenta", "gray"]
     colours = [(0, 0, 0), (255, 255, 255), (255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255),
@@ -503,9 +503,9 @@ def testThreeTone():
         test_img = three_tone(image, tones[i], tones[i - 1], tones[i - 2])  # runs image through the function
 
         # set colours, to be compared with
-        col1 = _setCol(colours[i])
-        col2 = _setCol(colours[i - 1])
-        col3 = _setCol(colours[i - 2])
+        col1 = _set_col(colours[i])
+        col2 = _set_col(colours[i - 1])
+        col3 = _set_col(colours[i - 2])
 
         # compares colours and prints test results.
         if (get_color(test_img, 0, 0) == col1) and (get_color(test_img, 1, 0) == col2) and (
@@ -515,7 +515,7 @@ def testThreeTone():
             print("Fails at:", tones[i], tones[i - 1], tones[i - 2])
 
 
-def testTwoTone():
+def test_two_tone():
     tones = ["black", "white", "red", "lime", "blue",
              "yellow", "cyan", "magenta", "gray"]
     colours = [(0, 0, 0), (255, 255, 255), (255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255),
@@ -540,8 +540,8 @@ def testTwoTone():
         print("\n--- testing", tones[i], tones[i - 1], "---")
         test_img = two_tone(image, tones[i], tones[i - 1])
 
-        col1 = _setCol(colours[i])
-        col2 = _setCol(colours[i - 1])
+        col1 = _set_col(colours[i])
+        col2 = _set_col(colours[i - 1])
         if (get_color(test_img, 0, 0) == col1) and (get_color(test_img, 1, 0) == col2):
             print("Passed")
         else:

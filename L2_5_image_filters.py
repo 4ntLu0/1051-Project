@@ -22,18 +22,18 @@ def create_red(img: Image, verify: bool = True, log: bool = False) -> Image:
     # checks if you are logging or not (once, at the start, instead of everytime)
     if log:
         try:
-            os.remove('redImgLog.txt')
+            os.remove("redImgLog.txt")
 
         except:
             pass
-        red_log = open('redImgLog.txt', 'a')  # creates a NEW log file
+        red_log = open("redImgLog.txt", "a")  # creates a NEW log file
 
         for x, y, (r, g, b) in image:
             red = create_color(r, 0, 0)
             set_color(image, x, y, red)
 
-        str1 = f'{x:03}' + f'{y:03}' + f'{r:03}' + f'{g:03}' + f'{b:03}' + f'{red[0]:03}' + \
-               f'{red[1]:03}' + f'{red[2]:03}' + '\n'  # creates logger string
+        str1 = f"{x:03}" + f"{y:03}" + f"{r:03}" + f"{g:03}" + f"{b:03}" + f"{red[0]:03}" + \
+               f"{red[1]:03}" + f"{red[2]:03}" + "\n"  # creates logger string
         red_log.write(str1)  # saves string
 
     else:
@@ -41,12 +41,12 @@ def create_red(img: Image, verify: bool = True, log: bool = False) -> Image:
             red = create_color(r, 0, 0)
             set_color(image, x, y, red)
 
-    save_as(image, 'returns/red_channel.png')  # saves as a new image
+    save_as(image, "returns/red_channel.png")  # saves as a new image
 
     if verify:
-        show(load_image('red_channel.png'))  # shows the image to double check
+        show(load_image("red_channel.png"))  # shows the image to double check
 
-    print('red_channel created')  # notifies user
+    print("red_channel created")  # notifies user
 
     return image
 
@@ -57,7 +57,7 @@ def create_blue(img):
     -Emilio Lindia
     """
     image = copy(img)
-    # image = load_image('p2-original.jpg')  # loads the original colourless picture
+    # image = load_image("p2-original.jpg")  # loads the original colourless picture
 
     new_image = image
 
@@ -66,10 +66,10 @@ def create_blue(img):
 
         set_color(new_image, x, y, blue)
 
-    save_as(new_image, 'returns/blue_channel.png')  # saves the blue filter as a new image
-    show(load_image('blue_channel.png'))  # shows image
+    save_as(new_image, "returns/blue_channel.png")  # saves the blue filter as a new image
+    show(load_image("blue_channel.png"))  # shows image
 
-    print('blue_channel saved as new_image')
+    print("blue_channel saved as new_image")
     return new_image
 
 
@@ -83,9 +83,9 @@ def green_filter(image1: Image) -> Image:
         green = create_color(0, g, 0)
         set_color(image, x, y, green)  # sets all the pixels of defined locations in that image to the color
 
-    save_as(image, 'returns/green_channel.png')
-    show(load_image('green_channel.png'))
-    print('green_channel saved as new image')
+    save_as(image, "returns/green_channel.png")
+    show(load_image("green_channel.png"))
+    print("green_channel saved as new image")
 
     return image
 
@@ -94,12 +94,12 @@ def combine(log: Tuple = False) -> Tuple[Image, List[int], List[int], List[int],
     """ Combines three single-colour images (red, green, and blue) into a final image.
     Written by Anthony Luo
     >>> combine()
-    >>> show(load_image('combined_image.png'))
+    >>> show(load_image("combined_image.png"))
     """
     # loads images in
-    r_img = load_image('red_channel.png')
-    g_img = load_image('green_channel.png')
-    b_img = load_image('blue_channel.png')
+    r_img = load_image("red_channel.png")
+    g_img = load_image("green_channel.png")
+    b_img = load_image("blue_channel.png")
 
     # creates new image with hard dimensions.
     new_img = create_image(640, 480)
@@ -127,7 +127,7 @@ def combine(log: Tuple = False) -> Tuple[Image, List[int], List[int], List[int],
             counter += 1
 
         show(new_img)
-        show(load_image('combined_image.png'))
+        show(load_image("combined_image.png"))
         return new_img
     else:  # this is the same as above, except it saves all the files.
         for x, y, (r, g, b) in new_img:
@@ -136,8 +136,8 @@ def combine(log: Tuple = False) -> Tuple[Image, List[int], List[int], List[int],
             set_color(new_img, x, y, colour)
             counter += 1
 
-        save_as(new_img, 'returns/combined_image.png')
-        show(load_image('combined_image.png'))
+        save_as(new_img, "returns/combined_image.png")
+        show(load_image("combined_image.png"))
         return (r_chan, g_chan, b_chan, rgb)
 
 
@@ -215,17 +215,17 @@ def sepia(img: Image, disp: bool = True, save: bool = False) -> Image:
     if disp:
         show(sep_img)
     if save:
-        save_as(sep_img, 'returns/sepia.jpg')
+        save_as(sep_img, "returns/sepia.jpg")
     return sep_img
 
 
-'''code for two and three tone below'''
-tones = {'black': (0, 0, 0), 'white': (255, 255, 255), 'red': (255, 0, 0), 'lime': (0, 255, 0), 'blue': (0, 0, 255),
-         'yellow': (255, 255, 0), 'cyan': (0, 255, 255), 'magenta': (255, 0, 255), 'gray': (128, 128, 128)}
+"""code for two and three tone below"""
+tones = {"black": (0, 0, 0), "white": (255, 255, 255), "red": (255, 0, 0), "lime": (0, 255, 0), "blue": (0, 0, 255),
+         "yellow": (255, 255, 0), "cyan": (0, 255, 255), "magenta": (255, 0, 255), "gray": (128, 128, 128)}
 
 
 def two_tone(image: Image, CR1, CR2: str) -> Image:
-    '''
+    """
     Returns a copy of the loaded image with only the chosen two pixel colours
 
     Preconditions:
@@ -246,7 +246,7 @@ def two_tone(image: Image, CR1, CR2: str) -> Image:
 
     By: Abdelrahman Alatoom
 
-    '''
+    """
     image = copy(image)
 
     tone1r, tone1g, tone1b = tones[CR1]
@@ -269,7 +269,7 @@ def two_tone(image: Image, CR1, CR2: str) -> Image:
 
 
 def three_tone(image, CR1, CR2, CR3: str):
-    '''
+    """
 
     Returns a copy of the loaded image with only the three chosen pixel colours
 
@@ -289,7 +289,7 @@ def three_tone(image, CR1, CR2, CR3: str):
     >>>three_tone(image,black,blue,red)
 
     By: Abdelrahman Alatoom
-    '''
+    """
 
     image = copy(image)
 
@@ -416,7 +416,7 @@ def detect_edges_better(img: Image, thresh: int = 0,\
         show(new_img)  # shows image
     if save:
         # saves to returns/
-        save_as(new_img, 'returns/better_edge_detect.png')
+        save_as(new_img, "returns/better_edge_detect.png")
     return new_img
 
 
@@ -440,7 +440,7 @@ def flip_vertical(img):
     ex:
     photo facing left, creates photo facing right
 
-    'Written by Emilio Lindia: 101143244'
+    "Written by Emilio Lindia: 101143244"
 
     DOCSTRING TESTING (How to run the code)
     Code is run
@@ -485,8 +485,8 @@ def flip_vertical(img):
 # From the edge is now the same distance but from the other edge
 
 
-if __name__ == '__main__':
-    new_path = os.getcwd() + '/returns'  # creates path
+if __name__ == "__main__":
+    new_path = os.getcwd() + "/returns"  # creates path
     try:
         os.mkdir(new_path)
     except:

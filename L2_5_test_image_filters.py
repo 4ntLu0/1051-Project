@@ -1,3 +1,8 @@
+"""L2_5 SIPE interactive UI. Submitted December 1, 2019.
+This code has been attributed from given files on cuLearn.
+Contact information may be obtained from carleton university
+Group Leader: Anthony Luo"""
+
 from Cimpl import load_image, create_color, set_color, show, Image, save_as, get_width, get_height, copy, \
     create_image, save_as, get_color, choose_file, copy
 from simple_Cimpl_filters import grayscale
@@ -7,38 +12,38 @@ from L2_5_image_filters import create_red, create_blue, green_filter, combine, e
 from typing import Tuple
 
 
-def test_red( ori_img: Image ):
+def test_red(ori_img: Image):
     """ Tests the red image to ensure there are no traces of blue or green in the image.
     written by Anthony Luo
     :param ori_img: Original image
     :type ori_img: load_image('')
     >>> test_red( load_image(choose_image()))
-    'Red PASSES'
+    'Red PASSES"
     """
     create_red(ori_img, False, True)  # runs the red function in debugging mode.
     show(ori_img)  # shows the original image, to ensure that it is correct
-    show(load_image('red_channel.png'))  # shows the red image, to ensure that it's correct.
-    log = open('redImgLog.txt', 'r')  # opens logger
+    show(load_image("red_channel.png"))  # shows the red image, to ensure that it's correct.
+    log = open("redImgLog.txt", "r")  # opens logger
     fail = False
     for line in log:
-        if line[18:24] == str('000000'):  # double checks that last 6 digits (ggg,bbb) are all 0
+        if line[18:24] == str("000000"):  # double checks that last 6 digits (ggg,bbb) are all 0
             pass
         else:
-            print('fails with log line: ', line, '\n')  # notifies user of fail
+            print("fails with log line: ", line, "\n")  # notifies user of fail
             print(line[18:24])
             fail = True  # has failed tests
     if fail:
-        return ('1')  # error code 1
+        return ("1")  # error code 1
     else:
-        print('Red PASSES')
+        print("Red PASSES")
 
 
 def test_blue() -> None:
-    '''This is the test function for the blue filter.
+    """This is the test function for the blue filter.
 
     it tests if all pixels are blue or if they contain any traces of green or red.
-    '''
-    image1 = create_blue('p2-original.jpg')
+    """
+    image1 = create_blue("p2-original.jpg")
 
     for x, y, (r, g, b) in image1:
         if r == 0 and g == 0:  # if there is no trace of red or green
@@ -46,17 +51,17 @@ def test_blue() -> None:
             return
 
     else:
-        print('FAILS')
+        print("FAILS")
         return
 
 
 def test_green() -> None:
-    '''Test function for green filter.
+    """Test function for green filter.
 
     Tests if the pixels are green.
 
     >>> test_green()
-    '''
+    """
     image = load_image(choose_file())
     image1 = green_filter(image)
 
@@ -72,16 +77,15 @@ def test_green() -> None:
 
 def test_combine():
     """Tests to ensure that combine is made up of the constituent rgb parts.
-    TODO: I'm STILL not completely sure if this is how it's supposed to be...
     >>> test_combine()
-    'Combined image Passes'
+    "Combined image Passes"
     """
     log_r, log_g, log_b, log_rgb = combine(True)  # collects return from combine()
 
     # loads images
-    r_img = load_image('red_image.png')
-    g_img = load_image('green_image.png')
-    b_img = load_image('blue_image.png')
+    r_img = load_image("red_image.png")
+    g_img = load_image("green_image.png")
+    b_img = load_image("blue_image.png")
 
     r_chan = []
     g_chan = []
@@ -97,8 +101,8 @@ def test_combine():
         b_chan.append(b)
 
     rgb = []
-    combined_img = load_image('combined_image.png')
-    ori_img = load_image('p2-original.jpg')
+    combined_img = load_image("combined_image.png")
+    ori_img = load_image("p2-original.jpg")
     for x, y, (r, g, b) in ori_img:
         rgb.append((r, g, b))
     count = 0
@@ -108,10 +112,10 @@ def test_combine():
                 == (r, g, b):
             pass
         else:
-            print('fails at', x, y, r, g, b)
+            print("fails at", x, y, r, g, b)
             exit()
         count += 1
-    print('Combined image PASSES')
+    print("Combined image PASSES")
 
 
 def test_horizontal():
@@ -125,7 +129,7 @@ def test_horizontal():
     flipped)
     If the pixels match, the function has flipped the image properly
 
-     ' Written by Emilio Lindia: 101143244 '
+     " Written by Emilio Lindia: 101143244 "
 
     DOCSTRING TESTING (How to run the code)
     Code is run
@@ -167,8 +171,8 @@ def test_horizontal():
 # printing PASS will be an indication that this is the case
 # Otherwise, FAIL would be printed
 
-def _create_images( ver: int ) -> Tuple[Image, Image]:
-    """ Creates the test images for each 'version' of the test.
+def _create_images(ver: int) -> Tuple[Image, Image]:
+    """ Creates the test images for each "version" of the test.
     Written by Anthony Luo
     :param ver: version0: modified compare
                 version1: non-modified compare
@@ -185,8 +189,8 @@ def _create_images( ver: int ) -> Tuple[Image, Image]:
         return test_img, compare_img
 
 
-def test_edge_detect( pass_last_line: bool = True ):
-    ''' Tests to make sure that edge detection is functioning as it should with certain threshold values.
+def test_edge_detect(pass_last_line: bool = True):
+    """ Tests to make sure that edge detection is functioning as it should with certain threshold values.
     Test cases --- (high / low refer to brightness levels).
     directly below it is right colour
         high
@@ -218,53 +222,63 @@ def test_edge_detect( pass_last_line: bool = True ):
 
     The same test will be run with a threshold higher than expected, which should return a completely blank image.
     Written by Anthony Luo #101145222
-    '''
+
+    >>> detect_edges_better_test()
+    ### testing normal thresh ###
+    -- normal thresh testing done --
+
+    ### testing high thresh ###
+    -- high thresh testing done --
+
+    ### Testing done ###
+    --- PASSES ALL TESTS ---
+    """
     error_list = []
     test_pass = True  # so far, all tests have passed.
     test_img, compare_img = _create_images(0)
     # this thresh of 100 is a decent average to be testing on.
-    test_img = detectEdges(test_img, 100, False)
-    print('### testing normal thresh ###')
+    test_img = detect_edges(test_img, 100)
+    print("### testing normal thresh ###")
     for x, y, (r, g, b) in test_img:
         if pass_last_line and y == 2:
             pass  # does not test last line as most edge-detectors are not equipped to handle this.
         elif (r, g, b) == tuple(get_color(compare_img, x, y)):
             pass
         else:
-            print('-- error at', x, y)
-            print('test img: ', r, g, b, 'should be: ',
+            print("-- error at", x, y)
+            print("test img: ", r, g, b, "should be: ",
                   tuple(get_color(compare_img, x, y)))
             test_pass = False
-    print('-- normal thresh testing done --\n')
+    print("-- normal thresh testing done --\n")
 
     test_img, compare_img = _create_images(1)
     # this thresh of 255 is higher than we should ever be getting
-    test_img = detectEdges(test_img, 255, False)
-    print('### testing high thresh ###')
+    test_img = detect_edges(test_img, 255)
+    print("### testing high thresh ###")
     for x, y, (r, g, b) in test_img:
         if pass_last_line and y == 2:
             pass  # does not test last line as most edge-detectors are not equipped to handle this.
         elif (r, g, b) == tuple(get_color(compare_img, x, y)):
             pass
         else:
-            print('-- error at', x, y)
-            print('test img:', r, g, b, 'should be:',
+            print("-- error at", x, y)
+            print("test img:", r, g, b, "should be:",
                   tuple(get_color(compare_img, x, y)))
             test_pass = False
-    print('-- high thresh testing done --\n')
+    print("-- high thresh testing done --\n")
 
     if test_pass:
-        print('### Testing done ### \n--- PASSES ALL TESTS ---')
+        print("### Testing done ### \n--- PASSES ALL TESTS ---")
     else:
-        print('### Testing done ### \n--- FAILS ---')
+        print("### Testing done ### \n--- FAILS ---")
 
     print(error_list)
 
     def detect_edges_better_test() -> None:
         """Test function that checks if the r, g, b components have been correctly altered by the Improved Edge
-        Detection filter. \
+        Detection filter.
         If the pixels are correctly changed to either white or black, the test function returns "PASS" to the user.
-        If this is not the case, \
+        If this is not the case,
         the test function returns "FAIL".
 
         Written by Alia Nichol (#101143486).
@@ -275,8 +289,8 @@ def test_edge_detect( pass_last_line: bool = True ):
         FAIL
         """
 
-        original_image = create_image(7, 3, color = create_color(10, 10,
-                                                                 10))  # Creates image that is width 6 and height 2
+        original_image = create_image(7, 3, color=create_color(10, 10,
+                                                               10))  # Creates image that is width 6 and height 2
         # set to a dark colour.
         bright = create_color(250, 250, 250)
         set_color(original_image, 1, 0, bright)
@@ -287,8 +301,8 @@ def test_edge_detect( pass_last_line: bool = True ):
         set_color(original_image, 3, 2, bright)
         set_color(original_image, 4, 1, bright)
 
-        expected_image = create_image(7, 3, color = create_color(255, 255,
-                                                                 255))  # Creates image that is width 6 and height 2
+        expected_image = create_image(7, 3, color=create_color(255, 255,
+                                                               255))  # Creates image that is width 6 and height 2
         # set to a bright colour.
         black = create_color(0, 0, 0)
         set_color(expected_image, 0, 0, black)
@@ -308,9 +322,9 @@ def test_edge_detect( pass_last_line: bool = True ):
             if (r, g, b) == tuple(get_color(expected_image, x,
                                             y)):  # Checks if the pixels in the actual image equal the ones in the
                 # expected image.
-                print('PASS')
+                print("PASS")
             else:
-                print('FAIL')
+                print("FAIL")
 
 
 def test_flip_vertical() -> Image:
@@ -329,33 +343,33 @@ def test_flip_vertical() -> Image:
             vertical_colour = get_color(vertical_image, -x, y)
 
     if original_colour == vertical_colour:
-        print('Test Passed')
+        print("Test Passed")
     else:
-        print('Test Failed')
+        print("Test Failed")
 
 
 def test_extreme():
-    ''' written by emilio '''
+    """ written by emilio """
     image = load_image(choose_file())  # loads a file that you choose
     image1 = extreme_contrast(image)  # image 1 is the updated version
 
     for x, y, (r, g, b) in image:
-        print('this pixel has been analyzed correctly')
+        print("this pixel has been analyzed correctly")
 
     else:
-        print('this pixel has not been analyzed correctly')
+        print("this pixel has not been analyzed correctly")
     if image != image1:
-        print('HAS THE ORIGINAL IMAGE BEEN CHANGED? : NO')
+        print("HAS THE ORIGINAL IMAGE BEEN CHANGED? : NO")
     else:
-        print('HAS THE ORIGINAL IMAGE BEEN CHANGED? : YES')
+        print("HAS THE ORIGINAL IMAGE BEEN CHANGED? : YES")
 
     if image1 == extremeContrast(image1):
-        print('the image contrast has: PASSED THE TEST')
+        print("the image contrast has: PASSED THE TEST")
     else:
-        print('the image contrast has: FAILED THE TEST')
+        print("the image contrast has: FAILED THE TEST")
 
 
-def posterize_filter_test( image ):
+def posterize_filter_test(image):
     """
     This function tests if the posterize filter works properly by checking
     if the rgb of each pixel in the original image were set to the correct
@@ -423,6 +437,7 @@ def posterize_filter_test( image ):
                 return
     print("Filter working properly")
 
+
 def sepiaTest() -> None:
     """Test function for the sepia filter that checks if all the r, g, b components have gotten the sepia filter
     applied to them. The function returns "PASS" if all the pixels are successfully changed. If "PASS" is returned,
@@ -436,18 +451,19 @@ def sepiaTest() -> None:
     set_color(img, 1, 0, create_color(80, 100, 180))
     set_color(img, 2, 0, create_color(200, 240, 243))
 
-    test_img = sepia(img, disp = False, save = True)
-    #check to see if worked
-    #print(get_color(test_img, 0, 0))
-    #print(get_color(test_img, 1, 0))
-    #print(get_color(test_img, 2, 0))
+    test_img = sepia(img, disp=False, save=True)
+    # check to see if worked
+    # print(get_color(test_img, 0, 0))
+    # print(get_color(test_img, 1, 0))
+    # print(get_color(test_img, 2, 0))
 
     if (get_color(test_img, 0, 0) == create_color(28, 26, 23)) and \
             (get_color(test_img, 1, 0) == create_color(138, 120, 102)) and \
             (get_color(test_img, 2, 0) == create_color(245, 227, 211)):
-        print('pass')
+        print("pass")
     else:
-        print('fails')
+        print("fails")
+
 
 def _setCol(tone: Tuple[int]):
     """ returns a colour created from a tuple with three integers.
@@ -460,17 +476,18 @@ def _setCol(tone: Tuple[int]):
     b = tone[2]
     return create_color(r, g, b)
 
+
 def testThreeTone():
-    tones = ['black', 'white', 'red', 'lime', 'blue',
-             'yellow', 'cyan', 'magenta', 'gray']
+    tones = ["black", "white", "red", "lime", "blue",
+             "yellow", "cyan", "magenta", "gray"]
     colours = [(0, 0, 0), (255, 255, 255), (255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255),
                (255, 0, 255), (128, 128, 128)]
-    ''' Tests to ensure that three tone functions, that is: for any scenario, the lightest, middle, and darkest
+    """ Tests to ensure that three tone functions, that is: for any scenario, the lightest, middle, and darkest
     areas correspond to the assigned colours.
     Written by Anthony Luo
     :return:
     :rtype:
-    '''
+    """
 
     img = create_image(3, 1)  # creates image
 
@@ -482,7 +499,7 @@ def testThreeTone():
 
     for i in range(len(tones)):  # goes through all the tones, ensuring each one functions as expected
         image = copy(img)  # prevents loss of quality / information through repeated use of the same image
-        print('\n--- testing', tones[i], tones[i - 1], tones[i - 2], '---')
+        print("\n--- testing", tones[i], tones[i - 1], tones[i - 2], "---")
         test_img = three_tone(image, tones[i], tones[i - 1], tones[i - 2])  # runs image through the function
 
         # set colours, to be compared with
@@ -491,23 +508,25 @@ def testThreeTone():
         col3 = _setCol(colours[i - 2])
 
         # compares colours and prints test results.
-        if (get_color(test_img, 0, 0) == col1) and (get_color(test_img, 1, 0) == col2) and (get_color(test_img, 2, 0) == col3):
-            print('Passed')
+        if (get_color(test_img, 0, 0) == col1) and (get_color(test_img, 1, 0) == col2) and (
+                get_color(test_img, 2, 0) == col3):
+            print("Passed")
         else:
-            print('Fails at:', tones[i], tones[i - 1], tones[i - 2])
+            print("Fails at:", tones[i], tones[i - 1], tones[i - 2])
+
 
 def testTwoTone():
-    tones = ['black', 'white', 'red', 'lime', 'blue',
-             'yellow', 'cyan', 'magenta', 'gray']
+    tones = ["black", "white", "red", "lime", "blue",
+             "yellow", "cyan", "magenta", "gray"]
     colours = [(0, 0, 0), (255, 255, 255), (255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255),
                (255, 0, 255), (128, 128, 128)]
 
-    ''' Tests to ensure that two tone creates an image with the colours specified.
+    """ Tests to ensure that two tone creates an image with the colours specified.
     Tests both ranges, both High (255, 255, 255) and Low (0, 0, 0), with all tones in all positions.
     Written by Anthony Luo
     :return:
     :rtype:
-    '''
+    """
 
     img = create_image(2, 1)  # creates image
 
@@ -518,12 +537,12 @@ def testTwoTone():
 
     for i in range(len(tones)):  # iterates through to ensure all tones are tested
         image = copy(img)
-        print('\n--- testing', tones[i], tones[i - 1], '---')
+        print("\n--- testing", tones[i], tones[i - 1], "---")
         test_img = two_tone(image, tones[i], tones[i - 1])
 
         col1 = _setCol(colours[i])
         col2 = _setCol(colours[i - 1])
         if (get_color(test_img, 0, 0) == col1) and (get_color(test_img, 1, 0) == col2):
-            print('Passed')
+            print("Passed")
         else:
-            print('Fails at:', tones[i], tones[i - 1])
+            print("Fails at:", tones[i], tones[i - 1])

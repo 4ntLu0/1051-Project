@@ -1,5 +1,7 @@
-"""ECOR 1051 Fall 2019 Project - Compiled image filters from group L2-5. Submitted December 1, 2019.
-This code has been attributed from given files on cuLearn."""
+"""L2_5 SIPE Image Filters. Release 1.0.0 December 1, 2019.
+This code has been attributed from given files on cuLearn.
+Contact information may be obtained from carleton university
+Group Leader: Anthony Luo"""
 
 from Cimpl import load_image, create_color, set_color, show, Image, save_as, get_width, get_height, copy, \
     create_image, save_as, get_color, choose_file, copy

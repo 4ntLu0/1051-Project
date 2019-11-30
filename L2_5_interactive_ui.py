@@ -1,5 +1,7 @@
-"""ECOR 1051 Fall 2019 Project - Interactive User Interface from group L2-5. Submitted December 1, 2019. 
-This code has been attributed from given files on cuLearn."""
+"""L2_5 SIPE interactive UI. Release 1.0.0 December 1, 2019.
+This code has been attributed from given files on cuLearn.
+Contact information may be obtained from carleton university
+Group Leader: Anthony Luo"""
 
 # TODO:
 #  - P8 need to finish the README (Contact info, the date, software"s name, small description, installation requirements, etc)

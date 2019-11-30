@@ -63,17 +63,14 @@ def apply_filter(selection: str, loaded_image: Image) -> Image:
     prompts = ["X", "T", "P", "V", "H"]
 
     if selection == "2":
-        color1 = input("First colour:")
-        color2 = input("Second colour:")
-        new_image = two_tone(loaded_image, color1, color2)
-        print("Two tone filter has been applied")
+        
+        new_image = two_tone(loaded_image, 'yellow', 'cyan')
+        print("TWO TONE FILTER APPLIED")
         return new_image
 
     elif selection == "3":
-        color1 = input("First colour:")
-        color2 = input("Second colour:")
-        color3 = input("Third colour:")
-        new_image = three_tone(loaded_image, color1, color2, color3)
+     
+        new_image = three_tone(loaded_image, 'yellow', 'magenta', 'cyan')
         print("Three tone filter has been applied")
         return new_image
 

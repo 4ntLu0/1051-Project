@@ -6,7 +6,6 @@ from Cimpl import load_image, create_color, set_color, show, Image, save_as, get
 from simple_Cimpl_filters import grayscale
 from typing import Tuple, List
 import os
-from typing import NewType
 
 
 def create_red(img: Image, verify: bool = True, log: bool = False) -> Image:

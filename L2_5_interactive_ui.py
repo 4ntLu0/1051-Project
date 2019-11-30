@@ -19,7 +19,7 @@ all_commands = ["L", "S", "2", "3", "X", "T", "P", "E", "I", "V", "H", "Q"]
 def prompt() -> str:
     """
     Prompts the user for an input. Checks validility of the input before returning the command.
-    Written by:
+    Written by: Alia Nichol, Emilio Lindia
     """
     command = input(
         "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast" \
@@ -37,7 +37,7 @@ def prompt() -> str:
 
 def image_load() -> Image:
     """ Prompts the user to enter a filename they wish to load before applying a filter and returning the image.
-    Written by:
+    Written by: Anthony Luo, Emilio Lindia, Alia Nichol
     """
     image = input("Name of image to load:")
     loaded_image = load_image(image)
@@ -92,7 +92,7 @@ def apply_filter(selection: str, loaded_image: Image) -> Image:
 
 def main():
     """ Runs the entire interactive program. 
-    Written by:
+    Written by: Anthony Luo, Alia Nichol
     """
     is_loaded = False
     while True:

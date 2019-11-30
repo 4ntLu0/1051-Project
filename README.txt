@@ -8,36 +8,35 @@ This interactive photo editing program enables users to retouch images by applyi
 
 INSTALLATION
 ----------------------------------
-- Cimpl needs to be in the same folder?
-- a folder including all the filters?
-- the image that the user wishes to load also needs to be in the same folder?
+- Ensure that CIMPL is installed within the same folder as L2_5_image_filters.py and L2_5_interactive_ui.py
 
 
 USAGE
 ----------------------------------
--[insert shell commands and not images]
+- Run L2_5_interactive_ui.py
+- [insert shell commands and not images]
 - It is recommended that you load an image file before attempting to apply a filter
-- When loading an image, the filname .jpg must be indicated
+- When loading an image, the filename.jpg must be indicated
 - If applying the Two Tone, Three Tone, Edge Detection or Improved Edge Detection Filters, additional input is required before application
 - Users must enter input that corresponds to the options displayed in the menu
 - Once the filter is applied, the new image might take several seconds to appear depending on the size of the image that was loaded. Please be patient. 
-- It is possible to apply filter to one image culmatively
+- Filters will be applied cummatively
+- The final image will be saved to filepath.jpg
 
 
 CREDITS
 ----------------------------------
 Authors of Functions:
-detect_edges - 
-detect_edges_better - 
+detect_edges - Alia Nichol
+detect_edges_better - Anthony Luo
 flip_horizontal - 
 flip_vertical - 
-posterize - 
-sepia - 
+posterize - Emilio Lindia
+sepia - Anthony Luo
 three_tone - 
 two_tone -
-interactive program - 
+interactive program - Anthony Luo, Alia Nichol, Emilio Lindia, Abdelrahman Alatoom.
 
-# not sure if I need to include the red, green and blue and combine filters from Milestone 1?
 
 LICENSE
 ----------------------------------

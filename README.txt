@@ -23,7 +23,7 @@ USAGE
 - [insert shell commands and not images]
 - It is recommended that you load an image file before attempting to apply a filter. (Input the letter 'L')
 - When loading an image, the filename.jpg must be indicated
-- If applying the Two Tone, Three Tone, Edge Detection or Improved Edge Detection Filters, additional input is required before application. You will be prompted accordingly.
+- If applying the Two Tone, Three Tone, Edge Detection or Improved Edge Detection Filters.
 - Users must enter input that corresponds to the options displayed in the menu
 - Once the filter is applied, the new image might take several seconds to appear depending on the size of the image that was loaded. Please be patient. 
 - Filters will be applied cumulatively

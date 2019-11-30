@@ -56,7 +56,7 @@ def image_load() -> Image:
 def apply_filter(selection: str, loaded_image: Image) -> Image:
     """
     Applies the selected filter to the loaded image. 
-    Written by: Anthony Luo and Alia Nichol 
+    Written by: Anthony Luo and Alia Nichol and Emilio Lindia
     """
 
     functions = [extreme_contrast, sepia, posterize, flip_vertical, flip_horizontal]

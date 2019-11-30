@@ -42,11 +42,15 @@ def image_load() -> Image:
     Written by: Anthony Luo, Emilio Lindia, Alia Nichol
     """
     image = input("Name of image to load:")
-    loaded_image = load_image(image)
-    show(loaded_image)
-    print("Image has been loaded")
-    return loaded_image
-
+    print("Loading Image")
+    try:
+        loaded_image = load_image(image)
+        show(loaded_image)
+        print("Image has been loaded")
+        return loaded_image
+    except:
+        print("Image could not be loaded")
+        return 'Not Loaded'
 
 def apply_filter(selection: str, loaded_image: Image) -> Image:
     """
@@ -100,9 +104,12 @@ def main():
     while True:
         command = prompt()
         if command == "L":
-            is_loaded = True
             image = image_load()
-            img = copy(image)
+            if image == 'Not Loaded':
+                pass
+            else:
+                is_loaded = True
+                img = copy(image)
 
         elif command == "Q":
             print("Exiting program")

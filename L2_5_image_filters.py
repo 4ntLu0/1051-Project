@@ -457,7 +457,6 @@ def flip_vertical(img):
 
     CODE HAS BEEN ATTRIBUTED FROM GIVEN FILES FOUND ON CULEARN
     """
-    show(img)
     image = copy(img)  # Creates the copy to prevent it from/
     # Being overwritten
 

@@ -41,6 +41,7 @@ posterize - Emilio Lindia
 sepia - Anthony Luo
 three_tone - 
 two_tone -
+extreme_contrast - Alia Nichol
 interactive program - Anthony Luo, Alia Nichol, Emilio Lindia, Abdelrahman Alatoom.
 
 

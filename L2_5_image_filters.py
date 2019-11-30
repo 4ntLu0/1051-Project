@@ -33,7 +33,7 @@ def create_red(img: Image, verify: bool = True, log: bool = False) -> Image:
             set_color(image, x, y, red)
 
         str1 = f"{x:03}" + f"{y:03}" + f"{r:03}" + f"{g:03}" + f"{b:03}" + f"{red[0]:03}" + \
-               f"{red[1]:03}" + f"{red[2]:03}" + "\n"  # creates logger string
+            f"{red[1]:03}" + f"{red[2]:03}" + "\n"  # creates logger string
         red_log.write(str1)  # saves string
 
     else:
@@ -185,6 +185,7 @@ def _adjust_component(comp: int) -> int:  # enters a red, green, or blue compone
         return 223
     elif comp < 0:
         return 31
+
 
 def posterize(image: Image) -> Image:
     """ posterizes the image by setting each r, g, b value to the midpoint of it's quadrant
@@ -357,12 +358,11 @@ def _new_col(colour: Tuple[int]) -> int:
     """ Returns a colour type from a colour
     written by Anthony Luo
     """
-    # TODO: try to see if there's a way to integrate this directly into the program
     r, g, b = tuple(colour)
     return create_color(r, g, b)
 
 
-def detect_edges_better(img: Image, thresh: int = 0,\
+def detect_edges_better(img: Image, thresh: int = 0,
                         disp: bool = True, save: bool = False):
     """ return an image with the edge detects.
     Written by Anthony Luo (#101145222)
@@ -382,12 +382,12 @@ def detect_edges_better(img: Image, thresh: int = 0,\
     white = create_color(255, 255, 255)
     black = create_color(0, 0, 0)
 
-    for y in range(height - 1):  # starts at the first level, then moves down
-        for x in range(width - 1):
+    for y in range(height - 1):  # starts at the first row, then moves down
+        for x in range(width - 1): #starts at left column, and moves right
             # compares brightness between two images and then resets colours.
-            if abs(_avg_bright(tuple(get_color(img, x, y))) - _avg_bright( \
-                    tuple(get_color(img, x, y + 1)))) > thresh or abs( \
-                    _avg_bright(tuple(get_color(img, x, y))) - \
+            if abs(_avg_bright(tuple(get_color(img, x, y))) - _avg_bright(
+                    tuple(get_color(img, x, y + 1)))) > thresh or abs(
+                    _avg_bright(tuple(get_color(img, x, y))) -
                     _avg_bright(tuple(get_color(img, x + 1, y)))) > thresh:
                 # sets colour to black (edge detected)
                 set_color(new_img, x, y, black)
@@ -412,6 +412,7 @@ def detect_edges_better(img: Image, thresh: int = 0,\
     else:
         set_color(new_img, width - 1, height -
                   1, create_color(255, 255, 255))
+    
     if disp:
         show(new_img)  # shows image
     if save:

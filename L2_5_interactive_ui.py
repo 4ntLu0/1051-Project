@@ -129,9 +129,4 @@ def main():
 
 
 if __name__ == "__main__":
-    new_path = os.getcwd() + "/returns"  # creates path
-    try:
-        os.mkdir(new_path)
-    except:
-        pass
     main()

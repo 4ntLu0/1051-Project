@@ -53,8 +53,10 @@ def create_red(img: Image, verify: bool = True, log: bool = False) -> Image:
 
 def create_blue(img):
     """ the function createBlue displays the original image, once closed it displays the image with a blue filter
-
     -Emilio Lindia
+    
+    >>>img = load_image(choose_file())
+    >>>create_blue(img)
     """
     image = copy(img)
     # image = load_image("p2-original.jpg")  # loads the original colourless picture
@@ -172,6 +174,8 @@ def extreme_contrast(image: Image):
 
 def _adjust_component(comp: int) -> int:  # enters a red, green, or blue component
     """ Returns the midpoint of a component
+    - Emilio Lindia
+    a helper function used within posterize filter
     """
     if 0 <= comp <= 63:
         return 31
@@ -190,6 +194,8 @@ def _adjust_component(comp: int) -> int:  # enters a red, green, or blue compone
 def posterize(image: Image) -> Image:
     """ posterizes the image by setting each r, g, b value to the midpoint of it's quadrant
     Written by: Emilio Lindia
+    
+    >>>posterize(image)
     """
     new_image = copy(image)  # assigns new image as a copy of original
     for pixel in image:  # examines all pixels in the new image
@@ -455,7 +461,8 @@ def flip_vertical(img):
     Close the new image
     END OF CODE
 
-
+    >>>flip_vertical(image)
+    
     CODE HAS BEEN ATTRIBUTED FROM GIVEN FILES FOUND ON CULEARN
     """
     image = copy(img)  # Creates the copy to prevent it from/

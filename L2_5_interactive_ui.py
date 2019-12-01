@@ -12,7 +12,7 @@ Group Leader: Anthony Luo"""
 
 from L2_5_image_filters import extreme_contrast, posterize, sepia, two_tone, three_tone, detect_edges, \
     detect_edges_better, flip_horizontal, flip_vertical, Image
-from Cimpl import load_image,show, Image, save_as, copy
+from Cimpl import load_image, show, Image, save_as, copy
 import os
 
 all_commands = ["L", "S", "2", "3", "X", "T", "P", "E", "I", "V", "H", "Q"]
@@ -24,16 +24,16 @@ def prompt() -> str:
     Written by: Alia Nichol, Emilio Lindia
     """
     command = input(
-        "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast" \
-            " T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip" \
-            " H)orizontal flip \n Q)uit \n : ").upper()
+        "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast"
+        " T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip"
+        " H)orizontal flip \n Q)uit \n : ").upper()
 
     while command not in all_commands:
         print("No such command")
         command = input(
-            "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme" \
-                " contrast T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip H)orizontal"\
-                "flip \n Q)uit \n : ").upper()
+            "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme"
+            " contrast T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip H)orizontal"
+            "flip \n Q)uit \n : ").upper()
     return command
 
 
@@ -42,33 +42,35 @@ def image_load() -> Image:
     Written by: Anthony Luo, Emilio Lindia, Alia Nichol
     """
     image = input("Name of image to load:")
-    loaded_image = load_image(image)
-    show(loaded_image)
-    print("Image has been loaded")
-    return loaded_image
+    print("Loading Image")
+    try:
+        loaded_image = load_image(image)
+        show(loaded_image)
+        print("Image has been loaded")
+        return loaded_image
+    except:
+        print("Image could not be loaded")
+        return 'Not Loaded'
 
 
 def apply_filter(selection: str, loaded_image: Image) -> Image:
     """
     Applies the selected filter to the loaded image. 
-    Written by: Anthony Luo and Alia Nichol 
+    Written by: Anthony Luo and Alia Nichol and Emilio Lindia
     """
 
     functions = [extreme_contrast, sepia, posterize, flip_vertical, flip_horizontal]
     prompts = ["X", "T", "P", "V", "H"]
 
     if selection == "2":
-        color1 = input("First colour:")
-        color2 = input("Second colour:")
-        new_image = two_tone(loaded_image, color1, color2)
-        print("Two tone filter has been applied")
+        
+        new_image = two_tone(loaded_image, 'yellow', 'cyan')
+        print("TWO TONE FILTER APPLIED")
         return new_image
 
     elif selection == "3":
-        color1 = input("First colour:")
-        color2 = input("Second colour:")
-        color3 = input("Third colour:")
-        new_image = three_tone(loaded_image, color1, color2, color3)
+     
+        new_image = three_tone(loaded_image, 'yellow', 'magenta', 'cyan')
         print("Three tone filter has been applied")
         return new_image
 
@@ -100,9 +102,12 @@ def main():
     while True:
         command = prompt()
         if command == "L":
-            is_loaded = True
             image = image_load()
-            img = copy(image)
+            if image == 'Not Loaded':
+                pass
+            else:
+                is_loaded = True
+                img = copy(image)
 
         elif command == "Q":
             print("Exiting program")
@@ -122,9 +127,4 @@ def main():
 
 
 if __name__ == "__main__":
-    new_path = os.getcwd() + "/returns"  # creates path
-    try:
-        os.mkdir(new_path)
-    except:
-        pass
     main()

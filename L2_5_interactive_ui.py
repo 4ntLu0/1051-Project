@@ -5,7 +5,7 @@ Group Leader: Anthony Luo"""
 
 # TODO:
 #  - P8 need to finish the README (Contact info, the date, software"s name, small description, installation requirements, etc)
-#  - make sure that the image is shown at the correct times and # of times SHOULD BE DONE NOW
+#  - make sure that the image is shown at the correct times and # of times SHOULD BE DONE NOW *** Need to fix for 
 #  - complete the docstrings and the type annotations
 #  - comment the code??
 #  - Need to add shell examples into the docstrings

@@ -22,6 +22,9 @@ def prompt() -> str:
     """
     Prompts the user for an input. Checks validility of the input before returning the command.
     Written by: Alia Nichol, Emilio Lindia
+    
+    Ex:
+    >>> Run code
     """
     command = input(
         "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast"
@@ -40,6 +43,12 @@ def prompt() -> str:
 def image_load() -> Image:
     """ Prompts the user to enter a filename they wish to load before applying a filter and returning the image.
     Written by: Anthony Luo, Emilio Lindia, Alia Nichol
+    
+    Ex:
+    >>> L
+    or 
+    >>> l
+    
     """
     image = input("Name of image to load:")
     print("Loading Image")
@@ -57,6 +66,17 @@ def apply_filter(selection: str, loaded_image: Image) -> Image:
     """
     Applies the selected filter to the loaded image. 
     Written by: Anthony Luo and Alia Nichol and Emilio Lindia
+    
+    Ex:
+    >>> X or x
+    or 
+    >>> T or t
+    or
+    >>> P or p
+    or
+    >>> V or v
+    or 
+    >>> H or h
     """
 
     functions = [extreme_contrast, sepia, posterize, flip_vertical, flip_horizontal]

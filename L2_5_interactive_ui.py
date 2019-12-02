@@ -1,41 +1,46 @@
-"""Milestone 3. EAAA. L2_5 SIPE interactive UI. Release 1.0.0 December 1, 2019. Authors: Alia Nichol, Anthony Luo, Emilio Lindia, Abdelrahman Alatoom.
+"""Milestone 3. EAAA. L2_5 SIPE interactive UI. Release 1.0.0 December 1, 2019. 
+Authors: Alia Nichol, Anthony Luo, Emilio Lindia, Abdelrahman Alatoom.
 This code has been attributed from given files on cuLearn.
-Contact information may be obtained from carleton university
+Contact information may be obtained from Carleton University.
 Group Leader: Anthony Luo"""
 
-
-from L2_5_image_filters import extreme_contrast, posterize, sepia, two_tone, three_tone, detect_edges, \
-    detect_edges_better, flip_horizontal, flip_vertical, Image
+from L2_5_image_filters import extreme_contrast, posterize, sepia, two_tone, \
+     three_tone, detect_edges, detect_edges_better, flip_horizontal, \
+     flip_vertical, Image
 from Cimpl import load_image, show, Image, save_as, copy
 import os
 
 all_commands = ["L", "S", "2", "3", "X", "T", "P", "E", "I", "V", "H", "Q"]
 
-
 def prompt() -> str:
     """
-    Prompts the user for an input. Checks validility of the input before returning the command.
-    Written by: Alia Nichol, Emilio Lindia
+    Prompts the user for an input. Checks validility of the input before 
+    returning the command.
+    Written by: Alia Nichol and Emilio Lindia
     
     Run the code. Prompt function is called below with >>> prompt()
     """
     command = input(
-        "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast"
-        " T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip"
+        "Please enter a command from the following list: \n L)oad Image \
+        S)ave-as \n 2)-tone 3)-tone X)treme contrast"
+        " T)int sepia P)osterize \n E)dge detect I)mproved edge detect \
+        V)ertical flip"
         " H)orizontal flip \n Q)uit \n : ").upper()
 
     while command not in all_commands:
         print("No such command")
         command = input(
-            "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme"
-            " contrast T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip H)orizontal"
-            "flip \n Q)uit \n : ").upper()
+            "Please enter a command from the following list: \n L)oad Image \
+            S)ave-as \n 2)-tone 3)-tone X)treme contrast T)int sepia \
+            P)osterize \n E)dge detect I)mproved edge detect V)ertical flip \
+            H)orizontal flip \n Q)uit \n : ").upper()
     return command
 
 
 def image_load() -> Image:
-    """ Prompts the user to enter a filename they wish to load before applying a filter and returning the image.
-    Written by: Anthony Luo, Emilio Lindia, Alia Nichol
+    """ Prompts the user to enter a filename they wish to load before applying 
+    a filter and returning the new image.
+    Written by: Anthony Luo, Emilio Lindia, Alia Nichol.
     
     >>> L
     or 
@@ -54,8 +59,7 @@ def image_load() -> Image:
 
 
 def apply_filter(selection: str, loaded_image: Image) -> Image:
-    """
-    Applies the selected filter to the loaded image. 
+    """Applies the selected filter to the loaded image. 
     Written by: Anthony Luo and Alia Nichol and Emilio Lindia
     
     >>> X or x
@@ -68,11 +72,12 @@ def apply_filter(selection: str, loaded_image: Image) -> Image:
     or 
     >>> H or h
     
-    Apply filter function is called in main function with >>> apply_filter(command, img)
+    apply_filter is called in main function with >>>apply_filter(command, img)
     
     """
 
-    functions = [extreme_contrast, sepia, posterize, flip_vertical, flip_horizontal]
+    functions = [extreme_contrast, sepia, posterize, flip_vertical, \
+                 flip_horizontal]
     prompts = ["X", "T", "P", "V", "H"]
 
     if selection == "2":
@@ -107,7 +112,7 @@ def apply_filter(selection: str, loaded_image: Image) -> Image:
                 return img
 
 
-def main():
+def main() -> str:
     """ Runs the entire interactive program. 
     Written by: Anthony Luo and Alia Nichol. 
     
@@ -115,6 +120,8 @@ def main():
     
     >>> Q or q
     >>> S or s
+    
+    main function is called below as main().
     """
     is_loaded = False
     while True:
@@ -136,7 +143,8 @@ def main():
             prompt()
 
         elif command == "S":
-            filename = input("What would you like the file to be saved as? (ex. new_image.jpg): ")
+            filename = input("What would you like the file to be saved as? \
+            (ex. new_image.jpg): ")
             save_as(img, filename)
             print("Image has been saved as:", filename)
 

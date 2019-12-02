@@ -1,5 +1,5 @@
-L2_5 Simple Interactive Photo Editor (SIPE)
-Release: 1.0.0 Nov 1, 2019 by Fall 2019 1051 Group L2_5
+Milestone 3, EAAA. Simple Interactive Photo Editor (SIPE)
+Release: 1.0.0 Nov 1, 2019 by Fall 2019 ECOR 1051 Group L2_5
 Team Leader: Anthony Luo, #101145222
 Contact: anthonyluo4@cmail.carleton.ca
 
@@ -41,7 +41,7 @@ sepia - Anthony Luo
 three_tone - Abdelrahman Alatoom
 two_tone - Abdelrahman Alatoom
 extreme_contrast - Alia Nichol
-interactive program - Anthony Luo, Alia Nichol, Emilio Lindia, Abdelrahman Alatoom.
+interactive program - Anthony Luo, Alia Nichol, Emilio Lindia
 
 LICENSE
 ----------------------------------

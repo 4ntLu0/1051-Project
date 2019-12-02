@@ -1,5 +1,6 @@
-"""L2_5 SIPE Image Filters. Release 1.0.0 December 1, 2019.
+"""Milestone 3. EAAA. L2_5 SIPE Image Filters. Release 1.0.0 December 1, 2019.
 This code has been attributed from given files on cuLearn.
+Authors: Alia Nichol, Anthony Luo, Emilio Lindia, Abdelrahman Alatoom.
 Contact information may be obtained from carleton university
 Group Leader: Anthony Luo"""
 

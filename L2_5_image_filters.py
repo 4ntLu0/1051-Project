@@ -10,6 +10,29 @@ from simple_Cimpl_filters import grayscale
 from typing import Tuple, List
 import os
 
+
+def _adjust_component(comp: int)-> int: #Enters a red, green, or blue component
+    
+    if 0 <= comp <= 63:
+        return 31    
+    
+    elif 63 < comp <= 127:
+        return 95   
+    
+    elif 127 < comp <= 191:
+        return 159    
+    
+    elif 191 < comp <= 255:
+        return 223
+    
+    elif comp > 255:
+        return 223
+    
+    elif comp < 0:
+        return 31
+#The midpoint of it's quadrant is returned
+#This function is a helper function that will be called upon
+
 def posterize(image: Image) -> Image:
     """ Posterizes the image by setting each r, g, b value to the midpoint of 
     it's quadrant.
@@ -27,6 +50,33 @@ def posterize(image: Image) -> Image:
     show(new_image)
     return image
 
+def extreme_contrast(new_image: str or Image) -> Image:
+    """ Given an image, the r, g, b components are altered to be extremely contrasted. 
+    Written by Alia Nichol (#101143486).
+    
+    >>> extreme_contrast("miss_sullivan.jpg")
+    """   
+
+    for x, y, (r, g, b) in new_image: # Reads through each pixel in the chosen image
+       
+        if 0 < r <= 127:
+            r = 0
+        else:
+            r = 255
+            
+        if 0 < g <= 127:
+            g = 0
+        else:
+            g = 255
+            
+        if 0 < b <= 127:
+            b = 0
+        else:
+            b = 255
+            
+        set_color(new_image, x, y, create_color(r, g, b))
+    show(new_image)
+    return new_image
 
 def sepia(img: Image, disp: bool = True, save: bool = False) -> Image:
     """ Adjusts the r, g, b values of an image to create a sepia image.

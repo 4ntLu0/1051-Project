@@ -49,8 +49,10 @@ def sepia(img: Image, disp: bool = True, save: bool = False) -> Image:
     return sep_img
 
 
-tones = {"black": (0, 0, 0), "white": (255, 255, 255), "red": (255, 0, 0), "lime": (0, 255, 0), "blue": (0, 0, 255),
-         "yellow": (255, 255, 0), "cyan": (0, 255, 255), "magenta": (255, 0, 255), "gray": (128, 128, 128)}
+tones = {"black": (0, 0, 0), "white": (255, 255, 255), "red": (255, 0, 0),
+         "lime": (0, 255, 0), "blue": (0, 0, 255), "yellow": (255, 255, 0),
+         "cyan": (0, 255, 255), "magenta": (255, 0, 255),
+         "gray": (128, 128, 128)}
 
 def two_tone(image: Image, CR1: str, CR2: str) -> Image:
     """Adjusts the r, g, b components so that the image consists of two tones 
@@ -84,8 +86,9 @@ def two_tone(image: Image, CR1: str, CR2: str) -> Image:
 
 
 def three_tone(image, CR1, CR2, CR3: str):
-    """Adjusts the r, g, b components so that the image consists of three tones chosen by the user. 
-    Colour inputs should be chosen from the dictionary above. 
+    """Adjusts the r, g, b components so that the image consists of three
+    tones chosen by the user. Colour inputs should be chosen from the
+    dictionary above.
     
     By: Abdelrahman Alatoom
 

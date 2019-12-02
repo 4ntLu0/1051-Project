@@ -1,14 +1,8 @@
-"""L2_5 SIPE interactive UI. Release 1.0.0 December 1, 2019.
+"""Milestone 3. EAAA. L2_5 SIPE interactive UI. Release 1.0.0 December 1, 2019. Authors: Alia Nichol, Anthony Luo, Emilio Lindia, Abdelrahman Alatoom.
 This code has been attributed from given files on cuLearn.
 Contact information may be obtained from carleton university
 Group Leader: Anthony Luo"""
 
-# TODO:
-#  - P8 need to finish the README (Contact info, the date, software"s name, small description, installation requirements, etc)
-#  - make sure that the image is shown at the correct times and # of times SHOULD BE DONE NOW *** Need to fix for 
-#  - complete the docstrings and the type annotations
-#  - comment the code??
-#  - Need to add shell examples into the docstrings
 
 from L2_5_image_filters import extreme_contrast, posterize, sepia, two_tone, three_tone, detect_edges, \
     detect_edges_better, flip_horizontal, flip_vertical, Image
@@ -22,6 +16,8 @@ def prompt() -> str:
     """
     Prompts the user for an input. Checks validility of the input before returning the command.
     Written by: Alia Nichol, Emilio Lindia
+    
+    >>> prompt()
     """
     command = input(
         "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast"

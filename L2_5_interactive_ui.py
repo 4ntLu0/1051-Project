@@ -21,10 +21,8 @@ def prompt() -> str:
     Run the code. Prompt function is called below with >>> prompt()
     """
     command = input(
-        "Please enter a command from the following list: \n L)oad Image \
-        S)ave-as \n 2)-tone 3)-tone X)treme contrast"
-        " T)int sepia P)osterize \n E)dge detect I)mproved edge detect \
-        V)ertical flip"
+        "Please enter a command from the following list: \n L)oad Image S)ave-as \n 2)-tone 3)-tone X)treme contrast"
+        " T)int sepia P)osterize \n E)dge detect I)mproved edge detect V)ertical flip"
         " H)orizontal flip \n Q)uit \n : ").upper()
 
     while command not in all_commands:

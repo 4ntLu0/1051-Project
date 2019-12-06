@@ -11,72 +11,76 @@ from typing import Tuple, List
 import os
 
 
-def _adjust_component(comp: int)-> int: #Enters a red, green, or blue component
-    
+def _adjust_component(comp: int) -> int:  # Enters a red, green, or blue component
+
     if 0 <= comp <= 63:
-        return 31    
-    
+        return 31
+
     elif 63 < comp <= 127:
-        return 95   
-    
+        return 95
+
     elif 127 < comp <= 191:
-        return 159    
-    
+        return 159
+
     elif 191 < comp <= 255:
         return 223
-    
+
     elif comp > 255:
         return 223
-    
+
     elif comp < 0:
         return 31
-#The midpoint of it's quadrant is returned
-#This function is a helper function that will be called upon
+
+
+# The midpoint of it's quadrant is returned
+# This function is a helper function that will be called upon
 
 def posterize(image: Image) -> Image:
     """ Posterizes the image by setting each r, g, b value to the midpoint of 
     it's quadrant.
     Written by: Emilio Lindia
     
-    >>> posterize(miss_sullivan.jpg)
+    >>> posterize(load_image(miss_sullivan.jpg))
     """
     new_image = copy(image)  # assigns new image as a copy of original
     for pixel in image:  # examines all pixels in the new image
         x, y, (r, g, b) = pixel
         (r, g, b) = (_adjust_component(r), _adjust_component(g), _adjust_component(b))
-        new_color = create_color(r, g, b)  
+        new_color = create_color(r, g, b)
         # inserts rgb values into adjust component function to change rgb values
         set_color(new_image, x, y, new_color)
     show(new_image)
     return image
+
 
 def extreme_contrast(new_image: str or Image) -> Image:
     """ Given an image, the r, g, b components are altered to be extremely contrasted. 
     Written by Alia Nichol (#101143486).
     
     >>> extreme_contrast("miss_sullivan.jpg")
-    """   
+    """
 
-    for x, y, (r, g, b) in new_image: # Reads through each pixel in the chosen image
-       
+    for x, y, (r, g, b) in new_image:  # Reads through each pixel in the chosen image
+
         if 0 < r <= 127:
             r = 0
         else:
             r = 255
-            
+
         if 0 < g <= 127:
             g = 0
         else:
             g = 255
-            
+
         if 0 < b <= 127:
             b = 0
         else:
             b = 255
-            
+
         set_color(new_image, x, y, create_color(r, g, b))
     show(new_image)
     return new_image
+
 
 def sepia(img: Image, disp: bool = True, save: bool = False) -> Image:
     """ Adjusts the r, g, b values of an image to create a sepia image.
@@ -104,6 +108,7 @@ tones = {"black": (0, 0, 0), "white": (255, 255, 255), "red": (255, 0, 0),
          "cyan": (0, 255, 255), "magenta": (255, 0, 255),
          "gray": (128, 128, 128)}
 
+
 def two_tone(image: Image, CR1: str, CR2: str) -> Image:
     """Adjusts the r, g, b components so that the image consists of two tones 
     chosen by the user. CR1 should be brighter than CR2.
@@ -113,7 +118,7 @@ def two_tone(image: Image, CR1: str, CR2: str) -> Image:
     By: Abdelrahman Alatoom
     
     >>> two_tone(miss_sullivan.jpg, yellow, black) """
-    
+
     image = copy(image)
 
     tone1r, tone1g, tone1b = tones[CR1]
@@ -183,18 +188,18 @@ def detect_edges(image: Image, threshold: int) -> Image:
     new_image = copy(image)
 
     # Begins at the first row and moves down through each row in the image.
-    for y in range(get_height(new_image) - 1):  
+    for y in range(get_height(new_image) - 1):
         for x in range(get_width(new_image)):
 
             r, g, b = (get_color(new_image, x, y))
             r1, g1, b1 = (get_color(new_image, x, y + 1))
-            
+
             # Changes the pixels to black as contrast between pixels is high. 
-            if abs(((r + g + b) // 3) - ((r1 + g1 + b1) // 3)) > threshold:  
+            if abs(((r + g + b) // 3) - ((r1 + g1 + b1) // 3)) > threshold:
                 # contrast between the two pixels is high.
                 set_color(new_image, x, y, create_color(0, 0, 0))
             # Pixels changed to white as contrast between pixels is low.    
-            else:  
+            else:
                 set_color(new_image, x, y, create_color(255, 255, 255))
 
     show(new_image)
@@ -219,7 +224,7 @@ def _new_col(colour: Tuple[int]) -> int:
 
 
 def detect_edges_better(img: Image, thresh: int = 0,
-    disp: bool = True, save: bool = False):
+                        disp: bool = True, save: bool = False):
     """ Return an image with the edge detects.
     Written by Anthony Luo (#101145222)
     :param img: Image to detect edges on
@@ -239,12 +244,12 @@ def detect_edges_better(img: Image, thresh: int = 0,
     black = create_color(0, 0, 0)
 
     for y in range(height - 1):  # starts at the first row, then moves down
-        for x in range(width - 1): #starts at left column, and moves right
+        for x in range(width - 1):  # starts at left column, and moves right
             # compares brightness between two images and then resets colours.
             if abs(_avg_bright(tuple(get_color(img, x, y))) - _avg_bright(
                     tuple(get_color(img, x, y + 1)))) > thresh or abs(
-                    _avg_bright(tuple(get_color(img, x, y))) -
-                    _avg_bright(tuple(get_color(img, x + 1, y)))) > thresh:
+                _avg_bright(tuple(get_color(img, x, y))) -
+                _avg_bright(tuple(get_color(img, x + 1, y)))) > thresh:
                 # sets colour to black (edge detected)
                 set_color(new_img, x, y, black)
             else:
@@ -268,7 +273,7 @@ def detect_edges_better(img: Image, thresh: int = 0,
     else:
         set_color(new_img, width - 1, height -
                   1, create_color(255, 255, 255))
-    
+
     if disp:
         show(new_img)  # shows image
     if save:
@@ -285,7 +290,7 @@ def flip_horizontal(image: Image) -> Image:
 
     >>> flip_horizontal(miss_sullivan.jpg)
     
-    """    
+    """
     h = get_height(image)
     w = get_width(image)
     new_image = create_image(w, h)

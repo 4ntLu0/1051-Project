@@ -1,7 +1,7 @@
 Milestone 3, EAAA. Simple Interactive Photo Editor (SIPE)
 Release: 1.0.0 Nov 1, 2019 by Fall 2019 ECOR 1051 Group L2_5
 Team Leader: Anthony Luo, #101145222
-Contact: anthonyluo4@cmail.carleton.ca
+Contact: a26luo@uwaterloo.ca (outdated -> anthonyluo4@cmail.carleton.ca)
 
 DESCRIPTION
 ----------------------------------
